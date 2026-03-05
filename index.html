@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>te amo fiorella</title>
+
+<style>
+
+body{
+    background:#0b0b0b;
+    color:white;
+    font-family:Arial, sans-serif;
+    text-align:center;
+    margin:0;
+}
+
+#dna{
+    position:relative;
+    height:3500px;
+    margin-top:100px;
+}
+
+.item{
+    position:absolute;
+    left:50%;
+    font-family:monospace;
+    color:#ff4d6d;
+    font-size:20px;
+    transition:transform 0.2s;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>
+te amo loca no te estreces no llores estoy seguro que vas a poder con todo porque sos la mejor <333333333333
+</h1>
+
+<p>
+sos capaz de lograrlo yo confio en vos, no bajes los brazos siempre que pienses que no podes pensa que hay un coloradito que confia mas en vos que en el mismo.
+</p>
+
+<div id="dna"></div>
+
+<script>
+
+const container = document.getElementById("dna");
+let items=[];
+
+for(let i=0;i<160;i++){
+
+    let left=document.createElement("div");
+    left.className="item";
+    left.innerText="te amo";
+
+    let right=document.createElement("div");
+    right.className="item";
+    right.innerText="te amo";
+
+    container.appendChild(left);
+    container.appendChild(right);
+
+    items.push({left,right,i});
+}
+
+function updateDNA(){
+
+    let scroll=window.scrollY*0.01;
+
+    items.forEach(e=>{
+
+        let wave=Math.sin(e.i*0.35 + scroll)*150;
+        let y=e.i*20;
+
+        e.left.style.transform=`translateX(${wave}px) translateY(${y}px)`;
+        e.right.style.transform=`translateX(${-wave}px) translateY(${y}px)`;
+
+    });
+
+}
+
+window.addEventListener("scroll",updateDNA);
+
+updateDNA();
+
+</script>
+
+</body>
+</html>
