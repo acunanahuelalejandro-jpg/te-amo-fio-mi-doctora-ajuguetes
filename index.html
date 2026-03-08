@@ -2,141 +2,159 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>te amo fiorella</title>
 
 <style>
 
 body{
     margin:0;
-    background:black;
-    color:white;
-    text-align:center;
-    font-family:Arial;
-    overflow-x:hidden;
-}
+        background:black;
+            color:white;
+                text-align:center;
+                    font-family:Arial;
+                        overflow-x:hidden;
+                        }
 
-/* FONDO DE ESTRELLAS */
+                        /* FONDO DE ESTRELLAS */
 
-.stars{
-    position:fixed;
-    width:100%;
-    height:100%;
-    background:url("https://www.transparenttextures.com/patterns/stardust.png");
-    animation:moveStars 80s linear infinite;
-    z-index:-1;
-}
+                        .stars{
+                            position:fixed;
+                                width:100%;
+                                    height:100%;
+                                        background:url("https://www.transparenttextures.com/patterns/stardust.png");
+                                            z-index:-1;
+                                            }
 
-@keyframes moveStars{
-    from{background-position:0 0;}
-    to{background-position:0 2000px;}
-}
+                                            /* TITULO */
 
-/* ADN */
+                                            h1{
+                                                font-size:42px;
+                                                    margin-top:40px;
+                                                        cursor:pointer;
+                                                        }
 
-#dna{
-    position:relative;
-    height:4000px;
-    margin-top:100px;
-}
+                                                        /* MENSAJE GRANDE */
 
-.item{
-    position:absolute;
-    left:50%;
-    font-family:monospace;
-    color:#ff4d6d;
-    font-size:20px;
-    transition:transform 0.2s;
-}
+                                                        p{
+                                                            max-width:900px;
+                                                                margin:auto;
+                                                                    margin-top:30px;
+                                                                        font-size:26px;
+                                                                            line-height:1.6;
+                                                                                padding:20px;
+                                                                                }
 
-/* MENSAJE */
+                                                                                /* ADN */
 
-#mensaje{
-    cursor:pointer;
-    transition:0.3s;
-}
+                                                                                #dna{
+                                                                                    position:relative;
+                                                                                        height:4200px;
+                                                                                            margin-top:120px;
+                                                                                            }
 
-#mensaje:hover{
-    color:#ff4d6d;
-    transform:scale(1.1);
-}
+                                                                                            .item{
+                                                                                                position:absolute;
+                                                                                                    left:50%;
+                                                                                                        font-family:monospace;
+                                                                                                            color:#ff4d6d;
+                                                                                                                font-size:22px;
+                                                                                                                }
 
-</style>
-</head>
+                                                                                                                /* CELULARES */
 
-<body>
+                                                                                                                @media (max-width:600px){
 
-<div class="stars"></div>
+                                                                                                                h1{
+                                                                                                                font-size:48px;
+                                                                                                                }
 
-<h1 id="mensaje">
-mi amor ❤️
-</h1>
+                                                                                                                p{
+                                                                                                                font-size:30px;
+                                                                                                                padding:25px;
+                                                                                                                }
 
-<p>
-no puedo explicarte lo que siento cuando te veo llegar, arreglas mi espiritu con cada beso, elevas mi vibra con cada caricia, tenes la medida justa de todo lo que me gusta te apoderaste de mi mente, robaste mi inconciente porque lo unico que puedo es pensar en vos
-</p>
+                                                                                                                .item{
+                                                                                                                font-size:24px;
+                                                                                                                }
 
-<div id="dna"></div>
+                                                                                                                }
 
-<!-- MUSICA -->
-<audio id="musica" loop>
-<source src="musica.mp3" type="audio/mpeg">
-</audio>
+                                                                                                                </style>
+                                                                                                                </head>
 
-<script>
+                                                                                                                <body>
 
-const container = document.getElementById("dna");
-let items=[];
+                                                                                                                <div class="stars"></div>
 
-for(let i=0;i<180;i++){
+                                                                                                                <h1 id="mensaje">
+                                                                                                                mi amor ❤️
+                                                                                                                </h1>
 
-    let left=document.createElement("div");
-    left.className="item";
-    left.innerText="te amo";
+                                                                                                                <p>
+                                                                                                                no puedo explicarte lo que siento cuando te veo llegar, arreglas mi espiritu con cada beso, elevas mi vibra con cada caricia, tenes la medida justa de todo lo que me gusta te apoderaste de mi mente, robaste mi inconciente porque lo unico que puedo es pensar en vos
+                                                                                                                </p>
 
-    let right=document.createElement("div");
-    right.className="item";
-    right.innerText="te amo";
+                                                                                                                <div id="dna"></div>
 
-    container.appendChild(left);
-    container.appendChild(right);
+                                                                                                                <audio id="musica" loop>
+                                                                                                                <source src="musica.mp3" type="audio/mpeg">
+                                                                                                                </audio>
 
-    items.push({left,right,i});
-}
+                                                                                                                <script>
 
-function updateDNA(){
+                                                                                                                const container = document.getElementById("dna");
+                                                                                                                let items=[];
 
-    let scroll=window.scrollY*0.02;
+                                                                                                                for(let i=0;i<180;i++){
 
-    items.forEach(e=>{
+                                                                                                                    let left=document.createElement("div");
+                                                                                                                        left.className="item";
+                                                                                                                            left.innerText="te amo";
 
-        let wave=Math.sin(e.i*0.25 + scroll)*200;
-        let twist=Math.cos(e.i*0.15 + scroll)*40;
+                                                                                                                                let right=document.createElement("div");
+                                                                                                                                    right.className="item";
+                                                                                                                                        right.innerText="te amo";
 
-        let y=e.i*22;
+                                                                                                                                            container.appendChild(left);
+                                                                                                                                                container.appendChild(right);
 
-        e.left.style.transform=
-        `translateX(${wave}px) translateY(${y}px) rotate(${twist}deg)`;
+                                                                                                                                                    items.push({left,right,i});
+                                                                                                                                                    }
 
-        e.right.style.transform=
-        `translateX(${-wave}px) translateY(${y}px) rotate(${-twist}deg)`;
+                                                                                                                                                    function updateDNA(){
 
-    });
+                                                                                                                                                        let scroll=window.scrollY*0.03;
 
-}
+                                                                                                                                                            items.forEach(e=>{
 
-window.addEventListener("scroll",updateDNA);
-updateDNA();
+                                                                                                                                                                    let wave=Math.sin(e.i*0.25 + scroll)*240;
 
-/* CLICK PARA MUSICA */
+                                                                                                                                                                            let y=e.i*24;
 
-const mensaje = document.getElementById("mensaje");
-const musica = document.getElementById("musica");
+                                                                                                                                                                                    e.left.style.transform=
+                                                                                                                                                                                            `translateX(${wave}px) translateY(${y}px)`;
 
-mensaje.addEventListener("click", function(){
-    musica.play();
-});
+                                                                                                                                                                                                    e.right.style.transform=
+                                                                                                                                                                                                            `translateX(${-wave}px) translateY(${y}px)`;
 
-</script>
+                                                                                                                                                                                                                });
 
-</body>
-</html>
+                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                window.addEventListener("scroll",updateDNA);
+                                                                                                                                                                                                                updateDNA();
+
+                                                                                                                                                                                                                /* MUSICA */
+
+                                                                                                                                                                                                                const mensaje = document.getElementById("mensaje");
+                                                                                                                                                                                                                const musica = document.getElementById("musica");
+
+                                                                                                                                                                                                                mensaje.addEventListener("click", function(){
+                                                                                                                                                                                                                    musica.play();
+                                                                                                                                                                                                                    });
+
+                                                                                                                                                                                                                    </script>
+
+                                                                                                                                                                                                                    </body>
+                                                                                                                                                                                                                    </html>
