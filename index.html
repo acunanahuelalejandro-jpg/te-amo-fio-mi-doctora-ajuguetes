@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
 <meta charset="UTF-8">
@@ -13,9 +14,12 @@ body{
 margin:0;
 background:black;
 color:white;
-text-align:center;
 font-family:Arial;
 overflow-x:hidden;
+display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
 }
 
 /* PANTALLA INICIAL */
@@ -50,26 +54,24 @@ z-index:-2;
 h1{
 font-size:50px;
 margin-top:40px;
-animation:fadeIn 3s;
 }
 
 /* TEXTO */
 
 p{
 max-width:900px;
-margin:auto;
-margin-top:30px;
 font-size:30px;
 line-height:1.6;
 padding:25px;
-animation:fadeIn 4s;
 }
 
 /* FOTO */
 
 #fotoSeccion{
-margin-top:40px;
-text-align:center;
+display:flex;
+flex-direction:column;
+align-items:center;
+margin-top:30px;
 }
 
 #botonFoto{
@@ -84,18 +86,6 @@ display:none;
 max-width:85%;
 border-radius:20px;
 box-shadow:0 0 30px #ff4d6d;
-animation:aparecerFoto 2s;
-}
-
-@keyframes aparecerFoto{
-from{
-opacity:0;
-transform:scale(0.7);
-}
-to{
-opacity:1;
-transform:scale(1);
-}
 }
 
 /* CORAZONES */
@@ -110,15 +100,9 @@ color:#ff4d6d;
 
 @keyframes floatUp{
 
-0%{
-transform:translateY(0);
-opacity:1;
-}
+0%{transform:translateY(0);opacity:1;}
 
-100%{
-transform:translateY(-110vh);
-opacity:0;
-}
+100%{transform:translateY(-110vh);opacity:0;}
 
 }
 
@@ -128,33 +112,20 @@ opacity:0;
 position:relative;
 height:4200px;
 margin-top:120px;
+width:100%;
+display:flex;
+justify-content:center;
 }
 
 .item{
 position:absolute;
-left:50%;
 font-family:monospace;
 color:#ff4d6d;
 font-size:24px;
 }
 
-/* ANIMACIONES */
-
-@keyframes fadeIn{
-
-from{
-opacity:0;
-transform:translateY(30px);
-}
-
-to{
-opacity:1;
-transform:translateY(0);
-}
-
-}
-
 </style>
+
 </head>
 
 <body>
@@ -165,14 +136,10 @@ toca la pantalla ❤️
 
 <div class="stars"></div>
 
-<h1>
-mi amor ❤️
-</h1>
+<h1>mi amor ❤️</h1>
 
 <p>
-
 no puedo explicarte lo que siento cuando te veo llegar, arreglas mi espiritu con cada beso, elevas mi vibra con cada caricia, tenes la medida justa de todo lo que me gusta te apoderaste de mi mente, robaste mi inconciente porque lo unico que puedo es pensar en vos
-
 </p>
 
 <div id="fotoSeccion">
@@ -198,26 +165,26 @@ toca aquí ❤️
 const startScreen = document.getElementById("startScreen")
 const musica = document.getElementById("musica")
 
-startScreen.addEventListener("click", () => {
+startScreen.onclick = () => {
 
 musica.play()
 
-startScreen.style.display = "none"
+startScreen.style.display="none"
 
-})
+}
 
 /* FOTO */
 
 const botonFoto = document.getElementById("botonFoto")
 const foto = document.getElementById("foto")
 
-botonFoto.addEventListener("click", () => {
+botonFoto.onclick = () => {
 
-foto.style.display = "block"
+foto.style.display="block"
 
-botonFoto.innerText = "vos sos mi lugar favorito del universo ❤️"
+botonFoto.innerText="vos sos mi lugar favorito del universo ❤️"
 
-})
+}
 
 /* ADN */
 
@@ -225,15 +192,15 @@ const container = document.getElementById("dna")
 
 let items = []
 
-for(let i=0;i<180;i++){
+for(let i=0;i<200;i++){
 
 let left = document.createElement("div")
-left.className = "item"
-left.innerText = "te amo"
+left.className="item"
+left.innerText="te amo"
 
 let right = document.createElement("div")
-right.className = "item"
-right.innerText = "te amo"
+right.className="item"
+right.innerText="te amo"
 
 container.appendChild(left)
 container.appendChild(right)
@@ -242,43 +209,69 @@ items.push({left,right,i})
 
 }
 
-function updateDNA(){
+let t=0
 
-let scroll = window.scrollY * 0.03
+function animateDNA(){
+
+t+=0.02
 
 items.forEach(e=>{
 
-let wave = Math.sin(e.i*0.25 + scroll)*260
+let phase = Math.sin(t)
 
-let y = e.i*24
+let base = Math.sin(e.i*0.25 + t)*220
 
-e.left.style.transform =
-`translateX(${wave}px) translateY(${y}px)`
+let y = e.i*22
 
-e.right.style.transform =
-`translateX(${-wave}px) translateY(${y}px)`
+/* SEPARAR Y JUNTAR */
 
-})
+let separation = base * phase
+
+/* CAIDA RECTA */
+
+if(t%20 > 10 && t%20 < 12){
+
+separation=0
+
+y = e.i*22 + (t%20-10)*200
 
 }
 
-window.addEventListener("scroll",updateDNA)
+/* GIRO ENTRELAZADO */
 
-updateDNA()
+if(t%20 > 12 && t%20 < 16){
+
+separation = Math.sin(e.i*0.3 + t*3)*260
+
+}
+
+e.left.style.transform =
+`translateX(${separation}px) translateY(${y}px)`
+
+e.right.style.transform =
+`translateX(${-separation}px) translateY(${y}px)`
+
+})
+
+requestAnimationFrame(animateDNA)
+
+}
+
+animateDNA()
 
 /* CORAZONES */
 
 function createHeart(){
 
-let heart = document.createElement("div")
+let heart=document.createElement("div")
 
-heart.className = "heart"
+heart.className="heart"
 
-heart.innerHTML = "❤"
+heart.innerHTML="❤"
 
-heart.style.left = Math.random()*100 + "%"
+heart.style.left=Math.random()*100+"%"
 
-heart.style.fontSize = (15 + Math.random()*25) + "px"
+heart.style.fontSize=(15+Math.random()*25)+"px"
 
 document.body.appendChild(heart)
 
@@ -295,4 +288,5 @@ setInterval(createHeart,600)
 </script>
 
 </body>
+
 </html>
