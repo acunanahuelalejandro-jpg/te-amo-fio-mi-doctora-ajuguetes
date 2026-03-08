@@ -8,153 +8,196 @@
 <style>
 
 body{
-    margin:0;
-        background:black;
-            color:white;
-                text-align:center;
-                    font-family:Arial;
-                        overflow-x:hidden;
-                        }
+margin:0;
+background:black;
+color:white;
+text-align:center;
+font-family:Arial;
+overflow-x:hidden;
+}
 
-                        /* FONDO DE ESTRELLAS */
+/* PANTALLA INICIAL */
 
-                        .stars{
-                            position:fixed;
-                                width:100%;
-                                    height:100%;
-                                        background:url("https://www.transparenttextures.com/patterns/stardust.png");
-                                            z-index:-1;
-                                            }
+#startScreen{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:35px;
+z-index:10;
+cursor:pointer;
+}
 
-                                            /* TITULO */
+/* ESTRELLAS */
 
-                                            h1{
-                                                font-size:42px;
-                                                    margin-top:40px;
-                                                        cursor:pointer;
-                                                        }
+.stars{
+position:fixed;
+width:100%;
+height:100%;
+background:url("https://www.transparenttextures.com/patterns/stardust.png");
+z-index:-2;
+}
 
-                                                        /* MENSAJE GRANDE */
+/* CORAZONES */
 
-                                                        p{
-                                                            max-width:900px;
-                                                                margin:auto;
-                                                                    margin-top:30px;
-                                                                        font-size:26px;
-                                                                            line-height:1.6;
-                                                                                padding:20px;
-                                                                                }
+.heart{
+position:fixed;
+bottom:-20px;
+font-size:20px;
+animation:floatUp 8s linear infinite;
+color:#ff4d6d;
+}
 
-                                                                                /* ADN */
+@keyframes floatUp{
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(-110vh);opacity:0;}
+}
 
-                                                                                #dna{
-                                                                                    position:relative;
-                                                                                        height:4200px;
-                                                                                            margin-top:120px;
-                                                                                            }
+/* TITULO */
 
-                                                                                            .item{
-                                                                                                position:absolute;
-                                                                                                    left:50%;
-                                                                                                        font-family:monospace;
-                                                                                                            color:#ff4d6d;
-                                                                                                                font-size:22px;
-                                                                                                                }
+h1{
+font-size:50px;
+margin-top:40px;
+animation:fadeIn 3s;
+}
 
-                                                                                                                /* CELULARES */
+/* MENSAJE */
 
-                                                                                                                @media (max-width:600px){
+p{
+max-width:900px;
+margin:auto;
+margin-top:30px;
+font-size:30px;
+line-height:1.6;
+padding:25px;
+animation:fadeIn 4s;
+}
 
-                                                                                                                h1{
-                                                                                                                font-size:48px;
-                                                                                                                }
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(30px);}
+to{opacity:1;transform:translateY(0);}
+}
 
-                                                                                                                p{
-                                                                                                                font-size:30px;
-                                                                                                                padding:25px;
-                                                                                                                }
+/* ADN */
 
-                                                                                                                .item{
-                                                                                                                font-size:24px;
-                                                                                                                }
+#dna{
+position:relative;
+height:4200px;
+margin-top:120px;
+}
 
-                                                                                                                }
+.item{
+position:absolute;
+left:50%;
+font-family:monospace;
+color:#ff4d6d;
+font-size:24px;
+}
 
-                                                                                                                </style>
-                                                                                                                </head>
+</style>
+</head>
 
-                                                                                                                <body>
+<body>
 
-                                                                                                                <div class="stars"></div>
+<div id="startScreen">toca la pantalla ❤️</div>
 
-                                                                                                                <h1 id="mensaje">
-                                                                                                                mi amor ❤️
-                                                                                                                </h1>
+<div class="stars"></div>
 
-                                                                                                                <p>
-                                                                                                                no puedo explicarte lo que siento cuando te veo llegar, arreglas mi espiritu con cada beso, elevas mi vibra con cada caricia, tenes la medida justa de todo lo que me gusta te apoderaste de mi mente, robaste mi inconciente porque lo unico que puedo es pensar en vos
-                                                                                                                </p>
+<h1>mi amor ❤️</h1>
 
-                                                                                                                <div id="dna"></div>
+<p>
+no puedo explicarte lo que siento cuando te veo llegar, arreglas mi espiritu con cada beso, elevas mi vibra con cada caricia, tenes la medida justa de todo lo que me gusta te apoderaste de mi mente, robaste mi inconciente porque lo unico que puedo es pensar en vos
+</p>
 
-                                                                                                                <audio id="musica" loop>
-                                                                                                                <source src="musica.mp3" type="audio/mpeg">
-                                                                                                                </audio>
+<div id="dna"></div>
 
-                                                                                                                <script>
+<audio id="musica" loop>
+<source src="musica.mp3" type="audio/mpeg">
+</audio>
 
-                                                                                                                const container = document.getElementById("dna");
-                                                                                                                let items=[];
+<script>
 
-                                                                                                                for(let i=0;i<180;i++){
+/* MUSICA */
 
-                                                                                                                    let left=document.createElement("div");
-                                                                                                                        left.className="item";
-                                                                                                                            left.innerText="te amo";
+const startScreen=document.getElementById("startScreen");
+const musica=document.getElementById("musica");
 
-                                                                                                                                let right=document.createElement("div");
-                                                                                                                                    right.className="item";
-                                                                                                                                        right.innerText="te amo";
+startScreen.addEventListener("click",()=>{
+musica.play();
+startScreen.style.display="none";
+});
 
-                                                                                                                                            container.appendChild(left);
-                                                                                                                                                container.appendChild(right);
+/* ADN */
 
-                                                                                                                                                    items.push({left,right,i});
-                                                                                                                                                    }
+const container=document.getElementById("dna");
+let items=[];
 
-                                                                                                                                                    function updateDNA(){
+for(let i=0;i<180;i++){
 
-                                                                                                                                                        let scroll=window.scrollY*0.03;
+let left=document.createElement("div");
+left.className="item";
+left.innerText="te amo";
 
-                                                                                                                                                            items.forEach(e=>{
+let right=document.createElement("div");
+right.className="item";
+right.innerText="te amo";
 
-                                                                                                                                                                    let wave=Math.sin(e.i*0.25 + scroll)*240;
+container.appendChild(left);
+container.appendChild(right);
 
-                                                                                                                                                                            let y=e.i*24;
+items.push({left,right,i});
+}
 
-                                                                                                                                                                                    e.left.style.transform=
-                                                                                                                                                                                            `translateX(${wave}px) translateY(${y}px)`;
+function updateDNA(){
 
-                                                                                                                                                                                                    e.right.style.transform=
-                                                                                                                                                                                                            `translateX(${-wave}px) translateY(${y}px)`;
+let scroll=window.scrollY*0.03;
 
-                                                                                                                                                                                                                });
+items.forEach(e=>{
 
-                                                                                                                                                                                                                }
+let wave=Math.sin(e.i*0.25 + scroll)*260;
 
-                                                                                                                                                                                                                window.addEventListener("scroll",updateDNA);
-                                                                                                                                                                                                                updateDNA();
+let y=e.i*24;
 
-                                                                                                                                                                                                                /* MUSICA */
+e.left.style.transform=
+`translateX(${wave}px) translateY(${y}px)`;
 
-                                                                                                                                                                                                                const mensaje = document.getElementById("mensaje");
-                                                                                                                                                                                                                const musica = document.getElementById("musica");
+e.right.style.transform=
+`translateX(${-wave}px) translateY(${y}px)`;
 
-                                                                                                                                                                                                                mensaje.addEventListener("click", function(){
-                                                                                                                                                                                                                    musica.play();
-                                                                                                                                                                                                                    });
+});
 
-                                                                                                                                                                                                                    </script>
+}
 
-                                                                                                                                                                                                                    </body>
-                                                                                                                                                                                                                    </html>
+window.addEventListener("scroll",updateDNA);
+updateDNA();
+
+/* CORAZONES */
+
+function createHeart(){
+
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤";
+
+heart.style.left=Math.random()*100+"%";
+heart.style.fontSize=(15+Math.random()*25)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},8000);
+
+}
+
+setInterval(createHeart,600);
+
+</script>
+
+</body>
+</html>
