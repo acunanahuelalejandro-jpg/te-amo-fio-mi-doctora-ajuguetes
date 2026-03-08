@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>te amo fiorella</title>
 
 <style>
@@ -43,21 +45,6 @@ background:url("https://www.transparenttextures.com/patterns/stardust.png");
 z-index:-2;
 }
 
-/* CORAZONES */
-
-.heart{
-position:fixed;
-bottom:-20px;
-font-size:20px;
-animation:floatUp 8s linear infinite;
-color:#ff4d6d;
-}
-
-@keyframes floatUp{
-0%{transform:translateY(0);opacity:1;}
-100%{transform:translateY(-110vh);opacity:0;}
-}
-
 /* TITULO */
 
 h1{
@@ -66,7 +53,7 @@ margin-top:40px;
 animation:fadeIn 3s;
 }
 
-/* MENSAJE */
+/* TEXTO */
 
 p{
 max-width:900px;
@@ -78,9 +65,61 @@ padding:25px;
 animation:fadeIn 4s;
 }
 
-@keyframes fadeIn{
-from{opacity:0;transform:translateY(30px);}
-to{opacity:1;transform:translateY(0);}
+/* FOTO */
+
+#fotoSeccion{
+margin-top:40px;
+text-align:center;
+}
+
+#botonFoto{
+font-size:34px;
+color:#ff4d6d;
+cursor:pointer;
+margin-bottom:25px;
+}
+
+#foto{
+display:none;
+max-width:85%;
+border-radius:20px;
+box-shadow:0 0 30px #ff4d6d;
+animation:aparecerFoto 2s;
+}
+
+@keyframes aparecerFoto{
+from{
+opacity:0;
+transform:scale(0.7);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
+/* CORAZONES */
+
+.heart{
+position:fixed;
+bottom:-20px;
+font-size:20px;
+animation:floatUp 8s linear infinite;
+color:#ff4d6d;
+}
+
+@keyframes floatUp{
+
+0%{
+transform:translateY(0);
+opacity:1;
+}
+
+100%{
+transform:translateY(-110vh);
+opacity:0;
+}
+
 }
 
 /* ADN */
@@ -99,20 +138,52 @@ color:#ff4d6d;
 font-size:24px;
 }
 
+/* ANIMACIONES */
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateY(30px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
-<div id="startScreen">toca la pantalla ❤️</div>
+<div id="startScreen">
+toca la pantalla ❤️
+</div>
 
 <div class="stars"></div>
 
-<h1>mi amor ❤️</h1>
+<h1>
+mi amor ❤️
+</h1>
 
 <p>
+
 no puedo explicarte lo que siento cuando te veo llegar, arreglas mi espiritu con cada beso, elevas mi vibra con cada caricia, tenes la medida justa de todo lo que me gusta te apoderaste de mi mente, robaste mi inconciente porque lo unico que puedo es pensar en vos
+
 </p>
+
+<div id="fotoSeccion">
+
+<div id="botonFoto">
+toca aquí ❤️
+</div>
+
+<img id="foto" src="foto.jpg">
+
+</div>
 
 <div id="dna"></div>
 
@@ -124,78 +195,102 @@ no puedo explicarte lo que siento cuando te veo llegar, arreglas mi espiritu con
 
 /* MUSICA */
 
-const startScreen=document.getElementById("startScreen");
-const musica=document.getElementById("musica");
+const startScreen = document.getElementById("startScreen")
+const musica = document.getElementById("musica")
 
-startScreen.addEventListener("click",()=>{
-musica.play();
-startScreen.style.display="none";
-});
+startScreen.addEventListener("click", () => {
+
+musica.play()
+
+startScreen.style.display = "none"
+
+})
+
+/* FOTO */
+
+const botonFoto = document.getElementById("botonFoto")
+const foto = document.getElementById("foto")
+
+botonFoto.addEventListener("click", () => {
+
+foto.style.display = "block"
+
+botonFoto.innerText = "vos sos mi lugar favorito del universo ❤️"
+
+})
 
 /* ADN */
 
-const container=document.getElementById("dna");
-let items=[];
+const container = document.getElementById("dna")
+
+let items = []
 
 for(let i=0;i<180;i++){
 
-let left=document.createElement("div");
-left.className="item";
-left.innerText="te amo";
+let left = document.createElement("div")
+left.className = "item"
+left.innerText = "te amo"
 
-let right=document.createElement("div");
-right.className="item";
-right.innerText="te amo";
+let right = document.createElement("div")
+right.className = "item"
+right.innerText = "te amo"
 
-container.appendChild(left);
-container.appendChild(right);
+container.appendChild(left)
+container.appendChild(right)
 
-items.push({left,right,i});
+items.push({left,right,i})
+
 }
 
 function updateDNA(){
 
-let scroll=window.scrollY*0.03;
+let scroll = window.scrollY * 0.03
 
 items.forEach(e=>{
 
-let wave=Math.sin(e.i*0.25 + scroll)*260;
+let wave = Math.sin(e.i*0.25 + scroll)*260
 
-let y=e.i*24;
+let y = e.i*24
 
-e.left.style.transform=
-`translateX(${wave}px) translateY(${y}px)`;
+e.left.style.transform =
+`translateX(${wave}px) translateY(${y}px)`
 
-e.right.style.transform=
-`translateX(${-wave}px) translateY(${y}px)`;
+e.right.style.transform =
+`translateX(${-wave}px) translateY(${y}px)`
 
-});
+})
 
 }
 
-window.addEventListener("scroll",updateDNA);
-updateDNA();
+window.addEventListener("scroll",updateDNA)
+
+updateDNA()
 
 /* CORAZONES */
 
 function createHeart(){
 
-let heart=document.createElement("div");
-heart.className="heart";
-heart.innerHTML="❤";
+let heart = document.createElement("div")
 
-heart.style.left=Math.random()*100+"%";
-heart.style.fontSize=(15+Math.random()*25)+"px";
+heart.className = "heart"
 
-document.body.appendChild(heart);
+heart.innerHTML = "❤"
+
+heart.style.left = Math.random()*100 + "%"
+
+heart.style.fontSize = (15 + Math.random()*25) + "px"
+
+document.body.appendChild(heart)
 
 setTimeout(()=>{
-heart.remove();
-},8000);
+
+heart.remove()
+
+},8000)
 
 }
 
-setInterval(createHeart,600);
+setInterval(createHeart,600)
 
 </script>
 
