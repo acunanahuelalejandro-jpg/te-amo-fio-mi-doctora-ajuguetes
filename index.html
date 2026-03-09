@@ -8,8 +8,21 @@
 
 <title>te amo fiorella</title>
 
-<style>
+<style> 
 
+#ui .l#ui .love_word {
+  color: #ea80b0;
+  font-size: 1.4rem;
+  transform: translateY(-100%) rotateZ(-30deg);
+  text-shadow: 0 0 10px #fff;
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+
+#ui .love_horizontal {
+  animation: horizontal 10000ms infinite alternate ease-in-out;
+  animation-delay: calc(var(--i) * -300ms);
+}
 body{
 margin:0;
 background:black;
@@ -76,7 +89,7 @@ margin-top:30px;
 
 #botonFoto{
 font-size:34px;
-color:#ff4d6d;
+color:hotpink;
 cursor:pointer;
 margin-bottom:25px;
 }
