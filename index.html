@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html>
 
@@ -8,21 +9,8 @@
 
 <title>te amo fiorella</title>
 
-<style> 
+<style>
 
-#ui .l#ui .love_word {
-  color: #ea80b0;
-  font-size: 1.4rem;
-  transform: translateY(-100%) rotateZ(-30deg);
-  text-shadow: 0 0 10px #fff;
-  letter-spacing: 2px;
-  white-space: nowrap;
-}
-
-#ui .love_horizontal {
-  animation: horizontal 10000ms infinite alternate ease-in-out;
-  animation-delay: calc(var(--i) * -300ms);
-}
 body{
 margin:0;
 background:black;
@@ -101,7 +89,7 @@ border-radius:20px;
 box-shadow:0 0 30px #ff4d6d;
 }
 
-/* CORAZONES */
+/* CORAZONES FLOTANDO */
 
 .heart{
 position:fixed;
@@ -119,22 +107,32 @@ color:#ff4d6d;
 
 }
 
-/* ADN */
+/* CORAZON GIRANDO */
 
-#dna{
+#heart{
 position:relative;
-height:4200px;
+width:350px;
+height:350px;
 margin-top:120px;
-width:100%;
-display:flex;
-justify-content:center;
+animation:girar 25s linear infinite;
 }
 
-.item{
+.love{
 position:absolute;
-font-family:monospace;
-color:#ff4d6d;
-font-size:24px;
+color:#ea80b0;
+font-size:18px;
+text-shadow:0 0 10px white;
+white-space:nowrap;
+}
+
+/* ROTACION */
+
+@keyframes girar{
+
+0%{transform:rotate(0deg);}
+
+100%{transform:rotate(360deg);}
+
 }
 
 </style>
@@ -165,7 +163,7 @@ toca aquí ❤️
 
 </div>
 
-<div id="dna"></div>
+<div id="heart"></div>
 
 <audio id="musica" loop>
 <source src="musica.mp3" type="audio/mpeg">
@@ -181,7 +179,6 @@ const musica = document.getElementById("musica")
 startScreen.onclick = () => {
 
 musica.play()
-
 startScreen.style.display="none"
 
 }
@@ -194,92 +191,40 @@ const foto = document.getElementById("foto")
 botonFoto.onclick = () => {
 
 foto.style.display="block"
-
 botonFoto.innerText="vos sos mi lugar favorito del universo ❤️"
 
 }
 
-/* ADN */
+/* CORAZON DE TEXTO */
 
-const container = document.getElementById("dna")
+const heart = document.getElementById("heart")
 
-let items = []
+for(let i=0;i<180;i++){
 
-for(let i=0;i<200;i++){
+let t = i/180 * Math.PI * 2
 
-let left = document.createElement("div")
-left.className="item"
-left.innerText="te amo"
+let x = 16*Math.pow(Math.sin(t),3)
+let y = 13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t)
 
-let right = document.createElement("div")
-right.className="item"
-right.innerText="te amo"
+let span = document.createElement("span")
 
-container.appendChild(left)
-container.appendChild(right)
+span.className="love"
+span.innerText="te amo"
 
-items.push({left,right,i})
+span.style.left=(175 + x*10)+"px"
+span.style.top=(175 - y*10)+"px"
 
-}
-
-let t=0
-
-function animateDNA(){
-
-t+=0.02
-
-items.forEach(e=>{
-
-let phase = Math.sin(t)
-
-let base = Math.sin(e.i*0.25 + t)*220
-
-let y = e.i*22
-
-/* SEPARAR Y JUNTAR */
-
-let separation = base * phase
-
-/* CAIDA RECTA */
-
-if(t%20 > 10 && t%20 < 12){
-
-separation=0
-
-y = e.i*22 + (t%20-10)*200
+heart.appendChild(span)
 
 }
 
-/* GIRO ENTRELAZADO */
-
-if(t%20 > 12 && t%20 < 16){
-
-separation = Math.sin(e.i*0.3 + t*3)*260
-
-}
-
-e.left.style.transform =
-`translateX(${separation}px) translateY(${y}px)`
-
-e.right.style.transform =
-`translateX(${-separation}px) translateY(${y}px)`
-
-})
-
-requestAnimationFrame(animateDNA)
-
-}
-
-animateDNA()
-
-/* CORAZONES */
+/* CORAZONES FLOTANDO */
 
 function createHeart(){
 
 let heart=document.createElement("div")
 
 heart.className="heart"
-
 heart.innerHTML="❤"
 
 heart.style.left=Math.random()*100+"%"
@@ -303,3 +248,4 @@ setInterval(createHeart,600)
 </body>
 
 </html>
+```
