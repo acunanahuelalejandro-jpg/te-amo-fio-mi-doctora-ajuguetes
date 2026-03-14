@@ -60,7 +60,7 @@ margin-top:40px;
 
 p{
 max-width:900px;
-font-size:30px;
+font-size:28px;
 line-height:1.6;
 padding:25px;
 }
@@ -89,7 +89,7 @@ box-shadow:0 0 30px #ff4d6d;
 transition:opacity 1s;
 }
 
-/* CORAZONES FLOTANDO */
+/* CORAZONES */
 
 .heart{
 position:fixed;
@@ -107,7 +107,7 @@ color:#ff4d6d;
 
 }
 
-/* CORAZON GIRANDO */
+/* CORAZON TEXTO */
 
 #heart{
 position:relative;
@@ -148,7 +148,13 @@ toca la pantalla ❤️
 <h1>mi amor ❤️</h1>
 
 <p>
-no puedo explicarte lo que siento cuando te veo llegar, arreglas mi espiritu con cada beso, elevas mi vibra con cada caricia, tenes la medida justa de todo lo que me gusta te apoderaste de mi mente, robaste mi inconciente porque lo unico que puedo es pensar en vos
+no puedo explicarte lo que siento cuando te veo llegar,
+arreglas mi espiritu con cada beso,
+elevas mi vibra con cada caricia,
+tenes la medida justa de todo lo que me gusta,
+te apoderaste de mi mente,
+robaste mi inconciente
+porque lo unico que puedo es pensar en vos
 </p>
 
 <div id="fotoSeccion">
@@ -164,107 +170,6 @@ toca aquí ❤️
 <div id="heart"></div>
 
 <audio id="musica" loop>
-<source src="musica.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-
-/* MUSICA */
-
-const startScreen = document.getElementById("startScreen")
-const musica = document.getElementById("musica")
-
-startScreen.onclick = () => {
-
-musica.play()
-startScreen.style.display="none"
-
-}
-
-/* ALBUM DE FOTOS */
-
-const fotos = [
-"foto1.jpg",
-"foto2.jpg",
-"foto3.jpg"
-]
-
-let indice = 0
-
-const botonFoto = document.getElementById("botonFoto")
-const foto = document.getElementById("foto")
-
-botonFoto.onclick = () => {
-
-foto.style.display="block"
-botonFoto.innerText="vos sos mi lugar favorito del universo ❤️"
-
-setInterval(()=>{
-
-indice++
-if(indice >= fotos.length){
-indice = 0
-}
-
-foto.src = fotos[indice]
-
-},3000)
-
-}
-
-/* CORAZON DE TEXTO */
-
-const heart = document.getElementById("heart")
-
-for(let i=0;i<180;i++){
-
-let t = i/180 * Math.PI * 2
-
-let x = 16*Math.pow(Math.sin(t),3)
-let y = 13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t)
-
-let span = document.createElement("span")
-
-span.className="love"
-span.innerText="te amo"
-
-span.style.left=(175 + x*10)+"px"
-span.style.top=(175 - y*10)+"px"
-
-heart.appendChild(span)
-
-}
-
-/* CORAZONES FLOTANDO */
-
-function createHeart(){
-
-let heart=document.createElement("div")
-
-heart.className="heart"
-
-heart.innerHTML="❤"
-
-heart.style.left=Math.random()*100+"%"
-
-heart.style.fontSize=(15+Math.random()*25)+"px"
-
-document.body.appendChild(heart)
-
-setTimeout(()=>{
-
-heart.remove()
-
-},8000)
-
-}
-
-setInterval(createHeart,600)
-
-</script>
-
-</body>
-</html>
 <!DOCTYPE html>
 <html>
 
@@ -327,7 +232,7 @@ margin-top:40px;
 
 p{
 max-width:900px;
-font-size:30px;
+font-size:28px;
 line-height:1.6;
 padding:25px;
 }
@@ -356,7 +261,7 @@ box-shadow:0 0 30px #ff4d6d;
 transition:opacity 1s;
 }
 
-/* CORAZONES FLOTANDO */
+/* CORAZONES */
 
 .heart{
 position:fixed;
@@ -374,7 +279,7 @@ color:#ff4d6d;
 
 }
 
-/* CORAZON GIRANDO */
+/* CORAZON TEXTO */
 
 #heart{
 position:relative;
@@ -415,7 +320,13 @@ toca la pantalla ❤️
 <h1>mi amor ❤️</h1>
 
 <p>
-no puedo explicarte lo que siento cuando te veo llegar, arreglas mi espiritu con cada beso, elevas mi vibra con cada caricia, tenes la medida justa de todo lo que me gusta te apoderaste de mi mente, robaste mi inconciente porque lo unico que puedo es pensar en vos
+no puedo explicarte lo que siento cuando te veo llegar,
+arreglas mi espiritu con cada beso,
+elevas mi vibra con cada caricia,
+tenes la medida justa de todo lo que me gusta,
+te apoderaste de mi mente,
+robaste mi inconciente
+porque lo unico que puedo es pensar en vos
 </p>
 
 <div id="fotoSeccion">
@@ -431,104 +342,3 @@ toca aquí ❤️
 <div id="heart"></div>
 
 <audio id="musica" loop>
-<source src="musica.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-
-/* MUSICA */
-
-const startScreen = document.getElementById("startScreen")
-const musica = document.getElementById("musica")
-
-startScreen.onclick = () => {
-
-musica.play()
-startScreen.style.display="none"
-
-}
-
-/* ALBUM DE FOTOS */
-
-const fotos = [
-"foto1.jpg",
-"foto2.jpg",
-"foto3.jpg"
-]
-
-let indice = 0
-
-const botonFoto = document.getElementById("botonFoto")
-const foto = document.getElementById("foto")
-
-botonFoto.onclick = () => {
-
-foto.style.display="block"
-botonFoto.innerText="vos sos mi lugar favorito del universo ❤️"
-
-setInterval(()=>{
-
-indice++
-if(indice >= fotos.length){
-indice = 0
-}
-
-foto.src = fotos[indice]
-
-},3000)
-
-}
-
-/* CORAZON DE TEXTO */
-
-const heart = document.getElementById("heart")
-
-for(let i=0;i<180;i++){
-
-let t = i/180 * Math.PI * 2
-
-let x = 16*Math.pow(Math.sin(t),3)
-let y = 13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t)
-
-let span = document.createElement("span")
-
-span.className="love"
-span.innerText="te amo"
-
-span.style.left=(175 + x*10)+"px"
-span.style.top=(175 - y*10)+"px"
-
-heart.appendChild(span)
-
-}
-
-/* CORAZONES FLOTANDO */
-
-function createHeart(){
-
-let heart=document.createElement("div")
-
-heart.className="heart"
-
-heart.innerHTML="❤"
-
-heart.style.left=Math.random()*100+"%"
-
-heart.style.fontSize=(15+Math.random()*25)+"px"
-
-document.body.appendChild(heart)
-
-setTimeout(()=>{
-
-heart.remove()
-
-},8000)
-
-}
-
-setInterval(createHeart,600)
-
-</script>
-
-</body>
-</html>
