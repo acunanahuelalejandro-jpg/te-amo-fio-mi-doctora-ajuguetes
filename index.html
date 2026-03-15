@@ -175,39 +175,49 @@ toca aquí ❤️
 
 <script>
 
-/* MUSICA Y PANTALLA INICIAL */
+/* PANTALLA INICIAL Y MUSICA */
 
-const startScreen = document.getElementById("startScreen")
-const musica = document.getElementById("musica")
+const startScreen = document.getElementById("startScreen");
+const musica = document.getElementById("musica");
 
-startScreen.addEventListener("click", () => {
+let iniciado = false;
 
-startScreen.style.display = "none"
+function iniciarPagina(){
 
-if(musica){
-musica.play().catch(()=>{})
-}
+if(iniciado) return;
+iniciado = true;
 
-})const startScreen = document.getElementById("startScreen")
-const musica = document.getElementById("musica")
-
-startScreen.addEventListener("click", () => {
-
-startScreen.style.display = "none"
+startScreen.style.display = "none";
 
 if(musica){
-musica.play().catch(()=>{})
+musica.play().catch(()=>{});
 }
-
-constconstconst
-
-musica.play().catch(()=>{})
 
 }
 
-startScreen.addEventListener("click", iniciar)
-startScreen.addEventListener("touchstart", iniciar)
+startScreen.addEventListener("click", iniciarPagina);
+startScreen.addEventListener("touchstart", iniciarPagina);/* PANTALLA INICIAL Y MUSICA */
 
+const startScreen = document.getElementById("startScreen");
+const musica = document.getElementById("musica");
+
+let iniciado = false;
+
+function iniciarPagina(){
+
+if(iniciado) return;
+iniciado = true;
+
+startScreen.style.display = "none";
+
+if(musica){
+musica.play().catch(()=>{});
+}
+
+}
+
+startScreen.addEventListener("click", iniciarPagina);
+startScreen.addEventListener("touchstart", iniciarPagina);startScreen.addEventListener("click", iniciarPagina);
 
 
 /* ALBUM DE FOTOS */
