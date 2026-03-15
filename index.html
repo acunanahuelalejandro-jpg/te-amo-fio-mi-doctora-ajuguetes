@@ -170,7 +170,122 @@ toca aquí ❤️
 <div id="heart"></div>
 
 <audio id="musica" loop>
-<!DOCTYPE html>
+<source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* MUSICA Y PANTALLA INICIAL */
+
+const startScreen = document.getElementById("startScreen")
+const musica = document.getElementById("musica")
+
+function iniciar(){
+
+startScreen.style.display="none"
+
+musica.play().catch(()=>{})
+
+}
+
+startScreen.addEventListener("click", iniciar)
+startScreen.addEventListener("touchstart", iniciar)
+
+
+
+/* ALBUM DE FOTOS */
+
+const fotos=[
+"foto1.jpg",
+"foto2.jpg",
+"foto3.jpg"
+]
+
+let indice=0
+
+const botonFoto=document.getElementById("botonFoto")
+const foto=document.getElementById("foto")
+
+botonFoto.addEventListener("click",()=>{
+
+foto.style.display="block"
+
+botonFoto.innerText="vos sos mi lugar favorito del universo ❤️"
+
+setInterval(()=>{
+
+indice++
+
+if(indice>=fotos.length){
+
+indice=0
+
+}
+
+foto.src=fotos[indice]
+
+},3000)
+
+})
+
+
+
+/* CORAZON DE TEXTO */
+
+const heart=document.getElementById("heart")
+
+for(let i=0;i<180;i++){
+
+let t=i/180*Math.PI*2
+
+let x=16*Math.pow(Math.sin(t),3)
+let y=13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t)
+
+let span=document.createElement("span")
+
+span.className="love"
+
+span.innerText="te amo"
+
+span.style.left=(175+x*10)+"px"
+span.style.top=(175-y*10)+"px"
+
+heart.appendChild(span)
+
+}
+
+
+
+/* CORAZONES FLOTANDO */
+
+function createHeart(){
+
+let heart=document.createElement("div")
+
+heart.className="heart"
+
+heart.innerHTML="❤"
+
+heart.style.left=Math.random()*100+"%"
+
+heart.style.fontSize=(15+Math.random()*25)+"px"
+
+document.body.appendChild(heart)
+
+setTimeout(()=>{
+
+heart.remove()
+
+},8000)
+
+}
+
+setInterval(createHeart,600)
+
+</script>
+
+</body>
+</html><!DOCTYPE html>
 <html>
 
 <head>
@@ -342,3 +457,118 @@ toca aquí ❤️
 <div id="heart"></div>
 
 <audio id="musica" loop>
+<source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* MUSICA Y PANTALLA INICIAL */
+
+const startScreen = document.getElementById("startScreen")
+const musica = document.getElementById("musica")
+
+function iniciar(){
+
+startScreen.style.display="none"
+
+musica.play().catch(()=>{})
+
+}
+
+startScreen.addEventListener("click", iniciar)
+startScreen.addEventListener("touchstart", iniciar)
+
+
+
+/* ALBUM DE FOTOS */
+
+const fotos=[
+"foto1.jpg",
+"foto2.jpg",
+"foto3.jpg"
+]
+
+let indice=0
+
+const botonFoto=document.getElementById("botonFoto")
+const foto=document.getElementById("foto")
+
+botonFoto.addEventListener("click",()=>{
+
+foto.style.display="block"
+
+botonFoto.innerText="vos sos mi lugar favorito del universo ❤️"
+
+setInterval(()=>{
+
+indice++
+
+if(indice>=fotos.length){
+
+indice=0
+
+}
+
+foto.src=fotos[indice]
+
+},3000)
+
+})
+
+
+
+/* CORAZON DE TEXTO */
+
+const heart=document.getElementById("heart")
+
+for(let i=0;i<180;i++){
+
+let t=i/180*Math.PI*2
+
+let x=16*Math.pow(Math.sin(t),3)
+let y=13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t)
+
+let span=document.createElement("span")
+
+span.className="love"
+
+span.innerText="te amo"
+
+span.style.left=(175+x*10)+"px"
+span.style.top=(175-y*10)+"px"
+
+heart.appendChild(span)
+
+}
+
+
+
+/* CORAZONES FLOTANDO */
+
+function createHeart(){
+
+let heart=document.createElement("div")
+
+heart.className="heart"
+
+heart.innerHTML="❤"
+
+heart.style.left=Math.random()*100+"%"
+
+heart.style.fontSize=(15+Math.random()*25)+"px"
+
+document.body.appendChild(heart)
+
+setTimeout(()=>{
+
+heart.remove()
+
+},8000)
+
+}
+
+setInterval(createHeart,600)
+
+</script>
+
+</body>
