@@ -180,9 +180,26 @@ toca aquí ❤️
 const startScreen = document.getElementById("startScreen")
 const musica = document.getElementById("musica")
 
-function iniciar(){
+startScreen.addEventListener("click", () => {
 
-startScreen.style.display="none"
+startScreen.style.display = "none"
+
+if(musica){
+musica.play().catch(()=>{})
+}
+
+})const startScreen = document.getElementById("startScreen")
+const musica = document.getElementById("musica")
+
+startScreen.addEventListener("click", () => {
+
+startScreen.style.display = "none"
+
+if(musica){
+musica.play().catch(()=>{})
+}
+
+constconstconst
 
 musica.play().catch(()=>{})
 
