@@ -175,49 +175,21 @@ toca aquí ❤️
 
 <script>
 
-/* PANTALLA INICIAL Y MUSICA */
+/* PANTALLA INICIAL + MUSICA */
 
-const startScreen = document.getElementById("startScreen");
-const musica = document.getElementById("musica");
+const startScreen = document.getElementById("startScreen")
+const musica = document.getElementById("musica")
 
-let iniciado = false;
+function iniciar(){
 
-function iniciarPagina(){
-
-if(iniciado) return;
-iniciado = true;
-
-startScreen.style.display = "none";
-
-if(musica){
-musica.play().catch(()=>{});
-}
+startScreen.style.display="none"
+musica.play().catch(()=>{})
 
 }
 
-startScreen.addEventListener("click", iniciarPagina);
-startScreen.addEventListener("touchstart", iniciarPagina);/* PANTALLA INICIAL Y MUSICA */
+startScreen.addEventListener("click", iniciar)
+startScreen.addEventListener("touchstart", iniciar)
 
-const startScreen = document.getElementById("startScreen");
-const musica = document.getElementById("musica");
-
-let iniciado = false;
-
-function iniciarPagina(){
-
-if(iniciado) return;
-iniciado = true;
-
-startScreen.style.display = "none";
-
-if(musica){
-musica.play().catch(()=>{});
-}
-
-}
-
-startScreen.addEventListener("click", iniciarPagina);
-startScreen.addEventListener("touchstart", iniciarPagina);startScreen.addEventListener("click", iniciarPagina);
 
 
 /* ALBUM DE FOTOS */
@@ -236,7 +208,6 @@ const foto=document.getElementById("foto")
 botonFoto.addEventListener("click",()=>{
 
 foto.style.display="block"
-
 botonFoto.innerText="vos sos mi lugar favorito del universo ❤️"
 
 setInterval(()=>{
@@ -244,9 +215,7 @@ setInterval(()=>{
 indice++
 
 if(indice>=fotos.length){
-
 indice=0
-
 }
 
 foto.src=fotos[indice]
@@ -271,7 +240,6 @@ let y=13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t)
 let span=document.createElement("span")
 
 span.className="love"
-
 span.innerText="te amo"
 
 span.style.left=(175+x*10)+"px"
@@ -290,11 +258,9 @@ function createHeart(){
 let heart=document.createElement("div")
 
 heart.className="heart"
-
 heart.innerHTML="❤"
 
 heart.style.left=Math.random()*100+"%"
-
 heart.style.fontSize=(15+Math.random()*25)+"px"
 
 document.body.appendChild(heart)
@@ -489,7 +455,7 @@ toca aquí ❤️
 
 <script>
 
-/* MUSICA Y PANTALLA INICIAL */
+/* PANTALLA INICIAL + MUSICA */
 
 const startScreen = document.getElementById("startScreen")
 const musica = document.getElementById("musica")
@@ -497,7 +463,6 @@ const musica = document.getElementById("musica")
 function iniciar(){
 
 startScreen.style.display="none"
-
 musica.play().catch(()=>{})
 
 }
@@ -523,7 +488,6 @@ const foto=document.getElementById("foto")
 botonFoto.addEventListener("click",()=>{
 
 foto.style.display="block"
-
 botonFoto.innerText="vos sos mi lugar favorito del universo ❤️"
 
 setInterval(()=>{
@@ -531,9 +495,7 @@ setInterval(()=>{
 indice++
 
 if(indice>=fotos.length){
-
 indice=0
-
 }
 
 foto.src=fotos[indice]
@@ -558,7 +520,6 @@ let y=13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t)
 let span=document.createElement("span")
 
 span.className="love"
-
 span.innerText="te amo"
 
 span.style.left=(175+x*10)+"px"
@@ -577,11 +538,9 @@ function createHeart(){
 let heart=document.createElement("div")
 
 heart.className="heart"
-
 heart.innerHTML="❤"
 
 heart.style.left=Math.random()*100+"%"
-
 heart.style.fontSize=(15+Math.random()*25)+"px"
 
 document.body.appendChild(heart)
