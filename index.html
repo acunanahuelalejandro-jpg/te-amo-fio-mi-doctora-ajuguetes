@@ -35,9 +35,8 @@ display:flex;
 justify-content:center;
 align-items:center;
 font-size:38px;
-z-index:10;
+z-index:9999;
 cursor:pointer;
-transition:opacity 1s;
 }
 
 /* ESTRELLAS */
@@ -56,14 +55,10 @@ from{background-position:0 0;}
 to{background-position:1000px 1000px;}
 }
 
-/* TITULO */
-
 h1{
 font-size:52px;
 margin-top:40px;
 }
-
-/* TEXTO */
 
 p{
 max-width:900px;
@@ -93,7 +88,6 @@ display:none;
 max-width:85%;
 border-radius:20px;
 box-shadow:0 0 30px #ff4d6d;
-transition:opacity 1s;
 }
 
 /* CORAZONES */
@@ -118,7 +112,7 @@ position:relative;
 width:350px;
 height:350px;
 margin-top:120px;
-animation:girar 25s linear infinite, latir 1.5s infinite;
+animation:girar 25s linear infinite;
 }
 
 .love{
@@ -132,12 +126,6 @@ white-space:nowrap;
 @keyframes girar{
 0%{transform:rotate(0deg);}
 100%{transform:rotate(360deg);}
-}
-
-@keyframes latir{
-0%{transform:scale(1);}
-50%{transform:scale(1.05);}
-100%{transform:scale(1);}
 }
 
 </style>
@@ -184,16 +172,12 @@ toca aquí ❤️
 
 /* INICIO */
 
-const startScreen=document.getElementById("startScreen")
-const musica=document.getElementById("musica")
-
 function iniciar(){
 
-startScreen.style.opacity="0"
+const pantalla=document.getElementById("startScreen")
+const musica=document.getElementById("musica")
 
-setTimeout(()=>{
-startScreen.style.display="none"
-},1000)
+pantalla.remove()
 
 musica.play().catch(()=>{})
 
@@ -317,9 +301,8 @@ display:flex;
 justify-content:center;
 align-items:center;
 font-size:38px;
-z-index:10;
+z-index:9999;
 cursor:pointer;
-transition:opacity 1s;
 }
 
 /* ESTRELLAS */
@@ -338,14 +321,10 @@ from{background-position:0 0;}
 to{background-position:1000px 1000px;}
 }
 
-/* TITULO */
-
 h1{
 font-size:52px;
 margin-top:40px;
 }
-
-/* TEXTO */
 
 p{
 max-width:900px;
@@ -375,7 +354,6 @@ display:none;
 max-width:85%;
 border-radius:20px;
 box-shadow:0 0 30px #ff4d6d;
-transition:opacity 1s;
 }
 
 /* CORAZONES */
@@ -400,7 +378,7 @@ position:relative;
 width:350px;
 height:350px;
 margin-top:120px;
-animation:girar 25s linear infinite, latir 1.5s infinite;
+animation:girar 25s linear infinite;
 }
 
 .love{
@@ -414,12 +392,6 @@ white-space:nowrap;
 @keyframes girar{
 0%{transform:rotate(0deg);}
 100%{transform:rotate(360deg);}
-}
-
-@keyframes latir{
-0%{transform:scale(1);}
-50%{transform:scale(1.05);}
-100%{transform:scale(1);}
 }
 
 </style>
@@ -466,16 +438,12 @@ toca aquí ❤️
 
 /* INICIO */
 
-const startScreen=document.getElementById("startScreen")
-const musica=document.getElementById("musica")
-
 function iniciar(){
 
-startScreen.style.opacity="0"
+const pantalla=document.getElementById("startScreen")
+const musica=document.getElementById("musica")
 
-setTimeout(()=>{
-startScreen.style.display="none"
-},1000)
+pantalla.remove()
 
 musica.play().catch(()=>{})
 
