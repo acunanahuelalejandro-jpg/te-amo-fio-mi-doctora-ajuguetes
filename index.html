@@ -15,11 +15,8 @@ margin:0;
 background:black;
 color:white;
 font-family:Arial;
-overflow-x:hidden;
-display:flex;
-flex-direction:column;
-align-items:center;
 text-align:center;
+overflow-x:hidden;
 }
 
 /* PANTALLA INICIAL */
@@ -46,33 +43,29 @@ position:fixed;
 width:100%;
 height:100%;
 background:url("https://www.transparenttextures.com/patterns/stardust.png");
-animation:moverEstrellas 60s linear infinite;
 z-index:-2;
 }
 
-@keyframes moverEstrellas{
-from{background-position:0 0;}
-to{background-position:1000px 1000px;}
-}
+/* TITULO */
 
 h1{
-font-size:52px;
+font-size:50px;
 margin-top:40px;
 }
+
+/* TEXTO */
 
 p{
 max-width:900px;
 font-size:28px;
 line-height:1.6;
 padding:25px;
+margin:auto;
 }
 
 /* FOTO */
 
 #fotoSeccion{
-display:flex;
-flex-direction:column;
-align-items:center;
 margin-top:30px;
 }
 
@@ -96,11 +89,11 @@ box-shadow:0 0 30px #ff4d6d;
 position:fixed;
 bottom:-20px;
 font-size:20px;
-animation:floatUp 8s linear infinite;
+animation:subir 8s linear infinite;
 color:#ff4d6d;
 }
 
-@keyframes floatUp{
+@keyframes subir{
 0%{transform:translateY(0);opacity:1;}
 100%{transform:translateY(-110vh);opacity:0;}
 }
@@ -111,7 +104,7 @@ color:#ff4d6d;
 position:relative;
 width:350px;
 height:350px;
-margin-top:120px;
+margin:120px auto;
 animation:girar 25s linear infinite;
 }
 
@@ -120,7 +113,6 @@ position:absolute;
 color:#ea80b0;
 font-size:18px;
 text-shadow:0 0 10px white;
-white-space:nowrap;
 }
 
 @keyframes girar{
@@ -154,9 +146,7 @@ porque lo unico que puedo es pensar en vos
 
 <div id="fotoSeccion">
 
-<div id="botonFoto">
-toca aquí ❤️
-</div>
+<div id="botonFoto">toca aquí ❤️</div>
 
 <img id="foto" src="foto1.jpg">
 
@@ -174,316 +164,46 @@ toca aquí ❤️
 
 function iniciar(){
 
-const pantalla=document.getElementById("startScreen")
-const musica=document.getElementById("musica")
+document.getElementById("startScreen").remove()
 
-pantalla.remove()
-
-musica.play().catch(()=>{})
+document.getElementById("musica").play().catch(()=>{})
 
 }
 
-/* ALBUM DE FOTOS */
+/* ALBUM */
 
-const fotos=[
-"foto1.jpg",
-"foto2.jpg",
-"foto3.jpg"
-]
+const fotos=["foto1.jpg","foto2.jpg","foto3.jpg"]
 
 let indice=0
 
-const botonFoto=document.getElementById("botonFoto")
+const boton=document.getElementById("botonFoto")
 const foto=document.getElementById("foto")
 
-botonFoto.onclick=function(){
+let albumIniciado=false
+
+boton.onclick=function(){
+
+if(albumIniciado) return
+albumIniciado=true
 
 foto.style.display="block"
 
-botonFoto.innerText="vos sos mi lugar favorito del universo ❤️"
+boton.innerText="vos sos mi lugar favorito del universo ❤️"
 
 setInterval(()=>{
 
 indice++
 
-if(indice>=fotos.length){
-indice=0
-}
+if(indice>=fotos.length) indice=0
 
 foto.src=fotos[indice]
 
 },3000)
 
-}
-
-/* CORAZON DE TEXTO */
-
-const heart=document.getElementById("heart")
-
-for(let i=0;i<180;i++){
-
-let t=i/180*Math.PI*2
-
-let x=16*Math.pow(Math.sin(t),3)
-let y=13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t)
-
-let span=document.createElement("span")
-
-span.className="love"
-span.innerText="te amo"
-
-span.style.left=(175+x*10)+"px"
-span.style.top=(175-y*10)+"px"
-
-heart.appendChild(span)
-
-}
-
-/* CORAZONES FLOTANDO */
-
-function createHeart(){
-
-let heart=document.createElement("div")
-
-heart.className="heart"
-heart.innerHTML="❤"
-
-heart.style.left=Math.random()*100+"%"
-heart.style.fontSize=(15+Math.random()*25)+"px"
-
-document.body.appendChild(heart)
-
-setTimeout(()=>{
-heart.remove()
-},8000)
-
-}
-
-setInterval(createHeart,600)
-
-</script>
-
-</body>
-</html><!DOCTYPE html>
-<html>
-
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>te amo fiorella</title>
-
-<style>
-
-body{
-margin:0;
-background:black;
-color:white;
-font-family:Arial;
-overflow-x:hidden;
-display:flex;
-flex-direction:column;
-align-items:center;
-text-align:center;
-}
-
-/* PANTALLA INICIAL */
-
-#startScreen{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:black;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:38px;
-z-index:9999;
-cursor:pointer;
-}
-
-/* ESTRELLAS */
-
-.stars{
-position:fixed;
-width:100%;
-height:100%;
-background:url("https://www.transparenttextures.com/patterns/stardust.png");
-animation:moverEstrellas 60s linear infinite;
-z-index:-2;
-}
-
-@keyframes moverEstrellas{
-from{background-position:0 0;}
-to{background-position:1000px 1000px;}
-}
-
-h1{
-font-size:52px;
-margin-top:40px;
-}
-
-p{
-max-width:900px;
-font-size:28px;
-line-height:1.6;
-padding:25px;
-}
-
-/* FOTO */
-
-#fotoSeccion{
-display:flex;
-flex-direction:column;
-align-items:center;
-margin-top:30px;
-}
-
-#botonFoto{
-font-size:34px;
-color:hotpink;
-cursor:pointer;
-margin-bottom:25px;
-}
-
-#foto{
-display:none;
-max-width:85%;
-border-radius:20px;
-box-shadow:0 0 30px #ff4d6d;
-}
-
-/* CORAZONES */
-
-.heart{
-position:fixed;
-bottom:-20px;
-font-size:20px;
-animation:floatUp 8s linear infinite;
-color:#ff4d6d;
-}
-
-@keyframes floatUp{
-0%{transform:translateY(0);opacity:1;}
-100%{transform:translateY(-110vh);opacity:0;}
 }
 
 /* CORAZON TEXTO */
 
-#heart{
-position:relative;
-width:350px;
-height:350px;
-margin-top:120px;
-animation:girar 25s linear infinite;
-}
-
-.love{
-position:absolute;
-color:#ea80b0;
-font-size:18px;
-text-shadow:0 0 10px white;
-white-space:nowrap;
-}
-
-@keyframes girar{
-0%{transform:rotate(0deg);}
-100%{transform:rotate(360deg);}
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div id="startScreen" onclick="iniciar()">
-toca la pantalla ❤️
-</div>
-
-<div class="stars"></div>
-
-<h1>mi amor ❤️</h1>
-
-<p>
-no puedo explicarte lo que siento cuando te veo llegar,
-arreglas mi espiritu con cada beso,
-elevas mi vibra con cada caricia,
-tenes la medida justa de todo lo que me gusta,
-te apoderaste de mi mente,
-robaste mi inconciente
-porque lo unico que puedo es pensar en vos
-</p>
-
-<div id="fotoSeccion">
-
-<div id="botonFoto">
-toca aquí ❤️
-</div>
-
-<img id="foto" src="foto1.jpg">
-
-</div>
-
-<div id="heart"></div>
-
-<audio id="musica" loop>
-<source src="musica.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-
-/* INICIO */
-
-function iniciar(){
-
-const pantalla=document.getElementById("startScreen")
-const musica=document.getElementById("musica")
-
-pantalla.remove()
-
-musica.play().catch(()=>{})
-
-}
-
-/* ALBUM DE FOTOS */
-
-const fotos=[
-"foto1.jpg",
-"foto2.jpg",
-"foto3.jpg"
-]
-
-let indice=0
-
-const botonFoto=document.getElementById("botonFoto")
-const foto=document.getElementById("foto")
-
-botonFoto.onclick=function(){
-
-foto.style.display="block"
-
-botonFoto.innerText="vos sos mi lugar favorito del universo ❤️"
-
-setInterval(()=>{
-
-indice++
-
-if(indice>=fotos.length){
-indice=0
-}
-
-foto.src=fotos[indice]
-
-},3000)
-
-}
-
-/* CORAZON DE TEXTO */
-
 const heart=document.getElementById("heart")
 
 for(let i=0;i<180;i++){
@@ -507,26 +227,25 @@ heart.appendChild(span)
 
 /* CORAZONES FLOTANDO */
 
-function createHeart(){
+function crearCorazon(){
 
-let heart=document.createElement("div")
+let h=document.createElement("div")
 
-heart.className="heart"
-heart.innerHTML="❤"
+h.className="heart"
+h.innerHTML="❤"
 
-heart.style.left=Math.random()*100+"%"
-heart.style.fontSize=(15+Math.random()*25)+"px"
+h.style.left=Math.random()*100+"%"
+h.style.fontSize=(15+Math.random()*25)+"px"
 
-document.body.appendChild(heart)
+document.body.appendChild(h)
 
-setTimeout(()=>{
-heart.remove()
-},8000)
+setTimeout(()=>{h.remove()},8000)
 
 }
 
-setInterval(createHeart,600)
+setInterval(crearCorazon,600)
 
 </script>
 
 </body>
+</html>
