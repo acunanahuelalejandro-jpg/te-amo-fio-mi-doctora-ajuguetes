@@ -76,11 +76,23 @@ cursor:pointer;
 margin-bottom:25px;
 }
 
+/* VIDEO CENTRADO */
+
 #video{
 display:none;
 max-width:85%;
 border-radius:20px;
 box-shadow:0 0 30px #ff4d6d;
+margin:20px auto; /* 👈 centrado perfecto */
+}
+
+/* TEXTO ANTES DEL CORAZON */
+
+.mensaje-previo{
+font-size:26px;
+max-width:900px;
+margin:60px auto 20px auto;
+line-height:1.5;
 }
 
 /* NUEVO CORAZON */
@@ -142,7 +154,12 @@ porque lo unico que puedo es pensar en vos
 
 </div>
 
-<!-- REEMPLAZO DEL CORAZON -->
+<!-- TEXTO AGREGADO -->
+<p class="mensaje-previo">
+vos podes con todo corazon aca estoy si sentis que no aca siempre voy a estar miamor
+</p>
+
+<!-- CORAZON -->
 <canvas id="heartCanvas"></canvas>
 
 <audio id="musica" loop>
@@ -154,11 +171,8 @@ porque lo unico que puedo es pensar en vos
 /* INICIO */
 
 function iniciar(){
-
 document.getElementById("startScreen").remove()
-
 document.getElementById("musica").play().catch(()=>{})
-
 }
 
 /* VIDEO */
@@ -180,6 +194,7 @@ boton.innerText="vos sos mi lugar favorito del universo ❤️"
 video.play()
 
 }
+
 /* NUEVO CORAZON LATIENDO */
 
 const canvas = document.getElementById("heartCanvas");
