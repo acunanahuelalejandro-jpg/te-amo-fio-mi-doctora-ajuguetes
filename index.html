@@ -1,104 +1,262 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Para vos ❤️</title>
+<title>te amo fiorella</title>
 
 <style>
-body {
-    margin: 0;
-    padding: 0;
-    background: black;
-    color: white;
-    font-family: Arial, sans-serif;
-    overflow: hidden;
-    text-align: center;
+
+body{
+margin:0;
+background:black;
+color:white;
+font-family:Arial;
+text-align:center;
+overflow-x:hidden;
 }
 
-/* Pantalla inicial */
-#pantallaInicio {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
+/* PANTALLA INICIAL */
+
+#startScreen{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:38px;
+z-index:9999;
+cursor:pointer;
 }
 
-/* Video centrado */
-#videoContainer {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+/* ESTRELLAS */
+
+.stars{
+position:fixed;
+width:100%;
+height:100%;
+background:url("https://www.transparenttextures.com/patterns/stardust.png");
+z-index:-2;
 }
 
-video {
-    width: 80%;
-    max-width: 400px;
-    border-radius: 20px;
-    box-shadow: 0 0 25px rgba(255, 0, 100, 0.6);
+/* TITULO */
+
+h1{
+font-size:50px;
+margin-top:40px;
 }
 
-/* Corazones (si ya tenías animación, esto lo mantiene simple) */
-.corazon {
-    position: absolute;
-    color: red;
-    animation: flotar 5s linear infinite;
+/* TEXTO */
+
+p{
+max-width:900px;
+font-size:28px;
+line-height:1.6;
+padding:25px;
+margin:auto;
 }
 
-@keyframes flotar {
-    0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(-100vh); opacity: 0; }
+/* SECCION VIDEO */
+
+#videoSeccion{
+margin-top:30px;
 }
+
+#botonFoto{
+font-size:34px;
+color:hotpink;
+cursor:pointer;
+margin-bottom:25px;
+}
+
+#video{
+display:none;
+max-width:85%;
+border-radius:20px;
+box-shadow:0 0 30px #ff4d6d;
+}
+
+/* NUEVO CORAZON */
+
+#heartCanvas{
+position:relative;
+width:350px;
+height:350px;
+margin:120px auto;
+display:block;
+}
+
+/* CORAZONES */
+
+.heart{
+position:fixed;
+bottom:-20px;
+font-size:20px;
+animation:subir 8s linear infinite;
+color:#ff4d6d;
+}
+
+@keyframes subir{
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(-110vh);opacity:0;}
+}
+
 </style>
+
 </head>
 
-<body onclick="mostrarVideo()">
+<body>
 
-<div id="pantallaInicio">
-    Tocá la pantalla ❤️
+<div id="startScreen" onclick="iniciar()">
+toca la pantalla ❤️
 </div>
 
-<!-- VIDEO (reemplaza el álbum) -->
-<div id="videoContainer">
-    <video id="miVideo" controls>
-        <source src="video.mp4" type="video/mp4">
-        Tu navegador no soporta video.
-    </video>
+<div class="stars"></div>
+
+<h1>mi amor ❤️</h1>
+
+<p>
+no puedo explicarte lo que siento cuando te veo llegar,
+arreglas mi espiritu con cada beso,
+elevas mi vibra con cada caricia,
+tenes la medida justa de todo lo que me gusta,
+te apoderaste de mi mente,
+robaste mi inconciente
+porque lo unico que puedo es pensar en vos
+</p>
+
+<div id="videoSeccion">
+
+<div id="botonFoto">toca aquí ❤️</div>
+
+<video id="video" controls>
+<source src="video.mp4" type="video/mp4">
+</video>
+
 </div>
+
+<!-- REEMPLAZO DEL CORAZON -->
+<canvas id="heartCanvas"></canvas>
+
+<audio id="musica" loop>
+<source src="musica.mp3" type="audio/mpeg">
+</audio>
 
 <script>
-function mostrarVideo() {
-    document.getElementById("pantallaInicio").style.display = "none";
-    document.getElementById("videoContainer").style.display = "block";
 
-    let video = document.getElementById("miVideo");
-    video.play();
+/* INICIO */
+
+function iniciar(){
+
+document.getElementById("startScreen").remove()
+
+document.getElementById("musica").play().catch(()=>{})
+
 }
 
-/* Corazones flotando */
-function crearCorazon() {
-    const corazon = document.createElement("div");
-    corazon.classList.add("corazon");
-    corazon.innerHTML = "❤️";
+/* VIDEO */
 
-    corazon.style.left = Math.random() * 100 + "vw";
-    corazon.style.fontSize = (Math.random() * 20 + 10) + "px";
+const boton=document.getElementById("botonFoto")
+const video=document.getElementById("video")
 
-    document.body.appendChild(corazon);
+let videoIniciado=false
 
-    setTimeout(() => {
-        corazon.remove();
-    }, 5000);
+boton.onclick=function(){
+
+if(videoIniciado) return
+videoIniciado=true
+
+video.style.display="block"
+
+boton.innerText="vos sos mi lugar favorito del universo ❤️"
+
+video.play()
+
 }
 
-setInterval(crearCorazon, 300);
+/* NUEVO CORAZON LATIENDO */
+
+const canvas = document.getElementById("heartCanvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = 350;
+canvas.height = 350;
+
+let scale = 1;
+let growing = true;
+
+function dibujarCorazon(s){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ctx.save();
+ctx.translate(175,175);
+ctx.scale(s,s);
+
+ctx.beginPath();
+
+for(let t=0;t<Math.PI*2;t+=0.01){
+let x=16*Math.pow(Math.sin(t),3);
+let y=13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t);
+ctx.lineTo(x*10,-y*10);
+}
+
+ctx.closePath();
+
+ctx.fillStyle="#ff4d6d";
+ctx.shadowColor="#ff4d6d";
+ctx.shadowBlur=25;
+
+ctx.fill();
+
+ctx.restore();
+}
+
+function animar(){
+
+if(growing){
+scale+=0.01;
+if(scale>=1.1) growing=false;
+}else{
+scale-=0.01;
+if(scale<=1) growing=true;
+}
+
+dibujarCorazon(scale);
+
+requestAnimationFrame(animar);
+}
+
+animar();
+
+/* CORAZONES FLOTANDO */
+
+function crearCorazon(){
+
+let h=document.createElement("div")
+
+h.className="heart"
+h.innerHTML="❤"
+
+h.style.left=Math.random()*100+"%"
+h.style.fontSize=(15+Math.random()*25)+"px"
+
+document.body.appendChild(h)
+
+setTimeout(()=>{h.remove()},8000)
+
+}
+
+setInterval(crearCorazon,600)
+
 </script>
-
+<p>vos podes con todo corazon aca estoy si sentis que no aca siempre voy a estar miamor</p>
 </body>
 </html>
