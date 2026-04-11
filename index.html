@@ -63,39 +63,25 @@ padding:25px;
 margin:auto;
 }
 
-/* SECCION VIDEO */
-
-#videoSeccion{
-margin-top:30px;
-}
-
-#botonFoto{
-font-size:34px;
-color:hotpink;
-cursor:pointer;
-margin-bottom:25px;
-}
-
-/* VIDEO CENTRADO */
+/* VIDEO */
 
 #video{
 display:none;
 max-width:85%;
 border-radius:20px;
 box-shadow:0 0 30px #ff4d6d;
-margin:20px auto; /* 👈 centrado perfecto */
+margin:20px auto;
 }
 
-/* TEXTO ANTES DEL CORAZON */
+/* TEXTO GRANDE FINAL */
 
-.mensaje-previo{
-font-size:26px;
-max-width:900px;
-margin:60px auto 20px auto;
-line-height:1.5;
+#finalTexto{
+font-size:40px;
+margin:80px 0;
+color:#ff4d6d;
 }
 
-/* NUEVO CORAZON */
+/* CORAZON */
 
 #heartCanvas{
 position:relative;
@@ -113,6 +99,17 @@ bottom:-20px;
 font-size:20px;
 animation:subir 8s linear infinite;
 color:#ff4d6d;
+}
+
+/* TEXTOS FLOTANDO */
+
+.loveText{
+position:fixed;
+bottom:-20px;
+font-size:18px;
+animation:subir 10s linear infinite;
+color:white;
+opacity:0.8;
 }
 
 @keyframes subir{
@@ -145,22 +142,21 @@ porque lo unico que puedo es pensar en vos
 </p>
 
 <div id="videoSeccion">
-
 <div id="botonFoto">toca aquí ❤️</div>
 
 <video id="video" controls>
 <source src="video.mp4" type="video/mp4">
 </video>
-
 </div>
 
-<!-- TEXTO AGREGADO -->
 <p class="mensaje-previo">
 vos podes con todo corazon aca estoy si sentis que no aca siempre voy a estar miamor
 </p>
 
-<!-- CORAZON -->
 <canvas id="heartCanvas"></canvas>
+
+<!-- TEXTO FINAL -->
+<div id="finalTexto">te amo en 7.100 lenguas ❤️</div>
 
 <audio id="musica" loop>
 <source src="musica.mp3" type="audio/mpeg">
@@ -183,19 +179,14 @@ const video=document.getElementById("video")
 let videoIniciado=false
 
 boton.onclick=function(){
-
 if(videoIniciado) return
 videoIniciado=true
-
 video.style.display="block"
-
 boton.innerText="vos sos mi lugar favorito del universo ❤️"
-
 video.play()
-
 }
 
-/* NUEVO CORAZON LATIENDO */
+/* CORAZON CENTRAL */
 
 const canvas = document.getElementById("heartCanvas");
 const ctx = canvas.getContext("2d");
@@ -207,34 +198,28 @@ let scale = 1;
 let growing = true;
 
 function dibujarCorazon(s){
-
 ctx.clearRect(0,0,canvas.width,canvas.height);
-
 ctx.save();
 ctx.translate(175,175);
 ctx.scale(s,s);
 
 ctx.beginPath();
-
 for(let t=0;t<Math.PI*2;t+=0.01){
 let x=16*Math.pow(Math.sin(t),3);
 let y=13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t);
 ctx.lineTo(x*10,-y*10);
 }
-
 ctx.closePath();
 
 ctx.fillStyle="#ff4d6d";
 ctx.shadowColor="#ff4d6d";
 ctx.shadowBlur=25;
-
 ctx.fill();
 
 ctx.restore();
 }
 
 function animar(){
-
 if(growing){
 scale+=0.01;
 if(scale>=1.1) growing=false;
@@ -242,20 +227,46 @@ if(scale>=1.1) growing=false;
 scale-=0.01;
 if(scale<=1) growing=true;
 }
-
 dibujarCorazon(scale);
-
 requestAnimationFrame(animar);
 }
 
 animar();
+
+/* LISTA DE "TE AMO" EN MUCHOS IDIOMAS */
+
+const idiomas = [
+"te amo","i love you","je t'aime","ti amo","ich liebe dich",
+"te iubesc","eu te amo","я тебя люблю","愛してる","사랑해",
+"我爱你","ana behibek","seni seviyorum","ik hou van jou",
+"volim te","jag älskar dig","jeg elsker dig","kocham cię"
+];
+
+/* TEXTOS FLOTANDO */
+
+function crearTexto(){
+
+let t=document.createElement("div")
+t.className="loveText"
+
+t.innerText = idiomas[Math.floor(Math.random()*idiomas.length)]
+
+t.style.left=Math.random()*100+"%"
+t.style.fontSize=(16+Math.random()*20)+"px"
+
+document.body.appendChild(t)
+
+setTimeout(()=>{t.remove()},10000)
+
+}
+
+setInterval(crearTexto,400)
 
 /* CORAZONES FLOTANDO */
 
 function crearCorazon(){
 
 let h=document.createElement("div")
-
 h.className="heart"
 h.innerHTML="❤"
 
