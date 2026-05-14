@@ -1,285 +1,297 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="es">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>te amo fiorella</title>
+<title>Feliz Cumpleaños Fiore ❤️</title>
 
 <style>
 
-body{
+*{
 margin:0;
-background:black;
-color:white;
-font-family:Arial;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+overflow:hidden;
+background:linear-gradient(180deg,#ffd6e7,#ffc2dc,#ffe4ef);
+height:100vh;
+color:#fff;
+}
+
+/* FONDO */
+
+.fondo{
+position:fixed;
+width:100%;
+height:100%;
+overflow:hidden;
+z-index:-1;
+}
+
+/* GLOBOS */
+
+.globo{
+position:absolute;
+bottom:-200px;
+width:80px;
+animation:subir linear infinite;
+opacity:0.8;
+}
+
+.globo:nth-child(1){
+left:10%;
+animation-duration:10s;
+}
+
+.globo:nth-child(2){
+left:30%;
+animation-duration:13s;
+}
+
+.globo:nth-child(3){
+left:50%;
+animation-duration:11s;
+}
+
+.globo:nth-child(4){
+left:70%;
+animation-duration:15s;
+}
+
+.globo:nth-child(5){
+left:85%;
+animation-duration:12s;
+}
+
+@keyframes subir{
+0%{
+transform:translateY(0);
+}
+100%{
+transform:translateY(-130vh);
+}
+}
+
+/* CONTENIDO */
+
+.contenido{
+height:100vh;
+overflow-y:auto;
+padding:20px;
 text-align:center;
-overflow-x:hidden;
-}
-
-/* PANTALLA INICIAL */
-
-#startScreen{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:black;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:38px;
-z-index:9999;
-cursor:pointer;
-}
-
-/* ESTRELLAS */
-
-.stars{
-position:fixed;
-width:100%;
-height:100%;
-background:url("https://www.transparenttextures.com/patterns/stardust.png");
-z-index:-2;
+backdrop-filter:blur(3px);
 }
 
 /* TITULO */
 
 h1{
-font-size:50px;
-margin-top:40px;
+font-size:45px;
+margin-top:20px;
+color:#ff4f9a;
+text-shadow:0 0 10px white;
 }
 
-/* TEXTO */
+/* TORTA */
 
-p{
-max-width:900px;
-font-size:28px;
-line-height:1.6;
+.torta{
+font-size:120px;
+margin-top:10px;
+animation:latido 2s infinite;
+}
+
+@keyframes latido{
+0%{transform:scale(1);}
+50%{transform:scale(1.05);}
+100%{transform:scale(1);}
+}
+
+/* CARTA */
+
+.carta{
+background:rgba(255,255,255,0.25);
 padding:25px;
-margin:auto;
-}
-
-/* VIDEO */
-
-#video{
-display:none;
-max-width:85%;
-border-radius:20px;
-box-shadow:0 0 30px #ff4d6d;
-margin:20px auto;
-}
-
-/* TEXTO GRANDE FINAL */
-
-#finalTexto{
-font-size:40px;
-margin:80px 0;
-color:#ff4d6d;
-}
-
-/* CORAZON */
-
-#heartCanvas{
-position:relative;
-width:350px;
-height:350px;
-margin:120px auto;
-display:block;
-}
-
-/* CORAZONES */
-
-.heart{
-position:fixed;
-bottom:-20px;
-font-size:20px;
-animation:subir 8s linear infinite;
-color:#ff4d6d;
-}
-
-/* TEXTOS FLOTANDO */
-
-.loveText{
-position:fixed;
-bottom:-20px;
-font-size:18px;
-animation:subir 10s linear infinite;
+border-radius:25px;
+max-width:800px;
+margin:30px auto;
 color:white;
-opacity:0.8;
+font-size:20px;
+line-height:1.7;
+box-shadow:0 0 25px rgba(255,255,255,0.5);
+backdrop-filter:blur(8px);
 }
 
-@keyframes subir{
-0%{transform:translateY(0);opacity:1;}
-100%{transform:translateY(-110vh);opacity:0;}
+/* FOTOS */
+
+.galeria{
+display:flex;
+gap:20px;
+overflow-x:auto;
+padding:20px;
+margin-top:20px;
+}
+
+.galeria img{
+width:280px;
+border-radius:20px;
+box-shadow:0 0 20px rgba(255,255,255,0.6);
+transition:0.4s;
+}
+
+.galeria img:hover{
+transform:scale(1.05);
+}
+
+/* MENSAJES BLOQUEO */
+
+.bloqueado{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+padding:20px;
+}
+
+.bloqueado h2{
+font-size:40px;
+color:#ff4f9a;
+margin-bottom:20px;
+}
+
+.bloqueado p{
+font-size:20px;
+color:white;
+}
+
+/* SCROLL */
+
+::-webkit-scrollbar{
+width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+background:#ff89b5;
+border-radius:20px;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<div id="startScreen" onclick="iniciar()">
-toca la pantalla ❤️
-</div>
-
-<div class="stars"></div>
-
-<h1>mi amor ❤️</h1>
-
-<p>
-no puedo explicarte lo que siento cuando te veo llegar,
-arreglas mi espiritu con cada beso,
-elevas mi vibra con cada caricia,
-tenes la medida justa de todo lo que me gusta,
-te apoderaste de mi mente,
-robaste mi inconciente
-porque lo unico que puedo es pensar en vos
-</p>
-
-<div id="videoSeccion">
-<div id="botonFoto">toca aquí ❤️</div>
-
-<video id="video" controls>
-<source src="video.mp4" type="video/mp4">
-</video>
-</div>
-
-<p class="mensaje-previo">
-vos podes con todo corazon aca estoy si sentis que no aca siempre voy a estar miamor
-</p>
-
-<canvas id="heartCanvas"></canvas>
-
-<!-- TEXTO FINAL -->
-<div id="finalTexto">te amo en 7.100 lenguas ❤️</div>
-
-<audio id="musica" loop>
-<source src="musica.mp3" type="audio/mpeg">
-</audio>
+<div id="app"></div>
 
 <script>
 
-/* INICIO */
+/* FECHAS */
 
-function iniciar(){
-document.getElementById("startScreen").remove()
-document.getElementById("musica").play().catch(()=>{})
-}
+const inicio = new Date("2026-05-14T00:00:00")
+const fin = new Date("2026-05-15T00:00:00")
+const ahora = new Date()
 
-/* VIDEO */
+const app = document.getElementById("app")
 
-const boton=document.getElementById("botonFoto")
-const video=document.getElementById("video")
+/* ANTES DEL CUMPLE */
 
-let videoIniciado=false
+if(ahora < inicio){
 
-boton.onclick=function(){
-if(videoIniciado) return
-videoIniciado=true
-video.style.display="block"
-boton.innerText="vos sos mi lugar favorito del universo ❤️"
-video.play()
-}
-
-/* CORAZON CENTRAL */
-
-const canvas = document.getElementById("heartCanvas");
-const ctx = canvas.getContext("2d");
-
-canvas.width = 350;
-canvas.height = 350;
-
-let scale = 1;
-let growing = true;
-
-function dibujarCorazon(s){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-ctx.save();
-ctx.translate(175,175);
-ctx.scale(s,s);
-
-ctx.beginPath();
-for(let t=0;t<Math.PI*2;t+=0.01){
-let x=16*Math.pow(Math.sin(t),3);
-let y=13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t);
-ctx.lineTo(x*10,-y*10);
-}
-ctx.closePath();
-
-ctx.fillStyle="#ff4d6d";
-ctx.shadowColor="#ff4d6d";
-ctx.shadowBlur=25;
-ctx.fill();
-
-ctx.restore();
-}
-
-function animar(){
-if(growing){
-scale+=0.01;
-if(scale>=1.1) growing=false;
-}else{
-scale-=0.01;
-if(scale<=1) growing=true;
-}
-dibujarCorazon(scale);
-requestAnimationFrame(animar);
-}
-
-animar();
-
-/* LISTA DE "TE AMO" EN MUCHOS IDIOMAS */
-
-const idiomas = [
-"te amo","i love you","je t'aime","ti amo","ich liebe dich",
-"te iubesc","eu te amo","я тебя люблю","愛してる","사랑해",
-"我爱你","ana behibek","seni seviyorum","ik hou van jou",
-"volim te","jag älskar dig","jeg elsker dig","kocham cię"
-];
-
-/* TEXTOS FLOTANDO */
-
-function crearTexto(){
-
-let t=document.createElement("div")
-t.className="loveText"
-
-t.innerText = idiomas[Math.floor(Math.random()*idiomas.length)]
-
-t.style.left=Math.random()*100+"%"
-t.style.fontSize=(16+Math.random()*20)+"px"
-
-document.body.appendChild(t)
-
-setTimeout(()=>{t.remove()},10000)
+app.innerHTML = `
+<div class="bloqueado">
+<h2>🎁 La sorpresa todavía no abrió 🎁</h2>
+<p>Volvé el 14 de mayo a las 00:00 ❤️</p>
+</div>
+`
 
 }
 
-setInterval(crearTexto,400)
+/* DESPUES */
 
-/* CORAZONES FLOTANDO */
+else if(ahora > fin){
 
-function crearCorazon(){
-
-let h=document.createElement("div")
-h.className="heart"
-h.innerHTML="❤"
-
-h.style.left=Math.random()*100+"%"
-h.style.fontSize=(15+Math.random()*25)+"px"
-
-document.body.appendChild(h)
-
-setTimeout(()=>{h.remove()},8000)
+app.innerHTML = `
+<div class="bloqueado">
+<h2>💔 La sorpresa terminó 💔</h2>
+<p>Pero el amor sigue para siempre ❤️</p>
+</div>
+`
 
 }
 
-setInterval(crearCorazon,600)
+/* DURANTE EL CUMPLE */
+
+else{
+
+app.innerHTML = `
+
+<div class="fondo">
+
+<img class="globo" src="https://cdn-icons-png.flaticon.com/512/3468/3468377.png">
+<img class="globo" src="https://cdn-icons-png.flaticon.com/512/3468/3468377.png">
+<img class="globo" src="https://cdn-icons-png.flaticon.com/512/3468/3468377.png">
+<img class="globo" src="https://cdn-icons-png.flaticon.com/512/3468/3468377.png">
+<img class="globo" src="https://cdn-icons-png.flaticon.com/512/3468/3468377.png">
+
+</div>
+
+<div class="contenido">
+
+<h1>Feliz Cumpleaños Fiore ❤️</h1>
+
+<div class="torta">🎂</div>
+
+<div class="carta">
+
+<p>
+
+Feliz cumpleaños mi amor ❤️<br><br>
+
+Ya son 4 años que paso junto a vos en tu día especial, y desde el primer día prometí que jamás ibas a pasar tu cumpleaños como un día más.
+Siempre voy a tratar de darte ese detalle especial que te haga sentir la más especial en tu día.<br><br>
+
+Sos todo para mí. No sé si alguna vez voy a poder crear algo con mis manos o decir algo con mi boca que describa lo mucho que me importás, pero siempre voy a hacer lo que me salga del corazón y espero que eso se refleje.<br><br>
+
+Espero que pases lindo hoy y mañana mi amor. Ya tenés 19, pero que eso no te asuste… estamos creciendo y da miedo, pero creo firmemente que si lo hacemos juntos asusta menos ❤️<br><br>
+
+Más grande y más hermosa estás cada año, no me imagino a los 80 😭<br><br>
+
+Te amo muchísimo mi bb. Espero que siempre lo sepas, incluso si algún día no estoy; quiero que sepas que siempre voy a amarte y darte todo lo que tenga, incluso cuando no tenga nada.<br><br>
+
+Me encantaría poder darte el regalo que tenía planeado, pero va a tener que esperar un poquito más. Igual espero que te guste este y el que te voy a dar mañana 🎁✨<br><br>
+
+Nada bb… sos muy especial y espero que al menos hoy te sientas tan especial como realmente sos.<br><br>
+
+Que los cumplas siempre feliz ❤️<br><br>
+
+Te amoooooo
+
+</p>
+
+</div>
+
+<h1>Nuestras Fotos 📸</h1>
+
+<div class="galeria">
+
+<img src="foto1.jpg">
+<img src="foto2.jpg">
+<img src="foto3.jpg">
+
+</div>
+
+<audio autoplay loop>
+<source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+
+`
+
+}
 
 </script>
 
