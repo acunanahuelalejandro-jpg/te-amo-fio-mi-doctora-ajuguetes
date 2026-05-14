@@ -19,7 +19,7 @@ body{
 overflow:hidden;
 background:linear-gradient(180deg,#ffd6e7,#ffc2dc,#ffe4ef);
 height:100vh;
-color:#fff;
+color:white;
 }
 
 /* FONDO */
@@ -89,17 +89,25 @@ backdrop-filter:blur(3px);
 /* TITULO */
 
 h1{
-font-size:45px;
+font-size:48px;
 margin-top:20px;
 color:#ff4f9a;
 text-shadow:0 0 10px white;
+}
+
+/* SUB */
+
+.sub{
+font-size:22px;
+margin-top:10px;
+color:#fff;
 }
 
 /* TORTA */
 
 .torta{
 font-size:120px;
-margin-top:10px;
+margin-top:20px;
 animation:latido 2s infinite;
 }
 
@@ -113,31 +121,32 @@ animation:latido 2s infinite;
 
 .carta{
 background:rgba(255,255,255,0.25);
-padding:25px;
-border-radius:25px;
-max-width:800px;
+padding:30px;
+border-radius:30px;
+max-width:850px;
 margin:30px auto;
-color:white;
 font-size:20px;
-line-height:1.7;
+line-height:1.8;
+color:white;
 box-shadow:0 0 25px rgba(255,255,255,0.5);
 backdrop-filter:blur(8px);
 }
 
-/* FOTOS */
+/* GALERIA */
 
 .galeria{
 display:flex;
 gap:20px;
 overflow-x:auto;
 padding:20px;
+justify-content:center;
 margin-top:20px;
 }
 
 .galeria img{
 width:280px;
-border-radius:20px;
-box-shadow:0 0 20px rgba(255,255,255,0.6);
+border-radius:25px;
+box-shadow:0 0 20px rgba(255,255,255,0.7);
 transition:0.4s;
 }
 
@@ -145,7 +154,7 @@ transition:0.4s;
 transform:scale(1.05);
 }
 
-/* MENSAJES BLOQUEO */
+/* MENSAJES */
 
 .bloqueado{
 height:100vh;
@@ -164,8 +173,14 @@ margin-bottom:20px;
 }
 
 .bloqueado p{
-font-size:20px;
-color:white;
+font-size:22px;
+}
+
+/* PLAYER */
+
+.player{
+margin-top:30px;
+margin-bottom:40px;
 }
 
 /* SCROLL */
@@ -190,21 +205,28 @@ border-radius:20px;
 
 /* FECHAS */
 
-const inicio = new Date("2020-05-14T00:00:00")
+const inicio = new Date("2026-05-14T00:00:00")
 const fin = new Date("2026-05-15T00:00:00")
 const ahora = new Date()
 
 const app = document.getElementById("app")
 
-/* ANTES DEL CUMPLE */
+/* ANTES */
 
 if(ahora < inicio){
 
 app.innerHTML = `
+
 <div class="bloqueado">
+
 <h2>🎁 La sorpresa todavía no abrió 🎁</h2>
-<p>Volvé el 14 de mayo a las 00:00 ❤️</p>
+
+<p>
+Volvé el 14 de mayo a las 00:00 ❤️
+</p>
+
 </div>
+
 `
 
 }
@@ -214,15 +236,22 @@ app.innerHTML = `
 else if(ahora > fin){
 
 app.innerHTML = `
+
 <div class="bloqueado">
+
 <h2>💔 La sorpresa terminó 💔</h2>
-<p>Pero el amor sigue para siempre ❤️</p>
+
+<p>
+Pero el amor sigue para siempre ❤️
+</p>
+
 </div>
+
 `
 
 }
 
-/* DURANTE EL CUMPLE */
+/* PAGINA */
 
 else{
 
@@ -241,6 +270,10 @@ app.innerHTML = `
 <div class="contenido">
 
 <h1>Feliz Cumpleaños Fiore ❤️</h1>
+
+<div class="sub">
+Hoy es tu día mi amor ✨
+</div>
 
 <div class="torta">🎂</div>
 
@@ -273,8 +306,6 @@ Te amoooooo
 
 </div>
 
-<h1>Nuestras Fotos 📸</h1>
-
 <div class="galeria">
 
 <img src="foto1.jpg">
@@ -283,9 +314,13 @@ Te amoooooo
 
 </div>
 
-<audio autoplay loop>
+<div class="player">
+
+<audio autoplay loop controls>
 <source src="musica.mp3" type="audio/mpeg">
 </audio>
+
+</div>
 
 </div>
 
