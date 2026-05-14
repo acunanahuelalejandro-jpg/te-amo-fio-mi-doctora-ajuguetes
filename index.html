@@ -15,20 +15,20 @@ box-sizing:border-box;
 font-family:Arial, Helvetica, sans-serif;
 }
 
-body{
-overflow:hidden;
+html,body{
+width:100%;
+height:100%;
+overflow-x:hidden;
 background:linear-gradient(180deg,#ffd6e7,#ffc2dc,#ffe4ef);
-height:100vh;
 color:white;
 }
 
-/* CAPA OSCURA PARA MEJOR VISIBILIDAD */
+/* CAPA OSCURA */
 
 body::before{
 content:"";
 position:fixed;
-width:100%;
-height:100%;
+inset:0;
 background:rgba(0,0,0,0.18);
 z-index:-1;
 }
@@ -37,8 +37,7 @@ z-index:-1;
 
 .fondo{
 position:fixed;
-width:100%;
-height:100%;
+inset:0;
 overflow:hidden;
 z-index:-2;
 }
@@ -48,7 +47,7 @@ z-index:-2;
 .globo{
 position:absolute;
 bottom:-200px;
-width:80px;
+width:clamp(50px,8vw,90px);
 animation:subir linear infinite;
 opacity:0.8;
 }
@@ -90,37 +89,42 @@ transform:translateY(-130vh);
 /* CONTENIDO */
 
 .contenido{
-height:100vh;
-overflow-y:auto;
+width:100%;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
 padding:20px;
+padding-bottom:50px;
 text-align:center;
 }
 
-/* TITULO */
+/* TITULOS */
 
 h1{
-font-size:50px;
+font-size:clamp(34px,6vw,60px);
 margin-top:20px;
 color:white;
 text-shadow:
 0 0 8px rgba(0,0,0,0.8),
 0 0 15px rgba(0,0,0,0.8);
+padding-inline:10px;
 }
 
 .sub{
-font-size:24px;
+font-size:clamp(18px,3vw,26px);
 margin-top:10px;
-color:white;
 font-weight:bold;
 text-shadow:
 0 0 8px rgba(0,0,0,0.8),
 0 0 15px rgba(0,0,0,0.8);
+padding-inline:10px;
 }
 
 /* TORTA */
 
 .torta{
-font-size:120px;
+font-size:clamp(80px,14vw,140px);
 margin-top:20px;
 animation:latido 2s infinite;
 filter:drop-shadow(0 0 10px rgba(0,0,0,0.5));
@@ -135,49 +139,56 @@ filter:drop-shadow(0 0 10px rgba(0,0,0,0.5));
 /* CARTA */
 
 .carta{
+width:min(92%,850px);
 background:rgba(255,255,255,0.22);
-padding:35px;
+padding:clamp(20px,4vw,40px);
 border-radius:30px;
-max-width:850px;
-margin:30px auto;
-font-size:21px;
+margin-top:30px;
+font-size:clamp(16px,2vw,22px);
 line-height:1.9;
-color:white;
 font-weight:bold;
+color:white;
 box-shadow:0 0 25px rgba(255,255,255,0.4);
 backdrop-filter:blur(12px);
 text-shadow:
 0 0 6px rgba(0,0,0,0.85),
 0 0 12px rgba(0,0,0,0.7);
 border:2px solid rgba(255,255,255,0.3);
+word-wrap:break-word;
 }
 
 /* GALERIA */
 
 .galeria{
+width:100%;
 display:flex;
+justify-content:center;
+align-items:center;
 gap:20px;
 overflow-x:auto;
-padding:20px;
-justify-content:center;
+padding:25px 15px;
 margin-top:20px;
+scroll-snap-type:x mandatory;
 }
 
 .galeria img{
-width:280px;
+width:min(85vw,320px);
+height:auto;
 border-radius:25px;
 box-shadow:0 0 20px rgba(255,255,255,0.7);
 transition:0.4s;
+flex-shrink:0;
+scroll-snap-align:center;
 }
 
 .galeria img:hover{
-transform:scale(1.05);
+transform:scale(1.03);
 }
 
 /* MENSAJES */
 
 .bloqueado{
-height:100vh;
+min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
@@ -187,33 +198,32 @@ padding:20px;
 }
 
 .bloqueado h2{
-font-size:40px;
-color:white;
+font-size:clamp(32px,6vw,52px);
+margin-bottom:20px;
 text-shadow:
 0 0 8px rgba(0,0,0,0.8),
 0 0 15px rgba(0,0,0,0.8);
-margin-bottom:20px;
 }
 
 .bloqueado p{
-font-size:22px;
+font-size:clamp(18px,3vw,26px);
 font-weight:bold;
 text-shadow:
 0 0 8px rgba(0,0,0,0.8),
 0 0 15px rgba(0,0,0,0.8);
 }
 
-/* BOTON */
+/* PANTALLA MUSICA */
 
 #playButton{
 position:fixed;
 inset:0;
-background:rgba(255,192,220,0.95);
+background:rgba(255,192,220,0.96);
 display:flex;
 justify-content:center;
 align-items:center;
 z-index:9999;
-font-size:34px;
+font-size:clamp(24px,5vw,42px);
 color:white;
 font-weight:bold;
 cursor:pointer;
@@ -224,8 +234,11 @@ text-shadow:
 0 0 15px rgba(0,0,0,0.8);
 }
 
+/* SCROLL */
+
 ::-webkit-scrollbar{
 width:8px;
+height:8px;
 }
 
 ::-webkit-scrollbar-thumb{
