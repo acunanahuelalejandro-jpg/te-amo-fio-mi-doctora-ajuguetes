@@ -22,6 +22,17 @@ height:100vh;
 color:white;
 }
 
+/* CAPA OSCURA PARA MEJOR VISIBILIDAD */
+
+body::before{
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.18);
+z-index:-1;
+}
+
 /* FONDO */
 
 .fondo{
@@ -29,7 +40,7 @@ position:fixed;
 width:100%;
 height:100%;
 overflow:hidden;
-z-index:-1;
+z-index:-2;
 }
 
 /* GLOBOS */
@@ -83,24 +94,27 @@ height:100vh;
 overflow-y:auto;
 padding:20px;
 text-align:center;
-backdrop-filter:blur(3px);
 }
 
 /* TITULO */
 
 h1{
-font-size:48px;
+font-size:50px;
 margin-top:20px;
-color:#ff4f9a;
-text-shadow:0 0 10px white;
+color:white;
+text-shadow:
+0 0 8px rgba(0,0,0,0.8),
+0 0 15px rgba(0,0,0,0.8);
 }
 
-/* SUB */
-
 .sub{
-font-size:22px;
+font-size:24px;
 margin-top:10px;
-color:#fff;
+color:white;
+font-weight:bold;
+text-shadow:
+0 0 8px rgba(0,0,0,0.8),
+0 0 15px rgba(0,0,0,0.8);
 }
 
 /* TORTA */
@@ -109,6 +123,7 @@ color:#fff;
 font-size:120px;
 margin-top:20px;
 animation:latido 2s infinite;
+filter:drop-shadow(0 0 10px rgba(0,0,0,0.5));
 }
 
 @keyframes latido{
@@ -120,16 +135,21 @@ animation:latido 2s infinite;
 /* CARTA */
 
 .carta{
-background:rgba(255,255,255,0.25);
-padding:30px;
+background:rgba(255,255,255,0.22);
+padding:35px;
 border-radius:30px;
 max-width:850px;
 margin:30px auto;
-font-size:20px;
-line-height:1.8;
+font-size:21px;
+line-height:1.9;
 color:white;
-box-shadow:0 0 25px rgba(255,255,255,0.5);
-backdrop-filter:blur(8px);
+font-weight:bold;
+box-shadow:0 0 25px rgba(255,255,255,0.4);
+backdrop-filter:blur(12px);
+text-shadow:
+0 0 6px rgba(0,0,0,0.85),
+0 0 12px rgba(0,0,0,0.7);
+border:2px solid rgba(255,255,255,0.3);
 }
 
 /* GALERIA */
@@ -168,22 +188,41 @@ padding:20px;
 
 .bloqueado h2{
 font-size:40px;
-color:#ff4f9a;
+color:white;
+text-shadow:
+0 0 8px rgba(0,0,0,0.8),
+0 0 15px rgba(0,0,0,0.8);
 margin-bottom:20px;
 }
 
 .bloqueado p{
 font-size:22px;
+font-weight:bold;
+text-shadow:
+0 0 8px rgba(0,0,0,0.8),
+0 0 15px rgba(0,0,0,0.8);
 }
 
-/* PLAYER */
+/* BOTON */
 
-.player{
-margin-top:30px;
-margin-bottom:40px;
+#playButton{
+position:fixed;
+inset:0;
+background:rgba(255,192,220,0.95);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+font-size:34px;
+color:white;
+font-weight:bold;
+cursor:pointer;
+text-align:center;
+padding:20px;
+text-shadow:
+0 0 8px rgba(0,0,0,0.8),
+0 0 15px rgba(0,0,0,0.8);
 }
-
-/* SCROLL */
 
 ::-webkit-scrollbar{
 width:8px;
@@ -203,15 +242,11 @@ border-radius:20px;
 
 <script>
 
-/* FECHAS */
-
-const inicio = new Date("2020-05-14T00:00:00")
+const inicio = new Date("2026-05-14T00:00:00")
 const fin = new Date("2026-05-15T00:00:00")
 const ahora = new Date()
 
 const app = document.getElementById("app")
-
-/* ANTES */
 
 if(ahora < inicio){
 
@@ -231,8 +266,6 @@ Volvé el 14 de mayo a las 00:00 ❤️
 
 }
 
-/* DESPUES */
-
 else if(ahora > fin){
 
 app.innerHTML = `
@@ -251,11 +284,13 @@ Pero el amor sigue para siempre ❤️
 
 }
 
-/* PAGINA */
-
 else{
 
 app.innerHTML = `
+
+<div id="playButton">
+💖 Tocá para abrir tu sorpresa 💖
+</div>
 
 <div class="fondo">
 
@@ -314,17 +349,23 @@ Te amoooooo
 
 </div>
 
-<div class="player">
-
-<audio autoplay loop controls>
+<audio id="musica" loop>
 <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
 </div>
 
-</div>
-
 `
+
+const musica = document.getElementById("musica")
+const playButton = document.getElementById("playButton")
+
+playButton.addEventListener("click", ()=>{
+
+musica.play()
+playButton.style.display="none"
+
+})
 
 }
 
