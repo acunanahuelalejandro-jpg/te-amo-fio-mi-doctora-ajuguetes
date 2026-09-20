@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Para mi Fiore 🌼</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            overflow: hidden;
+            background: #fff8e7;
+            color: #5c3522;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        /* =========================================
+           PANTALLAS
+        ========================================= */
+
+        .screen {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            transition:
+                opacity 1s ease,
+                visibility 1s ease,
+                transform 1s ease;
+        }
+
+        .screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: scale(1.04);
+        }
+
+        /* =========================================
+           PANTALLA 1
+        ========================================= */
+
+        #welcome {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background:
+                radial-gradient(circle at center, #fffdf4 0%, #fff8e7 55%, #ffeeb0 100%);
+        }
+
+        .welcome-content {
+            position: relative;
+            z-index: 10;
+            width: min(90%, 700px);
+            text-align: center;
+            padding: 35px 25px;
+            animation: appear 2s ease forwards;
+        }
+
+        .small-title {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #c94c55;
+            margin-bottom: 15px;
+        }
+
+        .welcome-title {
+            font-size: clamp(2.5rem, 7vw, 5.8rem);
+            line-height: 1;
+            color: #d79b00;
+            margin-bottom: 18px;
+            font-weight: normal;
+        }
+
+        .welcome-subtitle {
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            color: #b94355;
+            margin-bottom: 28px;
+            font-style: italic;
+        }
+
+        .welcome-text {
+            max-width: 570px;
+            margin: 0 auto 35px;
+            font-size: clamp(1.1rem, 2.3vw, 1.5rem);
+            line-height: 1.7;
+            color: #654434;
+        }
+
+        .welcome-signature {
+            font-size: 1.2rem;
+            color: #a83f51;
+            margin-bottom: 30px;
+        }
+
+        /* =========================================
+           BOTONES
+        ========================================= */
+
+        .main-button {
+            position: relative;
+            border: none;
+            background: #dcae26;
+            color: white;
+            padding: 17px 32px;
+            border-radius: 50px;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(190, 142, 25, 0.25);
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                background 0.3s ease;
+        }
+
+        .main-button:hover {
+            transform: translateY(-4px);
+            background: #c99b19;
+            box-shadow: 0 15px 30px rgba(190, 142, 25, 0.35);
+        }
+
+        .main-button:active {
+            transform: scale(0.96);
+        }
+
+        /* =========================================
+           FLORES DE LOS BORDES
+        ========================================= */
+
+        .flower-border {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .flower {
+            position: absolute;
+            font-size: clamp(2rem, 4vw, 4rem);
+            animation: flowerFloat 5s ease-in-out infinite;
+            filter: drop-shadow(0 5px 5px rgba(120, 80, 20, 0.1));
+        }
+
+        .f1 { top: 3%; left: 4%; animation-delay: 0s; }
+        .f2 { top: 10%; left: 18%; animation-delay: 1s; }
+        .f3 { top: 3%; right: 7%; animation-delay: 2s; }
+        .f4 { top: 18%; right: 3%; animation-delay: .5s; }
+        .f5 { bottom: 6%; left: 3%; animation-delay: 1.5s; }
+        .f6 { bottom: 14%; left: 17%; animation-delay: 2.5s; }
+        .f7 { bottom: 5%; right: 5%; animation-delay: 1s; }
+        .f8 { bottom: 20%; right: 16%; animation-delay: 3s; }
+        .f9 { top: 42%; left: 2%; animation-delay: 2s; }
+        .f10 { top: 42%; right: 2%; animation-delay: 1s; }
+
+        @keyframes flowerFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(-3deg);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(3deg);
+            }
+        }
+
+        /* =========================================
+           JARDÍN
+        ========================================= */
+
+        #garden {
+            background:
+                linear-gradient(
+                    to bottom,
+                    #fff7d9 0%,
+                    #fff5c7 42%,
+                    #dbeebd 75%,
+                    #a9cf88 100%
+                );
+        }
+
+        .garden-content {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            padding: 50px 25px 100px;
+            text-align: center;
+        }
+
+        .garden-title {
+            font-size: clamp(2rem, 5vw, 4rem);
+            color: #c69208;
+            margin-bottom: 8px;
+        }
+
+        .garden-subtitle {
+            font-size: 1.2rem;
+            color: #8d5145;
+            margin-bottom: 35px;
+        }
+
+        /* =========================================
+           FOTOS
+        ========================================= */
+
+        .photos {
+            width: min(1050px, 95%);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .photo-card {
+            position: relative;
+            background: #fffdf4;
+            padding: 10px 10px 25px;
+            border-radius: 5px;
+            box-shadow:
+                0 15px 30px rgba(78, 85, 40, 0.16);
+            transition:
+                transform 0.5s ease,
+                box-shadow 0.5s ease;
+        }
+
+        .photo-card:nth-child(1) {
+            transform: rotate(-3deg);
+        }
+
+        .photo-card:nth-child(2) {
+            transform: rotate(2deg);
+        }
+
+        .photo-card:nth-child(3) {
+            transform: rotate(-1deg);
+        }
+
+        .photo-card:nth-child(4) {
+            transform: rotate(2deg);
+        }
+
+        .photo-card:nth-child(5) {
+            transform: rotate(-2deg);
+        }
+
+        .photo-card:nth-child(6) {
+            transform: rotate(3deg);
+        }
+
+        .photo-card:hover {
+            transform: translateY(-10px) rotate(0deg) scale(1.03);
+            box-shadow:
+                0 20px 40px rgba(78, 85, 40, 0.25);
+        }
+
+        .photo-card img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            display: block;
+            border-radius: 3px;
+        }
+
+        .photo-caption {
+            margin-top: 12px;
+            font-size: 0.95rem;
+            color: #8c5b46;
+        }
+
+        /* =========================================
+           MARGARITAS DEL JARDÍN
+        ========================================= */
+
+        .garden-flower {
+            position: absolute;
+            font-size: 2.5rem;
+            pointer-events: none;
+            animation: sway 4s ease-in-out infinite;
+        }
+
+        .gf1 { left: 3%; bottom: 10%; }
+        .gf2 { left: 9%; bottom: 3%; animation-delay: .5s; }
+        .gf3 { right: 4%; bottom: 8%; animation-delay: 1s; }
+        .gf4 { right: 11%; bottom: 2%; animation-delay: 1.5s; }
+        .gf5 { left: 1%; top: 35%; animation-delay: 2s; }
+        .gf6 { right: 1%; top: 40%; animation-delay: 2.5s; }
+
+        @keyframes sway {
+            0%, 100% {
+                transform: rotate(-4deg);
+            }
+
+            50% {
+                transform: rotate(5deg) translateY(-6px);
+            }
+        }
+
+        .continue-area {
+            margin-top: 45px;
+            padding-bottom: 30px;
+        }
+
+        .continue-button {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            border: none;
+            background: #c94c55;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(160, 60, 70, 0.25);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+        }
+
+        /* =========================================
+           PANTALLA DE MACETA
+        ========================================= */
+
+        #watering {
+            background:
+                linear-gradient(
+                    to bottom,
+                    #fff6d9,
+                    #ffe9bb 60%,
+                    #d8eabf
+                );
+        }
+
+        .watering-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .watering-title {
+            font-size: clamp(2rem, 5vw, 4rem);
+            color: #bd8730;
+            margin-bottom: 10px;
+        }
+
+        .watering-description {
+            font-size: 1.2rem;
+            color: #805545;
+            margin-bottom: 35px;
+        }
+
+        .watering-area {
+            position: relative;
+            width: min(700px, 95%);
+            height: 450px;
+        }
+
+        /* =========================================
+           MACETA
+        ========================================= */
+
+        .pot {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 125px;
+            background: #c76b38;
+            border-radius: 10px 10px 45px 45px;
+            box-shadow:
+                inset 0 8px 0 rgba(255,255,255,.12),
+                0 15px 30px rgba(100, 60, 30, .2);
+        }
+
+        .pot::before {
+            content: "";
+            position: absolute;
+            top: -15px;
+            left: -10px;
+            width: 170px;
+            height: 30px;
+            border-radius: 50%;
+            background: #a85231;
+        }
+
+        .soil {
+            position: absolute;
+            top: -6px;
+            left: 5px;
+            width: 140px;
+            height: 20px;
+            background: #593b2b;
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        /* =========================================
+           PLANTA
+        ========================================= */
+
+        .plant {
+            position: absolute;
+            bottom: 155px;
+            left: 50%;
+            width: 10px;
+            height: 0;
+            transform: translateX(-50%);
+            background: #4c943f;
+            border-radius: 10px;
+            transition:
+                height 3s cubic-bezier(.2,.8,.2,1);
+            z-index: 1;
+        }
+
+        .plant.growing {
+            height: 220px;
+        }
+
+        .leaf {
+            position: absolute;
+            width: 60px;
+            height: 30px;
+            background: #66a950;
+            border-radius: 100% 0 100% 0;
+            opacity: 0;
+            transition: opacity 1s ease 2s;
+        }
+
+        .plant.growing .leaf {
+            opacity: 1;
+        }
+
+        .leaf-left {
+            left: -53px;
+            top: 115px;
+            transform: rotate(-25deg);
+        }
+
+        .leaf-right {
+            left: 3px;
+            top: 80px;
+            transform: rotate(25deg) scaleX(-1);
+        }
+
+        /* =========================================
+           GIRASOL
+        ========================================= */
+
+        .sunflower {
+            position: absolute;
+            left: 50%;
+            top: -90px;
+            transform: translateX(-50%) scale(0);
+            width: 120px;
+            height: 120px;
+            transition:
+                transform 1.2s cubic-bezier(.2,1.4,.4,1);
+            z-index: 3;
+        }
+
+        .plant.growing .sunflower {
+            transform: translateX(-50%) scale(1);
+            transition-delay: 2.5s;
+        }
+
+        .petal {
+            position: absolute;
+            width: 45px;
+            height: 65px;
+            background: #f5c928;
+            border-radius: 50%;
+            left: 37px;
+            top: 27px;
+            transform-origin: center 33px;
+        }
+
+        .petal:nth-child(1)  { transform: rotate(0deg) translateY(-28px); }
+        .petal:nth-child(2)  { transform: rotate(45deg) translateY(-28px); }
+        .petal:nth-child(3)  { transform: rotate(90deg) translateY(-28px); }
+        .petal:nth-child(4)  { transform: rotate(135deg) translateY(-28px); }
+        .petal:nth-child(5)  { transform: rotate(180deg) translateY(-28px); }
+        .petal:nth-child(6)  { transform: rotate(225deg) translateY(-28px); }
+        .petal:nth-child(7)  { transform: rotate(270deg) translateY(-28px); }
+        .petal:nth-child(8)  { transform: rotate(315deg) translateY(-28px); }
+
+        .sunflower-center {
+            position: absolute;
+            width: 55px;
+            height: 55px;
+            background: #75421e;
+            border-radius: 50%;
+            left: 32px;
+            top: 32px;
+            box-shadow: inset 0 0 0 6px #5c351d;
+        }
+
+        /* =========================================
+           REGADERA
+        ========================================= */
+
+        .watering-can {
+            position: absolute;
+            left: 12%;
+            bottom: 110px;
+            width: 145px;
+            height: 100px;
+            cursor: grab;
+            z-index: 10;
+            touch-action: none;
+            user-select: none;
+            transition: transform .2s ease;
+        }
+
+        .watering-can:active {
+            cursor: grabbing;
+        }
+
+        .can-body {
+            position: absolute;
+            width: 90px;
+            height: 70px;
+            left: 20px;
+            bottom: 0;
+            background: #c94142;
+            border-radius: 20px 20px 28px 28px;
+            box-shadow: 0 10px 20px rgba(120, 40, 40, .2);
+        }
+
+        .can-handle {
+            position: absolute;
+            width: 70px;
+            height: 65px;
+            border: 12px solid #b73538;
+            border-bottom: 0;
+            border-radius: 50px 50px 0 0;
+            left: 32px;
+            top: 0;
+        }
+
+        .can-spout {
+            position: absolute;
+            width: 75px;
+            height: 20px;
+            background: #c94142;
+            left: 85px;
+            bottom: 48px;
+            transform: rotate(-22deg);
+            border-radius: 20px;
+            transform-origin: left center;
+        }
+
+        .can-spout::after {
+            content: "";
+            position: absolute;
+            right: -10px;
+            top: -5px;
+            width: 25px;
+            height: 30px;
+            background: #c94142;
+            border-radius: 50%;
+            transform: rotate(20deg);
+        }
+
+        .water {
+            position: absolute;
+            width: 9px;
+            height: 90px;
+            background: linear-gradient(to bottom, #77c9f2, #4da8dd);
+            border-radius: 50%;
+            opacity: 0;
+            left: 150px;
+            top: 65px;
+            transform: rotate(-15deg);
+        }
+
+        .watering-can.watering .water {
+            opacity: .8;
+            animation: waterFlow .5s linear infinite;
+        }
+
+        @keyframes waterFlow {
+            0% {
+                transform: rotate(-15deg) translateY(0);
+            }
+
+            100% {
+                transform: rotate(-15deg) translateY(15px);
+            }
+        }
+
+        .drag-hint {
+            position: absolute;
+            left: 7%;
+            bottom: 15px;
+            color: #815444;
+            font-size: .95rem;
+            max-width: 180px;
+        }
+
+        /* =========================================
+           FOTO FINAL
+        ========================================= */
+
+        #final {
+            background:
+                radial-gradient(
+                    circle at center,
+                    #fffbe8,
+                    #ffe8a8
+                );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .final-content {
+            position: relative;
+            z-index: 20;
+            width: min(90%, 700px);
+            padding: 30px;
+            opacity: 0;
+            transform: translateY(25px);
+            transition:
+                opacity 2s ease,
+                transform 2s ease;
+        }
+
+        .final-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .final-photo {
+            width: min(330px, 80vw);
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 9px solid #fffdf0;
+            box-shadow:
+                0 20px 50px rgba(130, 90, 20, .2);
+            margin-bottom: 30px;
+        }
+
+        .final-title {
+            color: #c69316;
+            font-size: clamp(2.2rem, 6vw, 4.5rem);
+            font-weight: normal;
+            margin-bottom: 20px;
+        }
+
+        .final-text {
+            color: #694737;
+            font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+            line-height: 1.8;
+            margin: auto;
+            max-width: 620px;
+        }
+
+        .final-love {
+            margin-top: 25px;
+            font-size: 1.5rem;
+            color: #c94155;
+        }
+
+        /* =========================================
+           PÉTALOS
+        ========================================= */
+
+        .petal-fall {
+            position: fixed;
+            top: -50px;
+            z-index: 50;
+            pointer-events: none;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            0% {
+                transform:
+                    translateY(-50px)
+                    rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform:
+                    translateY(110vh)
+                    rotate(360deg);
+                opacity: .2;
+            }
+        }
+
+        /* =========================================
+           CONTROL DE MÚSICA
+        ========================================= */
+
+        .music-control {
+            position: fixed;
+            top: 18px;
+            right: 18px;
+            z-index: 100;
+            width: 48px;
+            height: 48px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255,255,255,.8);
+            backdrop-filter: blur(8px);
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: 0 8px 20px rgba(70, 50, 20, .12);
+            display: none;
+        }
+
+        .music-control.visible {
+            display: block;
+        }
+
+        /* =========================================
+           ANIMACIONES
+        ========================================= */
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 750px) {
+
+            .photos {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .garden-content {
+                padding-top: 35px;
+            }
+
+            .flower {
+                font-size: 2.3rem;
+            }
+
+            .watering-area {
+                height: 400px;
+            }
+
+            .watering-can {
+                left: 3%;
+                transform: scale(.8);
+            }
+
+            .watering-can:hover {
+                transform: scale(.8);
+            }
+
+            .drag-hint {
+                left: 1%;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .welcome-content {
+                padding: 20px;
+            }
+
+            .welcome-text {
+                line-height: 1.55;
+            }
+
+            .photos {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .photo-card {
+                padding: 7px 7px 15px;
+            }
+
+            .photo-caption {
+                font-size: .75rem;
+            }
+
+            .watering-can {
+                left: -5%;
+                transform: scale(.65);
+            }
+
+            .watering-area {
+                height: 360px;
+            }
+
+            .pot {
+                transform: translateX(-50%) scale(.85);
+            }
+
+            .plant.growing {
+                height: 190px;
+            }
+
+            .final-photo {
+                width: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================
+         MÚSICA
+    ========================================== -->
+
+    <audio id="backgroundMusic" loop preload="auto">
+        <source src="musica/primavera.mp3" type="audio/mpeg">
+        Tu navegador no soporta audio.
+    </audio>
+
+    <button
+        id="musicControl"
+        class="music-control"
+        aria-label="Controlar música">
+        🔊
+    </button>
+
+
+    <!-- =========================================
+         PANTALLA DE BIENVENIDA
+    ========================================== -->
+
+    <section id="welcome" class="screen">
+
+        <div class="flower-border">
+            <div class="flower f1">🌼</div>
+            <div class="flower f2">🌼</div>
+            <div class="flower f3">🌼</div>
+            <div class="flower f4">🌸</div>
+            <div class="flower f5">🌼</div>
+            <div class="flower f6">🌷</div>
+            <div class="flower f7">🌼</div>
+            <div class="flower f8">🌹</div>
+            <div class="flower f9">🌼</div>
+            <div class="flower f10">🌼</div>
+        </div>
+
+        <div class="welcome-content">
+
+            <div class="small-title">
+                🌷 Un pequeño regalo para vos 🌷
+            </div>
+
+            <h1 class="welcome-title">
+                Feliz primavera
+            </h1>
+
+            <h2 class="welcome-subtitle">
+                mi flor pequeña
+            </h2>
+
+            <p class="welcome-text">
+                La más hermosa entre todas.
+                <br><br>
+                Desde que llegaste a mi vida,
+                no encontré flor más hermosa
+                que tu carita.
+            </p>
+
+            <div class="welcome-signature">
+                Para vos, Fiore. 🌼
+            </div>
+
+            <button id="enterGarden" class="main-button">
+                🌼 ENTRAR AL JARDÍN 🌼
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         JARDÍN
+    ========================================== -->
+
+    <section id="garden" class="screen hidden">
+
+        <div class="garden-flower gf1">🌼</div>
+        <div class="garden-flower gf2">🌼</div>
+        <div class="garden-flower gf3">🌼</div>
+        <div class="garden-flower gf4">🌼</div>
+        <div class="garden-flower gf5">🌷</div>
+        <div class="garden-flower gf6">🌼</div>
+
+        <div class="garden-content">
+
+            <h1 class="garden-title">
+                Nuestro jardín 🌼
+            </h1>
+
+            <p class="garden-subtitle">
+                Algunos de mis momentos favoritos con vos.
+            </p>
+
+            <div class="photos">
+
+                <div class="photo-card">
+                    <img src="fotos/foto1.jpg" alt="Foto de nosotros">
+                    <div class="photo-caption">Un momento con vos ❤️</div>
+                </div>
+
+                <div class="photo-card">
+                    <img src="fotos/foto2.jpg" alt="Foto de nosotros">
+                    <div class="photo-caption">Otro recuerdo 🌼</div>
+                </div>
+
+                <div class="photo-card">
+                    <img src="fotos/foto3.jpg" alt="Foto de nosotros">
+                    <div class="photo-caption">Vos y yo ❤️</div>
+                </div>
+
+                <div class="photo-card">
+                    <img src="fotos/foto4.jpg" alt="Foto de nosotros">
+                    <div class="photo-caption">Un día especial 🌷</div>
+                </div>
+
+                <div class="photo-card">
+                    <img src="fotos/foto5.jpg" alt="Foto de nosotros">
+                    <div class="photo-caption">Otro pedacito nuestro 🌼</div>
+                </div>
+
+                <div class="photo-card">
+                    <img src="fotos/foto6.jpg" alt="Foto de nosotros">
+                    <div class="photo-caption">Y muchos más por vivir ❤️</div>
+                </div>
+
+            </div>
+
+            <div class="continue-area">
+
+                <p style="margin-bottom:15px;color:#805545;">
+                    Hay algo más esperándote...
+                </p>
+
+                <button
+                    id="continueButton"
+                    class="continue-button"
+                    aria-label="Continuar">
+                    ↓
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         MACETA + REGADERA
+    ========================================== -->
+
+    <section id="watering" class="screen hidden">
+
+        <div class="watering-content">
+
+            <h1 class="watering-title">
+                Algo está por crecer 🌱
+            </h1>
+
+            <p class="watering-description">
+                Hay algo esperando que lo cuides.
+                <br>
+                <strong>Regá la maceta.</strong>
+            </p>
+
+            <div class="watering-area">
+
+                <!-- REGADERA -->
+
+                <div
+                    id="wateringCan"
+                    class="watering-can"
+                    draggable="false"
+                    aria-label="Regadera roja">
+
+                    <div class="can-handle"></div>
+                    <div class="can-body"></div>
+                    <div class="can-spout"></div>
+                    <div class="water"></div>
+
+                </div>
+
+                <!-- MACETA -->
+
+                <div id="pot" class="pot">
+                    <div class="soil"></div>
+                </div>
+
+                <!-- PLANTA -->
+
+                <div id="plant" class="plant">
+
+                    <div class="leaf leaf-left"></div>
+                    <div class="leaf leaf-right"></div>
+
+                    <div class="sunflower">
+
+                        <div class="petal"></div>
+                        <div class="petal"></div>
+                        <div class="petal"></div>
+                        <div class="petal"></div>
+                        <div class="petal"></div>
+                        <div class="petal"></div>
+                        <div class="petal"></div>
+                        <div class="petal"></div>
+
+                        <div class="sunflower-center"></div>
+
+                    </div>
+
+                </div>
+
+                <div class="drag-hint">
+                    💧 Arrastrá la regadera hasta la maceta
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         FINAL
+    ========================================== -->
+
+    <section id="final" class="screen hidden">
+
+        <div class="final-content" id="finalContent">
+
+            <!-- Acá usamos foto1 como foto final.
+                 Después podemos cambiarla por otra. -->
+
+            <img
+                class="final-photo"
+                src="fotos/foto1.jpg"
+                alt="Nosotros">
+
+            <h1 class="final-title">
+                🌻 por que sos la mas hermosa de todas 
+            </h1>
+
+            <p class="final-text">
+                Hay cosas que, cuando las cuidás, crecen.
+                <br><br>
+
+                Como este girasol.
+                <br>
+                Como nuestros recuerdos.
+                <br>
+                Como todo lo que construimos juntos.
+                <br><br>
+
+                Y espero poder seguir regándolo
+                junto a vos durante muchísimo tiempo.
+            </p>
+
+            <div class="final-love">
+                Feliz primavera, mi fiore hermosa  ❤️🌼
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <script>
+
+        /* =========================================
+           ELEMENTOS
+        ========================================== */
+
+        const welcome = document.getElementById("welcome");
+        const garden = document.getElementById("garden");
+        const watering = document.getElementById("watering");
+        const finalScreen = document.getElementById("final");
+
+        const enterGarden = document.getElementById("enterGarden");
+        const continueButton = document.getElementById("continueButton");
+
+        const backgroundMusic =
+            document.getElementById("backgroundMusic");
+
+        const musicControl =
+            document.getElementById("musicControl");
+
+        const wateringCan =
+            document.getElementById("wateringCan");
+
+        const pot =
+            document.getElementById("pot");
+
+        const plant =
+            document.getElementById("plant");
+
+        const finalContent =
+            document.getElementById("finalContent");
+
+
+        /* =========================================
+           CAMBIAR PANTALLA
+        ========================================== */
+
+        function showScreen(screenToShow) {
+
+            const screens = [
+                welcome,
+                garden,
+                watering,
+                finalScreen
+            ];
+
+            screens.forEach(screen => {
+
+                if (screen === screenToShow) {
+                    screen.classList.remove("hidden");
+                } else {
+                    screen.classList.add("hidden");
+                }
+
+            });
+
+        }
+
+
+        /* =========================================
+           ENTRAR AL JARDÍN
+        ========================================== */
+
+        enterGarden.addEventListener("click", async () => {
+
+            showScreen(garden);
+
+            musicControl.classList.add("visible");
+
+            /*
+             * El navegador permite reproducir el audio
+             * porque esta función ocurre después del
+             * toque/click del usuario.
+             */
+
+            try {
+
+                backgroundMusic.volume = 0;
+
+                await backgroundMusic.play();
+
+                let volume = 0;
+
+                const fadeIn = setInterval(() => {
+
+                    volume += 0.03;
+
+                    if (volume >= 1) {
+                        volume = 1;
+                        clearInterval(fadeIn);
+                    }
+
+                    backgroundMusic.volume = volume;
+
+                }, 100);
+
+            } catch (error) {
+
+                console.log(
+                    "No se pudo iniciar automáticamente la música:",
+                    error
+                );
+
+            }
+
+        });
+
+
+        /* =========================================
+           CONTROL DE MÚSICA
+        ========================================== */
+
+        musicControl.addEventListener("click", () => {
+
+            if (backgroundMusic.paused) {
+
+                backgroundMusic.play();
+
+                musicControl.textContent = "🔊";
+
+            } else {
+
+                backgroundMusic.pause();
+
+                musicControl.textContent = "🔇";
+
+            }
+
+        });
+
+
+        /* =========================================
+           IR A LA REGADERA
+        ========================================== */
+
+        continueButton.addEventListener("click", () => {
+
+            showScreen(watering);
+
+        });
+
+
+        /* =========================================
+           REGADERA INTERACTIVA
+        ========================================== */
+
+        let dragging = false;
+        let offsetX = 0;
+        let offsetY = 0;
+
+        function startDrag(event) {
+
+            dragging = true;
+
+            const point = getPoint(event);
+
+            const rect =
+                wateringCan.getBoundingClientRect();
+
+            offsetX = point.x - rect.left;
+            offsetY = point.y - rect.top;
+
+            wateringCan.classList.add("watering");
+
+        }
+
+
+        function moveDrag(event) {
+
+            if (!dragging) return;
+
+            event.preventDefault();
+
+            const point = getPoint(event);
+
+            const parentRect =
+                wateringCan.parentElement.getBoundingClientRect();
+
+            let x =
+                point.x -
+                parentRect.left -
+                offsetX;
+
+            let y =
+                point.y -
+                parentRect.top -
+                offsetY;
+
+            /*
+             * Limitar la regadera dentro del área.
+             */
+
+            const maxX =
+                parentRect.width -
+                wateringCan.offsetWidth;
+
+            const maxY =
+                parentRect.height -
+                wateringCan.offsetHeight;
+
+            x = Math.max(0, Math.min(x, maxX));
+            y = Math.max(0, Math.min(y, maxY));
+
+            wateringCan.style.left = `${x}px`;
+            wateringCan.style.top = `${y}px`;
+            wateringCan.style.bottom = "auto";
+
+            checkWatering();
+
+        }
+
+
+        function endDrag() {
+
+            if (!dragging) return;
+
+            dragging = false;
+
+            wateringCan.classList.remove("watering");
+
+            checkWatering();
+
+        }
+
+
+        function getPoint(event) {
+
+            if (event.touches && event.touches.length > 0) {
+
+                return {
+                    x: event.touches[0].clientX,
+                    y: event.touches[0].clientY
+                };
+
+            }
+
+            return {
+                x: event.clientX,
+                y: event.clientY
+            };
+
+        }
+
+
+        /* =========================================
+           COMPROBAR SI LLEGÓ A LA MACETA
+        ========================================== */
+
+        let alreadyWatered = false;
+
+        function checkWatering() {
+
+            if (alreadyWatered) return;
+
+            const canRect =
+                wateringCan.getBoundingClientRect();
+
+            const potRect =
+                pot.getBoundingClientRect();
+
+            const canCenterX =
+                canRect.left +
+                canRect.width / 2;
+
+            const canCenterY =
+                canRect.top +
+                canRect.height / 2;
+
+            const insideX =
+                canCenterX >= potRect.left - 50 &&
+                canCenterX <= potRect.right + 50;
+
+            const insideY =
+                canCenterY >= potRect.top - 80 &&
+                canCenterY <= potRect.bottom + 50;
+
+            if (insideX && insideY) {
+
+                waterPlant();
+
+            }
+
+        }
+
+
+        /* =========================================
+           REGAR PLANTA
+        ========================================== */
+
+        function waterPlant() {
+
+            if (alreadyWatered) return;
+
+            alreadyWatered = true;
+
+            wateringCan.classList.add("watering");
+
+            /*
+             * Pequeña pausa para que se vea el agua.
+             */
+
+            setTimeout(() => {
+
+                plant.classList.add("growing");
+
+            }, 700);
+
+
+            /*
+             * Después del crecimiento mostramos
+             * la pantalla final.
+             */
+
+            setTimeout(() => {
+
+                createPetals();
+
+            }, 3800);
+
+
+            setTimeout(() => {
+
+                showScreen(finalScreen);
+
+                setTimeout(() => {
+
+                    finalContent.classList.add("visible");
+
+                }, 300);
+
+            }, 5200);
+
+        }
+
+
+        /* =========================================
+           EVENTOS MOUSE
+        ========================================== */
+
+        wateringCan.addEventListener(
+            "mousedown",
+            startDrag
+        );
+
+        document.addEventListener(
+            "mousemove",
+            moveDrag
+        );
+
+        document.addEventListener(
+            "mouseup",
+            endDrag
+        );
+
+
+        /* =========================================
+           EVENTOS TOUCH / CELULAR
+        ========================================== */
+
+        wateringCan.addEventListener(
+            "touchstart",
+            startDrag,
+            { passive: false }
+        );
+
+        document.addEventListener(
+            "touchmove",
+            moveDrag,
+            { passive: false }
+        );
+
+        document.addEventListener(
+            "touchend",
+            endDrag
+        );
+
+
+        /* =========================================
+           PÉTALOS
+        ========================================== */
+
+        function createPetals() {
+
+            const flowers = [
+                "🌼",
+                "🌼",
+                "🌼",
+                "🌸",
+                "🌷"
+            ];
+
+            for (let i = 0; i < 35; i++) {
+
+                const petal =
+                    document.createElement("div");
+
+                petal.className = "petal-fall";
+
+                petal.textContent =
+                    flowers[
+                        Math.floor(
+                            Math.random() * flowers.length
+                        )
+                    ];
+
+                petal.style.left =
+                    Math.random() * 100 + "vw";
+
+                petal.style.fontSize =
+                    (18 + Math.random() * 20) + "px";
+
+                petal.style.animationDuration =
+                    (4 + Math.random() * 5) + "s";
+
+                petal.style.animationDelay =
+                    Math.random() * 2 + "s";
+
+                document.body.appendChild(petal);
+
+                setTimeout(() => {
+
+                    petal.remove();
+
+                }, 10000);
+
+            }
+
+        }
+
+
+        /* =========================================
+           EVITAR ARRASTRE DE IMÁGENES
+        ========================================== */
+
+        document.querySelectorAll("img").forEach(img => {
+
+            img.addEventListener(
+                "dragstart",
+                event => event.preventDefault()
+            );
+
+        });
+
+    </script>
+
+</body>
+</html>
