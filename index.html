@@ -2,14 +2,27 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Para vos mi Fiore 🌼</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>Para vos, Fiore 🌼</title>
+
+    <meta
+        name="description"
+        content="Un pequeño jardín para vos, Fiore 🌼"
+    >
 
     <meta name="theme-color" content="#fff3a6">
-    <meta name="description" content="Un pequeño jardín para vos, Fiore 🌼">
 
     <style>
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
         * {
             margin: 0;
             padding: 0;
@@ -25,9 +38,15 @@
         }
 
         body {
-            font-family: Georgia, "Times New Roman", serif;
-            background: #fff8cf;
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
             color: #5b321f;
+
+            background: #fff8cf;
+
             touch-action: none;
         }
 
@@ -35,16 +54,20 @@
             font-family: inherit;
         }
 
+
         /* =========================================================
            PANTALLAS
         ========================================================= */
 
         .screen {
             position: fixed;
+
             inset: 0;
+
             width: 100%;
             height: 100%;
             min-height: 100dvh;
+
             overflow: hidden;
 
             display: flex;
@@ -56,8 +79,8 @@
             pointer-events: none;
 
             transition:
-                opacity 0.8s ease,
-                visibility 0.8s ease;
+                opacity .8s ease,
+                visibility .8s ease;
         }
 
         .screen.active {
@@ -66,13 +89,19 @@
             pointer-events: auto;
         }
 
+
         /* =========================================================
-           FONDO
+           FONDOS
         ========================================================= */
 
         .welcome {
             background:
-                radial-gradient(circle at 50% 40%, #fffde9 0%, #fff8cf 45%, #ffe9a8 100%);
+                radial-gradient(
+                    circle at 50% 40%,
+                    #fffde9 0%,
+                    #fff8cf 45%,
+                    #ffe9a8 100%
+                );
         }
 
         .garden {
@@ -83,7 +112,9 @@
                     #fff4d2 55%,
                     #e8f6cf 100%
                 );
+
             overflow-y: auto;
+
             touch-action: pan-y;
         }
 
@@ -99,10 +130,18 @@
 
         .final {
             background:
-                radial-gradient(circle at 50% 35%, #fffde8 0%, #ffeeb4 55%, #ffd3b5 100%);
+                radial-gradient(
+                    circle at 50% 35%,
+                    #fffde8 0%,
+                    #ffeeb4 55%,
+                    #ffd3b5 100%
+                );
+
             overflow-y: auto;
+
             touch-action: pan-y;
         }
+
 
         /* =========================================================
            BIENVENIDA
@@ -110,51 +149,73 @@
 
         .welcome-content {
             position: relative;
+
             z-index: 10;
 
             width: min(850px, 90%);
-            text-align: center;
 
             padding: 30px 20px;
+
+            text-align: center;
         }
 
         .small-title {
-            font-size: clamp(15px, 2vw, 21px);
-            color: #c75a61;
-            letter-spacing: 2px;
             margin-bottom: 15px;
+
+            color: #c75a61;
+
+            font-size: clamp(15px, 2vw, 21px);
+
+            letter-spacing: 2px;
         }
 
         .welcome h1 {
-            font-size: clamp(40px, 7vw, 82px);
-            line-height: 0.95;
-            color: #d84a58;
             margin-bottom: 8px;
-            text-shadow: 2px 3px 0 rgba(255, 255, 255, 0.8);
+
+            color: #d84a58;
+
+            font-size: clamp(40px, 7vw, 82px);
+
+            line-height: .95;
+
+            text-shadow:
+                2px 3px 0 rgba(255,255,255,.8);
         }
 
         .welcome h2 {
-            font-size: clamp(26px, 5vw, 55px);
-            color: #e6ad19;
-            font-style: italic;
             margin-bottom: 25px;
+
+            color: #e6ad19;
+
+            font-size: clamp(26px, 5vw, 55px);
+
+            font-style: italic;
         }
 
         .welcome-message {
             max-width: 680px;
-            margin: 0 auto 32px;
+
+            margin:
+                0 auto
+                32px;
+
+            color: #6a4030;
 
             font-size: clamp(17px, 2.5vw, 25px);
+
             line-height: 1.6;
-            color: #6a4030;
         }
 
         .welcome-message strong {
             display: block;
+
             margin-top: 15px;
+
             color: #d74b58;
+
             font-size: clamp(18px, 3vw, 28px);
         }
+
 
         /* =========================================================
            BOTONES
@@ -162,50 +223,60 @@
 
         .main-button {
             position: relative;
+
             z-index: 20;
 
-            border: none;
-            cursor: pointer;
+            padding:
+                16px
+                30px;
 
-            padding: 16px 30px;
+            border: none;
             border-radius: 999px;
 
             background: #d94755;
+
             color: white;
 
             font-size: 16px;
             font-weight: bold;
+
             letter-spacing: 1px;
 
+            cursor: pointer;
+
             box-shadow:
-                0 8px 25px rgba(180, 62, 72, 0.25),
+                0 8px 25px rgba(180,62,72,.25),
                 0 3px 0 #aa3340;
 
             transition:
-                transform 0.2s ease,
-                box-shadow 0.2s ease;
+                transform .2s ease,
+                box-shadow .2s ease;
         }
 
         .main-button:hover {
             transform: translateY(-3px);
+
             box-shadow:
-                0 12px 28px rgba(180, 62, 72, 0.3),
+                0 12px 28px rgba(180,62,72,.3),
                 0 5px 0 #aa3340;
         }
 
         .main-button:active {
             transform: translateY(2px);
+
             box-shadow:
-                0 5px 15px rgba(180, 62, 72, 0.2),
+                0 5px 15px rgba(180,62,72,.2),
                 0 1px 0 #aa3340;
         }
 
+
         /* =========================================================
-           FLORES DECORATIVAS
+           FLORES
         ========================================================= */
 
         .flower {
             position: absolute;
+
             z-index: 2;
 
             width: 70px;
@@ -213,12 +284,18 @@
 
             pointer-events: none;
 
-            animation: floatingFlower 4s ease-in-out infinite;
+            animation:
+                floatingFlower
+                4s
+                ease-in-out
+                infinite;
         }
 
         .flower::before {
             content: "";
+
             position: absolute;
+
             inset: 10px;
 
             background:
@@ -251,6 +328,7 @@
 
         .flower::after {
             content: "";
+
             position: absolute;
 
             width: 22px;
@@ -260,22 +338,87 @@
             left: 24px;
 
             border-radius: 50%;
+
             background: #f4c62d;
 
-            box-shadow: 0 0 8px rgba(240, 190, 30, 0.5);
+            box-shadow:
+                0 0 8px rgba(240,190,30,.5);
         }
 
-        .f1 { top: 5%; left: 3%; transform: scale(1.3); }
-        .f2 { top: 15%; right: 5%; transform: scale(0.9); animation-delay: .5s; }
-        .f3 { bottom: 8%; left: 5%; transform: scale(1.1); animation-delay: 1s; }
-        .f4 { bottom: 5%; right: 4%; transform: scale(1.4); animation-delay: 1.5s; }
-        .f5 { top: 40%; left: 1%; transform: scale(.75); animation-delay: 2s; }
-        .f6 { top: 45%; right: 1%; transform: scale(.8); animation-delay: .8s; }
-        .f7 { top: 3%; left: 45%; transform: scale(.65); animation-delay: 1.8s; }
-        .f8 { bottom: 2%; left: 43%; transform: scale(.8); animation-delay: 2.3s; }
+        .f1 {
+            top: 5%;
+            left: 3%;
+
+            transform: scale(1.3);
+        }
+
+        .f2 {
+            top: 15%;
+            right: 5%;
+
+            transform: scale(.9);
+
+            animation-delay: .5s;
+        }
+
+        .f3 {
+            bottom: 8%;
+            left: 5%;
+
+            transform: scale(1.1);
+
+            animation-delay: 1s;
+        }
+
+        .f4 {
+            bottom: 5%;
+            right: 4%;
+
+            transform: scale(1.4);
+
+            animation-delay: 1.5s;
+        }
+
+        .f5 {
+            top: 40%;
+            left: 1%;
+
+            transform: scale(.75);
+
+            animation-delay: 2s;
+        }
+
+        .f6 {
+            top: 45%;
+            right: 1%;
+
+            transform: scale(.8);
+
+            animation-delay: .8s;
+        }
+
+        .f7 {
+            top: 3%;
+            left: 45%;
+
+            transform: scale(.65);
+
+            animation-delay: 1.8s;
+        }
+
+        .f8 {
+            bottom: 2%;
+            left: 43%;
+
+            transform: scale(.8);
+
+            animation-delay: 2.3s;
+        }
 
         @keyframes floatingFlower {
-            0%, 100% {
+
+            0%,
+            100% {
                 margin-top: 0;
             }
 
@@ -284,130 +427,180 @@
             }
         }
 
+
         /* =========================================================
-           GARDÍN
+           JARDÍN
         ========================================================= */
 
         .garden-container {
             width: min(1100px, 94%);
+
             min-height: 100%;
-            padding: 55px 15px 80px;
+
+            padding:
+                55px
+                15px
+                80px;
+
             text-align: center;
         }
 
         .garden-title {
-            font-size: clamp(36px, 6vw, 62px);
-            color: #d84c59;
             margin-bottom: 8px;
+
+            color: #d84c59;
+
+            font-size: clamp(36px, 6vw, 62px);
         }
 
         .garden-subtitle {
-            font-size: clamp(16px, 2.5vw, 21px);
-            color: #79513d;
             margin-bottom: 35px;
+
+            color: #79513d;
+
+            font-size: clamp(16px, 2.5vw, 21px);
         }
 
         .photo-grid {
             width: 100%;
 
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
             gap: 22px;
 
-            margin: 0 auto 40px;
+            margin:
+                0 auto
+                40px;
         }
 
         .photo-card {
-            background: rgba(255, 255, 255, 0.78);
+            background:
+                rgba(255,255,255,.82);
+
             border-radius: 18px;
+
             padding: 10px;
 
             box-shadow:
-                0 8px 30px rgba(120, 75, 30, 0.12);
+                0 8px 30px rgba(120,75,30,.12);
 
-            transform: rotate(var(--rotation));
+            transform:
+                rotate(var(--rotation));
+
             transition:
                 transform .25s ease,
                 box-shadow .25s ease;
         }
 
         .photo-card:hover {
-            transform: rotate(0deg) translateY(-5px);
+            transform:
+                rotate(0deg)
+                translateY(-5px);
+
             box-shadow:
-                0 14px 35px rgba(120, 75, 30, 0.18);
+                0 14px 35px rgba(120,75,30,.18);
         }
+
+        /*
+         * IMPORTANTE:
+         * No usamos aspect-ratio ni object-fit: cover.
+         * La foto conserva su proporción original.
+         */
 
         .photo-card img {
             display: block;
 
             width: 100%;
-            aspect-ratio: 4 / 5;
+            height: auto;
 
-            object-fit: cover;
+            max-height: 520px;
+
+            object-fit: contain;
 
             border-radius: 12px;
 
-            background: #eee;
+            background: #f8f1df;
         }
 
         .photo-caption {
-            padding: 12px 5px 7px;
+            padding:
+                12px
+                5px
+                7px;
+
+            color: #684433;
 
             font-size: 16px;
-            color: #684433;
         }
 
         .garden-button {
             margin-top: 5px;
         }
 
+
         /* =========================================================
-           REGADERA
+           REGAR
         ========================================================= */
 
         .watering-container {
             position: relative;
+
             z-index: 10;
 
             width: 100%;
             height: 100%;
 
             display: flex;
+
             flex-direction: column;
+
             align-items: center;
             justify-content: center;
 
-            text-align: center;
-
             padding: 20px;
+
+            text-align: center;
         }
 
         .watering-title {
-            font-size: clamp(35px, 6vw, 60px);
-            color: #d95755;
             margin-bottom: 10px;
+
+            color: #d95755;
+
+            font-size: clamp(35px, 6vw, 60px);
         }
 
         .watering-text {
             max-width: 600px;
 
-            font-size: clamp(17px, 2.5vw, 23px);
-            line-height: 1.5;
-
             color: #704835;
+
+            font-size: clamp(17px, 2.5vw, 23px);
+
+            line-height: 1.5;
         }
 
         .drag-hint {
             margin-top: 14px;
 
-            font-size: 15px;
             color: #9b6748;
 
-            animation: hintPulse 1.8s ease-in-out infinite;
+            font-size: 15px;
+
+            animation:
+                hintPulse
+                1.8s
+                ease-in-out
+                infinite;
         }
 
         @keyframes hintPulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 opacity: .55;
             }
 
@@ -420,10 +613,12 @@
             position: relative;
 
             width: min(700px, 95%);
+
             height: 430px;
 
             margin-top: 10px;
         }
+
 
         /* =========================================================
            MACETA
@@ -435,23 +630,34 @@
             left: 50%;
             bottom: 45px;
 
-            width: 145px;
-            height: 110px;
+            width: 155px;
+            height: 125px;
 
-            transform: translateX(-50%);
+            transform:
+                translateX(-50%);
 
             background:
                 linear-gradient(
-                    to bottom,
-                    #d77845 0%,
-                    #bd5d36 100%
+                    105deg,
+                    #9f482f 0%,
+                    #c9673d 18%,
+                    #d97b49 50%,
+                    #b45234 82%,
+                    #8e3e2c 100%
                 );
 
-            border-radius: 10px 10px 35px 35px;
+            border-radius:
+                8px
+                8px
+                38px
+                38px;
 
             box-shadow:
-                inset 0 8px 0 rgba(255,255,255,.13),
-                0 12px 25px rgba(100,50,20,.18);
+                inset 10px 0 12px rgba(255,255,255,.10),
+                inset -12px 0 15px rgba(70,25,15,.18),
+                0 15px 25px rgba(80,40,20,.20);
+
+            z-index: 8;
         }
 
         .pot::before {
@@ -459,32 +665,66 @@
 
             position: absolute;
 
-            left: -10px;
-            top: -10px;
+            left: -11px;
+            top: -13px;
 
-            width: calc(100% + 20px);
-            height: 25px;
+            width: calc(100% + 22px);
+            height: 29px;
 
             border-radius: 12px;
 
-            background: #9e4d31;
+            background:
+                linear-gradient(
+                    to bottom,
+                    #a74b31,
+                    #783526
+                );
+
+            box-shadow:
+                inset 0 4px 4px rgba(255,255,255,.12),
+                0 5px 7px rgba(80,35,20,.18);
+
+            z-index: 2;
         }
 
         .soil {
             position: absolute;
 
             left: 50%;
-            top: -3px;
+            top: -7px;
 
-            width: 118px;
-            height: 19px;
+            width: 126px;
+            height: 23px;
 
-            transform: translateX(-50%);
+            transform:
+                translateX(-50%);
 
             border-radius: 50%;
 
-            background: #5b3627;
+            background:
+                radial-gradient(
+                    circle at 20% 40%,
+                    #7b4a30 0 3px,
+                    transparent 4px
+                ),
+                radial-gradient(
+                    circle at 60% 60%,
+                    #3f271d 0 3px,
+                    transparent 4px
+                ),
+                radial-gradient(
+                    circle at 80% 35%,
+                    #70432b 0 2px,
+                    transparent 3px
+                ),
+                #4c2e20;
+
+            box-shadow:
+                inset 0 3px 4px rgba(0,0,0,.25);
+
+            z-index: 4;
         }
+
 
         /* =========================================================
            PLANTA
@@ -496,12 +736,15 @@
             left: 50%;
             bottom: 138px;
 
-            width: 180px;
-            height: 230px;
+            width: 220px;
+            height: 280px;
 
-            transform: translateX(-50%);
+            transform:
+                translateX(-50%);
 
             pointer-events: none;
+
+            z-index: 10;
         }
 
         .stem {
@@ -510,109 +753,271 @@
             left: 50%;
             bottom: 0;
 
-            width: 9px;
+            width: 11px;
             height: 0;
 
-            transform: translateX(-50%);
+            transform:
+                translateX(-50%);
 
-            border-radius: 10px;
+            border-radius: 100px;
 
-            background: #4e9a42;
+            background:
+                linear-gradient(
+                    90deg,
+                    #3d7134,
+                    #66a94b,
+                    #477e38
+                );
+
+            box-shadow:
+                2px 0 4px rgba(30,70,25,.15);
 
             transition:
-                height 3.5s cubic-bezier(.2,.8,.2,1);
+                height 3.5s cubic-bezier(.18,.75,.2,1);
         }
 
         .leaf {
             position: absolute;
 
-            width: 70px;
-            height: 32px;
-
-            background: #62a94a;
+            width: 86px;
+            height: 43px;
 
             opacity: 0;
 
-            border-radius: 100% 0 100% 0;
+            border-radius:
+                100%
+                0
+                100%
+                0;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #74b94d,
+                    #3d8339
+                );
+
+            box-shadow:
+                inset -7px -5px 10px rgba(30,80,25,.12);
 
             transition:
                 opacity .8s ease,
-                transform .8s ease;
+                transform 1s cubic-bezier(.2,.8,.2,1);
+        }
+
+        .leaf::after {
+            content: "";
+
+            position: absolute;
+
+            left: 8px;
+            top: 50%;
+
+            width: 70px;
+            height: 2px;
+
+            background:
+                rgba(255,255,255,.25);
+
+            transform:
+                rotate(-10deg);
         }
 
         .leaf.left {
-            left: 24px;
+            left: 0;
             bottom: 75px;
-            transform: rotate(-25deg) scale(0);
+
+            transform:
+                rotate(-25deg)
+                scale(0)
+                translateX(20px);
         }
 
         .leaf.right {
-            right: 24px;
-            bottom: 105px;
-            transform: rotate(25deg) scale(0) scaleX(-1);
+            right: 0;
+            bottom: 120px;
+
+            transform:
+                rotate(25deg)
+                scale(0)
+                scaleX(-1)
+                translateX(20px);
         }
+
+
+        /* =========================================================
+           GIRASOL
+        ========================================================= */
 
         .sunflower {
             position: absolute;
 
             left: 50%;
-            top: -8px;
+            top: -38px;
 
-            width: 115px;
-            height: 115px;
+            width: 145px;
+            height: 145px;
 
-            transform: translateX(-50%) scale(0);
+            transform:
+                translateX(-50%)
+                scale(0)
+                rotate(-8deg);
 
             opacity: 0;
 
             transition:
-                transform 1.5s cubic-bezier(.2,.8,.2,1),
+                transform 1.5s cubic-bezier(.16,.85,.2,1),
                 opacity 1s ease;
+
+            z-index: 20;
         }
 
         .sunflower-petals {
             position: absolute;
+
             inset: 0;
 
             border-radius: 50%;
 
             background:
                 radial-gradient(
-                    circle,
-                    #744d18 0 18%,
-                    transparent 19%
+                    ellipse 22px 62px at 50% 3%,
+                    #ffd92f 0 72%,
+                    transparent 73%
                 ),
-                conic-gradient(
-                    from 0deg,
-                    #ffd42e 0deg 15deg,
-                    transparent 15deg 30deg,
-                    #ffd42e 30deg 45deg,
-                    transparent 45deg 60deg,
-                    #ffd42e 60deg 75deg,
-                    transparent 75deg 90deg,
-                    #ffd42e 90deg 105deg,
-                    transparent 105deg 120deg,
-                    #ffd42e 120deg 135deg,
-                    transparent 135deg 150deg,
-                    #ffd42e 150deg 165deg,
-                    transparent 165deg 180deg,
-                    #ffd42e 180deg 195deg,
-                    transparent 195deg 210deg,
-                    #ffd42e 210deg 225deg,
-                    transparent 225deg 240deg,
-                    #ffd42e 240deg 255deg,
-                    transparent 255deg 270deg,
-                    #ffd42e 270deg 285deg,
-                    transparent 285deg 300deg,
-                    #ffd42e 300deg 315deg,
-                    transparent 315deg 330deg,
-                    #ffd42e 330deg 345deg,
-                    transparent 345deg 360deg
+                radial-gradient(
+                    ellipse 22px 62px at 50% 97%,
+                    #ffd92f 0 72%,
+                    transparent 73%
+                ),
+                radial-gradient(
+                    ellipse 22px 62px at 3% 50%,
+                    #ffd92f 0 72%,
+                    transparent 73%
+                ),
+                radial-gradient(
+                    ellipse 22px 62px at 97% 50%,
+                    #ffd92f 0 72%,
+                    transparent 73%
+                ),
+                radial-gradient(
+                    ellipse 22px 62px at 16% 16%,
+                    #ffdc35 0 72%,
+                    transparent 73%
+                ),
+                radial-gradient(
+                    ellipse 22px 62px at 84% 16%,
+                    #ffdc35 0 72%,
+                    transparent 73%
+                ),
+                radial-gradient(
+                    ellipse 22px 62px at 16% 84%,
+                    #ffdc35 0 72%,
+                    transparent 73%
+                ),
+                radial-gradient(
+                    ellipse 22px 62px at 84% 84%,
+                    #ffdc35 0 72%,
+                    transparent 73%
+                ),
+                radial-gradient(
+                    ellipse 19px 58px at 30% 6%,
+                    #f9ca28 0 72%,
+                    transparent 73%
+                ),
+                radial-gradient(
+                    ellipse 19px 58px at 70% 6%,
+                    #f9ca28 0 72%,
+                    transparent 73%
+                ),
+                radial-gradient(
+                    ellipse 19px 58px at 30% 94%,
+                    #f9ca28 0 72%,
+                    transparent 73%
+                ),
+                radial-gradient(
+                    ellipse 19px 58px at 70% 94%,
+                    #f9ca28 0 72%,
+                    transparent 73%
                 );
         }
 
+        .sunflower-petals::after {
+            content: "";
+
+            position: absolute;
+
+            left: 50%;
+            top: 50%;
+
+            width: 62px;
+            height: 62px;
+
+            transform:
+                translate(-50%, -50%);
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle at 35% 30%,
+                    #9b6724 0 3px,
+                    transparent 4px
+                ),
+                radial-gradient(
+                    circle at 70% 25%,
+                    #5e3918 0 3px,
+                    transparent 4px
+                ),
+                radial-gradient(
+                    circle at 25% 70%,
+                    #70431b 0 3px,
+                    transparent 4px
+                ),
+                radial-gradient(
+                    circle at 72% 68%,
+                    #8b5a21 0 3px,
+                    transparent 4px
+                ),
+                radial-gradient(
+                    circle at 50% 50%,
+                    #6a4019 0%,
+                    #4a2a12 100%
+                );
+
+            box-shadow:
+                0 3px 7px rgba(50,25,5,.28);
+        }
+
+        .sunflower-petals::before {
+            content: "";
+
+            position: absolute;
+
+            left: 50%;
+            top: 50%;
+
+            width: 15px;
+            height: 15px;
+
+            transform:
+                translate(-50%, -50%);
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,214,75,.25);
+
+            filter: blur(2px);
+        }
+
+
+        /* =========================================================
+           CRECIMIENTO
+        ========================================================= */
+
         .plant.growing .stem {
-            height: 210px;
+            height: 250px;
         }
 
         .plant.growing .leaf {
@@ -620,17 +1025,29 @@
         }
 
         .plant.growing .leaf.left {
-            transform: rotate(-25deg) scale(1);
+            transform:
+                rotate(-25deg)
+                scale(1)
+                translateX(0);
         }
 
         .plant.growing .leaf.right {
-            transform: rotate(25deg) scale(1) scaleX(-1);
+            transform:
+                rotate(25deg)
+                scale(1)
+                scaleX(-1)
+                translateX(0);
         }
 
         .plant.growing .sunflower {
             opacity: 1;
-            transform: translateX(-50%) scale(1);
+
+            transform:
+                translateX(-50%)
+                scale(1)
+                rotate(-3deg);
         }
+
 
         /* =========================================================
            REGADERA
@@ -639,11 +1056,11 @@
         .watering-can {
             position: absolute;
 
-            left: 20%;
-            top: 45%;
+            left: 10%;
+            top: 42%;
 
-            width: 145px;
-            height: 100px;
+            width: 170px;
+            height: 120px;
 
             cursor: grab;
 
@@ -654,10 +1071,12 @@
 
             z-index: 30;
 
-            filter: drop-shadow(0 10px 10px rgba(100,50,20,.16));
+            filter:
+                drop-shadow(
+                    0 12px 9px rgba(80,40,20,.18)
+                );
 
             transition:
-                transform .15s ease,
                 filter .15s ease;
         }
 
@@ -669,58 +1088,145 @@
             cursor: grabbing;
 
             filter:
-                drop-shadow(0 18px 15px rgba(100,50,20,.2));
+                drop-shadow(
+                    0 20px 15px rgba(80,40,20,.25)
+                );
         }
 
         .can-body {
             position: absolute;
 
-            left: 25px;
-            top: 20px;
+            left: 24px;
+            top: 30px;
 
-            width: 82px;
-            height: 62px;
+            width: 91px;
+            height: 70px;
 
-            border-radius: 15px 15px 25px 25px;
+            border-radius:
+                16px
+                17px
+                25px
+                25px;
+
+            background:
+                linear-gradient(
+                    105deg,
+                    #9f2735 0%,
+                    #e3484c 27%,
+                    #ef5b55 50%,
+                    #c72d3b 78%,
+                    #8f2431 100%
+                );
+
+            box-shadow:
+                inset 7px 4px 8px rgba(255,255,255,.17),
+                inset -8px -7px 10px rgba(80,10,20,.20);
+        }
+
+        .can-body::before {
+            content: "";
+
+            position: absolute;
+
+            left: 12px;
+            top: -7px;
+
+            width: 67px;
+            height: 20px;
+
+            border-radius: 50%;
 
             background:
                 linear-gradient(
                     to bottom,
-                    #ed5552,
-                    #c92f3b
+                    #ed5c59,
+                    #a92534
                 );
+
+            box-shadow:
+                inset 0 4px 4px rgba(255,255,255,.15);
         }
 
         .can-handle {
             position: absolute;
 
-            left: 37px;
-            top: 0;
+            left: 40px;
+            top: 3px;
 
-            width: 65px;
-            height: 52px;
+            width: 73px;
+            height: 64px;
 
-            border: 9px solid #b92e39;
+            border:
+                11px solid #a92735;
+
             border-bottom: 0;
 
-            border-radius: 40px 40px 0 0;
+            border-radius:
+                50px
+                50px
+                0
+                0;
+
+            transform:
+                rotate(2deg);
+
+            box-shadow:
+                inset 4px 3px 5px rgba(255,255,255,.08);
+        }
+
+        .can-handle::after {
+            content: "";
+
+            position: absolute;
+
+            left: 6px;
+            top: 7px;
+
+            width: 45px;
+            height: 38px;
+
+            border-radius:
+                30px
+                30px
+                0
+                0;
+
+            border:
+                4px solid rgba(255,255,255,.08);
+
+            border-bottom: 0;
         }
 
         .can-spout {
             position: absolute;
 
-            left: 87px;
-            top: 35px;
+            left: 91px;
+            top: 51px;
 
-            width: 65px;
-            height: 18px;
+            width: 75px;
+            height: 19px;
 
-            background: #c8323c;
+            background:
+                linear-gradient(
+                    to bottom,
+                    #db3d45,
+                    #a92534
+                );
 
-            transform: rotate(-18deg);
-            transform-origin: left center;
+            transform:
+                rotate(-17deg);
 
-            border-radius: 0 10px 10px 0;
+            transform-origin:
+                left center;
+
+            border-radius:
+                2px
+                12px
+                12px
+                2px;
+
+            box-shadow:
+                inset 0 4px 4px rgba(255,255,255,.1);
         }
 
         .can-spout::after {
@@ -728,69 +1234,193 @@
 
             position: absolute;
 
-            right: -12px;
+            right: -10px;
             top: -5px;
 
-            width: 20px;
-            height: 28px;
+            width: 22px;
+            height: 29px;
 
-            background: #ad2833;
+            background: #9e2633;
 
-            transform: rotate(25deg);
+            transform:
+                rotate(23deg);
 
-            border-radius: 5px;
+            border-radius:
+                5px
+                8px
+                8px
+                5px;
+
+            box-shadow:
+                inset 3px 2px 3px rgba(255,255,255,.08);
+        }
+
+
+        /* =========================================================
+           AGUA
+        ========================================================= */
+
+        .water-stream {
+            position: absolute;
+
+            left: 154px;
+            top: 72px;
+
+            width: 7px;
+            height: 0;
+
+            opacity: 0;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(105,210,240,.95),
+                    rgba(70,170,215,.75)
+                );
+
+            border-radius: 999px;
+
+            transform:
+                rotate(13deg);
+
+            transform-origin:
+                top center;
+
+            z-index: 40;
+
+            transition:
+                height .25s ease,
+                opacity .2s ease;
         }
 
         .water-drop {
             position: absolute;
 
-            left: 146px;
-            top: 67px;
+            width: 8px;
+            height: 13px;
 
-            width: 7px;
-            height: 11px;
+            border-radius:
+                60%
+                60%
+                60%
+                0;
 
-            border-radius: 60% 60% 60% 0;
+            background:
+                linear-gradient(
+                    135deg,
+                    #9ae7fa,
+                    #48b9df
+                );
 
-            background: #67c9e8;
-
-            transform: rotate(-45deg);
+            transform:
+                rotate(-45deg);
 
             opacity: 0;
 
-            animation: drop .8s linear infinite;
+            z-index: 41;
         }
 
-        .water-drop:nth-child(2) {
-            animation-delay: .25s;
-        }
+        .watering-can.pouring .water-stream {
+            height: 115px;
 
-        .water-drop:nth-child(3) {
-            animation-delay: .5s;
+            opacity: 1;
         }
 
         .watering-can.pouring .water-drop {
             opacity: 1;
+
+            animation:
+                fallingWater
+                .75s
+                linear
+                infinite;
         }
 
-        @keyframes drop {
+        .watering-can.pouring .water-drop:nth-child(2) {
+            animation-delay: .18s;
+        }
+
+        .watering-can.pouring .water-drop:nth-child(3) {
+            animation-delay: .36s;
+        }
+
+        .watering-can.pouring::after {
+            content: "";
+
+            position: absolute;
+
+            left: 150px;
+            top: 174px;
+
+            width: 10px;
+            height: 10px;
+
+            border-radius: 50%;
+
+            background: #66cbe8;
+
+            box-shadow:
+                -20px 4px 0 -2px #7bd5ed,
+                17px 2px 0 -3px #58bfdf;
+
+            opacity: 0;
+
+            animation:
+                splashWater
+                .55s
+                ease-out
+                infinite;
+        }
+
+        @keyframes fallingWater {
+
             0% {
-                transform: translateY(0) rotate(-45deg);
+                transform:
+                    translateY(0)
+                    rotate(-45deg);
+
                 opacity: 0;
             }
 
-            20% {
+            15% {
                 opacity: 1;
             }
 
             100% {
-                transform: translateY(55px) rotate(-45deg);
+                transform:
+                    translateY(100px)
+                    rotate(-45deg);
+
                 opacity: 0;
             }
         }
 
+        @keyframes splashWater {
+
+            0% {
+                transform:
+                    translateY(-10px)
+                    scale(.5);
+
+                opacity: 0;
+            }
+
+            35% {
+                opacity: 1;
+            }
+
+            100% {
+                transform:
+                    translateY(12px)
+                    scale(1.3);
+
+                opacity: 0;
+            }
+        }
+
+
         /* =========================================================
-           AUDIO
+           MÚSICA
         ========================================================= */
 
         .music-control {
@@ -807,20 +1437,24 @@
             border: none;
             border-radius: 50%;
 
-            background: rgba(255,255,255,.82);
+            background:
+                rgba(255,255,255,.82);
 
-            box-shadow: 0 5px 18px rgba(90,50,20,.15);
+            box-shadow:
+                0 5px 18px rgba(90,50,20,.15);
 
             cursor: pointer;
 
             font-size: 19px;
 
-            transition: transform .2s ease;
+            transition:
+                transform .2s ease;
         }
 
         .music-control:hover {
             transform: scale(1.08);
         }
+
 
         /* =========================================================
            PÉTALOS
@@ -838,10 +1472,13 @@
             font-size: 20px;
 
             animation:
-                petalFall linear forwards;
+                petalFall
+                linear
+                forwards;
         }
 
         @keyframes petalFall {
+
             0% {
                 transform:
                     translateY(-40px)
@@ -865,21 +1502,28 @@
             }
         }
 
+
         /* =========================================================
            FINAL
         ========================================================= */
 
         .final-container {
             width: min(800px, 92%);
-            text-align: center;
 
-            padding: 70px 10px 90px;
+            padding:
+                70px
+                10px
+                90px;
+
+            text-align: center;
         }
 
         .final-image-wrapper {
             width: min(400px, 85vw);
 
-            margin: 0 auto 30px;
+            margin:
+                0 auto
+                30px;
 
             padding: 10px;
 
@@ -890,32 +1534,47 @@
             box-shadow:
                 0 15px 45px rgba(100,60,20,.18);
 
-            transform: rotate(-1deg);
+            transform:
+                rotate(-1deg);
         }
+
+        /*
+         * FOTO FINAL COMPLETA
+         */
 
         .final-image-wrapper img {
             display: block;
 
             width: 100%;
-            aspect-ratio: 4 / 5;
+            height: auto;
 
-            object-fit: cover;
+            max-height: 650px;
+
+            object-fit: contain;
 
             border-radius: 12px;
+
+            background: #f8f1df;
         }
 
         .final h1 {
-            font-size: clamp(35px, 6vw, 58px);
+            margin-bottom: 25px;
+
             color: #d94b56;
 
-            margin-bottom: 25px;
+            font-size: clamp(35px, 6vw, 58px);
         }
 
         .final-message {
-            font-size: clamp(18px, 3vw, 25px);
-            line-height: 1.8;
-
             color: #674332;
+
+            font-size: clamp(18px, 3vw, 25px);
+
+            line-height: 1.8;
+        }
+
+        .final-message p {
+            margin-bottom: 8px;
         }
 
         .final-message .signature {
@@ -923,21 +1582,24 @@
 
             margin-top: 25px;
 
-            font-size: clamp(23px, 4vw, 32px);
-
             color: #d64c57;
+
+            font-size: clamp(23px, 4vw, 32px);
 
             font-style: italic;
         }
 
+
         /* =========================================================
-           RESPONSIVE
+           RESPONSIVE — TABLET
         ========================================================= */
 
         @media (max-width: 800px) {
 
             .photo-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns:
+                    repeat(2, 1fr);
+
                 gap: 15px;
             }
 
@@ -965,14 +1627,22 @@
             .watering-can {
                 left: 7%;
                 top: 43%;
+
                 transform: scale(.85);
             }
         }
 
+
+        /* =========================================================
+           RESPONSIVE — CELULAR
+        ========================================================= */
+
         @media (max-width: 520px) {
 
             .welcome-content {
-                padding: 20px 12px;
+                padding:
+                    20px
+                    12px;
             }
 
             .welcome h1 {
@@ -985,35 +1655,49 @@
 
             .welcome-message {
                 font-size: 17px;
+
                 line-height: 1.5;
             }
 
             .main-button {
-                padding: 14px 22px;
+                padding:
+                    14px
+                    22px;
+
                 font-size: 14px;
             }
 
             .photo-grid {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns:
+                    repeat(2, 1fr);
+
                 gap: 11px;
             }
 
             .photo-card {
                 padding: 6px;
+
                 border-radius: 13px;
             }
 
             .photo-card img {
                 border-radius: 9px;
+
+                max-height: none;
             }
 
             .photo-caption {
+                padding:
+                    8px
+                    3px
+                    5px;
+
                 font-size: 12px;
-                padding: 8px 3px 5px;
             }
 
             .garden-container {
                 width: 96%;
+
                 padding-bottom: 50px;
             }
 
@@ -1028,16 +1712,23 @@
             .watering-can {
                 left: 2%;
                 top: 45%;
-                transform: scale(.7);
+
+                transform: scale(.70);
             }
 
             .pot {
-                transform: translateX(-50%) scale(.9);
+                transform:
+                    translateX(-50%)
+                    scale(.9);
             }
 
             .plant {
-                transform: translateX(-50%) scale(.85);
-                transform-origin: bottom center;
+                transform:
+                    translateX(-50%)
+                    scale(.85);
+
+                transform-origin:
+                    bottom center;
             }
 
             .final-container {
@@ -1047,7 +1738,16 @@
             .final-image-wrapper {
                 width: min(340px, 88vw);
             }
+
+            .final-image-wrapper img {
+                max-height: none;
+            }
         }
+
+
+        /* =========================================================
+           PANTALLAS MUY BAJAS
+        ========================================================= */
 
         @media (max-height: 650px) {
 
@@ -1063,19 +1763,35 @@
                 height: 330px;
             }
         }
+
     </style>
 </head>
 
+
 <body>
 
+
     <!-- =========================================================
-         AUDIO
+         MÚSICA
     ========================================================= -->
 
-    <audio id="backgroundMusic" loop preload="auto">
-        <source src="primavera.mp3" type="audio/mpeg">
+    <audio
+        id="backgroundMusic"
+        loop
+        preload="auto"
+    >
+        <source
+            src="primavera.mp3"
+            type="audio/mpeg"
+        >
+
         Tu navegador no puede reproducir este audio.
     </audio>
+
+
+    <!-- =========================================================
+         BOTÓN DE MÚSICA
+    ========================================================= -->
 
     <button
         id="musicControl"
@@ -1090,12 +1806,14 @@
 
 
     <!-- =========================================================
-         PANTALLA 1 — BIENVENIDA
+         PANTALLA 1
     ========================================================= -->
 
-    <section id="welcome" class="screen welcome active">
+    <section
+        id="welcome"
+        class="screen welcome active"
+    >
 
-        <!-- Flores -->
         <div class="flower f1"></div>
         <div class="flower f2"></div>
         <div class="flower f3"></div>
@@ -1105,19 +1823,23 @@
         <div class="flower f7"></div>
         <div class="flower f8"></div>
 
+
         <div class="welcome-content">
 
             <div class="small-title">
                 🌷 Un pequeño regalo para vos 🌷
             </div>
 
+
             <h1>
                 Feliz primavera
             </h1>
 
+
             <h2>
                 mi flor pequeña
             </h2>
+
 
             <div class="welcome-message">
 
@@ -1137,6 +1859,7 @@
 
             </div>
 
+
             <button
                 id="enterGarden"
                 class="main-button"
@@ -1154,13 +1877,17 @@
          PANTALLA 2 — JARDÍN
     ========================================================= -->
 
-    <section id="garden" class="screen garden">
+    <section
+        id="garden"
+        class="screen garden"
+    >
 
         <div class="garden-container">
 
             <h1 class="garden-title">
                 Nuestro jardín 🌼
             </h1>
+
 
             <p class="garden-subtitle">
                 Algunos de mis momentos favoritos con vos.
@@ -1169,10 +1896,12 @@
 
             <div class="photo-grid">
 
+
                 <article
                     class="photo-card"
                     style="--rotation:-2deg;"
                 >
+
                     <img
                         src="foto1.jpg"
                         alt="Un recuerdo juntos"
@@ -1182,6 +1911,7 @@
                     <div class="photo-caption">
                         Un recuerdo que guardo con mucho cariño. ❤️
                     </div>
+
                 </article>
 
 
@@ -1189,6 +1919,7 @@
                     class="photo-card"
                     style="--rotation:2deg;"
                 >
+
                     <img
                         src="foto2.jpg"
                         alt="Un recuerdo juntos"
@@ -1198,6 +1929,7 @@
                     <div class="photo-caption">
                         Otro pedacito de nosotros. 🌷
                     </div>
+
                 </article>
 
 
@@ -1205,6 +1937,7 @@
                     class="photo-card"
                     style="--rotation:-1deg;"
                 >
+
                     <img
                         src="foto3.jpg"
                         alt="Un recuerdo juntos"
@@ -1214,6 +1947,7 @@
                     <div class="photo-caption">
                         De esos momentos que quiero recordar siempre. 🌼
                     </div>
+
                 </article>
 
 
@@ -1221,6 +1955,7 @@
                     class="photo-card"
                     style="--rotation:2deg;"
                 >
+
                     <img
                         src="foto4.jpg"
                         alt="Un recuerdo juntos"
@@ -1230,6 +1965,7 @@
                     <div class="photo-caption">
                         Porque cada momento con vos es especial. 💗
                     </div>
+
                 </article>
 
 
@@ -1237,6 +1973,7 @@
                     class="photo-card"
                     style="--rotation:-2deg;"
                 >
+
                     <img
                         src="foto5.jpg"
                         alt="Un recuerdo juntos"
@@ -1246,6 +1983,7 @@
                     <div class="photo-caption">
                         Otro recuerdo de tantos que amo. 🌸
                     </div>
+
                 </article>
 
 
@@ -1253,6 +1991,7 @@
                     class="photo-card"
                     style="--rotation:1deg;"
                 >
+
                     <img
                         src="foto6.jpg"
                         alt="Un recuerdo juntos"
@@ -1262,7 +2001,9 @@
                     <div class="photo-caption">
                         Y los que todavía nos quedan por vivir. ❤️
                     </div>
+
                 </article>
+
 
             </div>
 
@@ -1281,22 +2022,28 @@
 
 
     <!-- =========================================================
-         PANTALLA 3 — REGAR
+         PANTALLA 3 — REGADERA
     ========================================================= -->
 
-    <section id="watering" class="screen watering">
+    <section
+        id="watering"
+        class="screen watering"
+    >
 
         <div class="watering-container">
+
 
             <h1 class="watering-title">
                 Algo está por crecer 🌱
             </h1>
+
 
             <p class="watering-text">
                 Hay algo esperando que lo cuides.
                 <br>
                 Regá la maceta.
             </p>
+
 
             <div class="drag-hint">
                 💧 Arrastrá la regadera hasta la maceta
@@ -1308,7 +2055,11 @@
                 class="watering-area"
             >
 
-                <!-- Planta -->
+
+                <!-- =================================================
+                     PLANTA
+                ================================================= -->
+
                 <div
                     id="plant"
                     class="plant"
@@ -1321,19 +2072,29 @@
                     <div class="leaf right"></div>
 
                     <div class="sunflower">
+
                         <div class="sunflower-petals"></div>
+
                     </div>
 
                 </div>
 
 
-                <!-- Maceta -->
+                <!-- =================================================
+                     MACETA
+                ================================================= -->
+
                 <div class="pot">
+
                     <div class="soil"></div>
+
                 </div>
 
 
-                <!-- Regadera -->
+                <!-- =================================================
+                     REGADERA
+                ================================================= -->
+
                 <div
                     id="wateringCan"
                     class="watering-can"
@@ -1342,14 +2103,21 @@
                 >
 
                     <div class="can-handle"></div>
+
                     <div class="can-body"></div>
+
                     <div class="can-spout"></div>
 
+                    <div class="water-stream"></div>
+
                     <div class="water-drop"></div>
+
                     <div class="water-drop"></div>
+
                     <div class="water-drop"></div>
 
                 </div>
+
 
             </div>
 
@@ -1362,14 +2130,20 @@
          PANTALLA 4 — FINAL
     ========================================================= -->
 
-    <section id="final" class="screen final">
+    <section
+        id="final"
+        class="screen final"
+    >
 
         <div class="final-container">
 
+
             <div class="final-image-wrapper">
 
+                <!-- FOTO FINAL = FOTO 6 -->
+
                 <img
-                    src="foto1.jpg"
+                    src="foto6.jpg"
                     alt="Nosotros"
                 >
 
@@ -1404,11 +2178,13 @@
                     junto a vos durante muchísimo tiempo.
                 </p>
 
+
                 <span class="signature">
-                    Feliz primavera mi amor. ❤️🌼
+                    Feliz primavera, Fiore. ❤️🌼
                 </span>
 
             </div>
+
 
         </div>
 
@@ -1421,644 +2197,843 @@
 
     <script>
 
-        document.addEventListener("DOMContentLoaded", () => {
-
-            /* =====================================================
-               ELEMENTOS
-            ===================================================== */
-
-            const welcome = document.getElementById("welcome");
-            const garden = document.getElementById("garden");
-            const watering = document.getElementById("watering");
-            const finalScreen = document.getElementById("final");
-
-            const enterGarden =
-                document.getElementById("enterGarden");
-
-            const continueToWatering =
-                document.getElementById("continueToWatering");
-
-            const wateringCan =
-                document.getElementById("wateringCan");
-
-            const wateringArea =
-                document.getElementById("wateringArea");
-
-            const plant =
-                document.getElementById("plant");
-
-            const music =
-                document.getElementById("backgroundMusic");
-
-            const musicControl =
-                document.getElementById("musicControl");
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
 
 
-            /* =====================================================
-               CAMBIO DE PANTALLA
-            ===================================================== */
+                /* =================================================
+                   ELEMENTOS
+                ================================================= */
 
-            function showScreen(screen) {
+                const welcome =
+                    document.getElementById("welcome");
 
-                document
-                    .querySelectorAll(".screen")
-                    .forEach(item => {
-                        item.classList.remove("active");
-                    });
+                const garden =
+                    document.getElementById("garden");
 
-                screen.classList.add("active");
+                const watering =
+                    document.getElementById("watering");
 
-                window.scrollTo(0, 0);
-            }
+                const finalScreen =
+                    document.getElementById("final");
 
 
-            /* =====================================================
-               MÚSICA
-            ===================================================== */
+                const enterGarden =
+                    document.getElementById("enterGarden");
 
-            let musicStarted = false;
-            let musicMuted = false;
+                const continueToWatering =
+                    document.getElementById(
+                        "continueToWatering"
+                    );
 
-            music.volume = 0;
 
-            async function startMusic() {
+                const wateringCan =
+                    document.getElementById(
+                        "wateringCan"
+                    );
 
-                if (musicStarted) {
-                    return;
-                }
+                const wateringArea =
+                    document.getElementById(
+                        "wateringArea"
+                    );
 
-                try {
+                const plant =
+                    document.getElementById(
+                        "plant"
+                    );
 
-                    musicStarted = true;
 
-                    await music.play();
+                const music =
+                    document.getElementById(
+                        "backgroundMusic"
+                    );
 
-                    musicControl.style.display = "block";
-                    musicControl.textContent = "🔊";
+                const musicControl =
+                    document.getElementById(
+                        "musicControl"
+                    );
 
-                    let volume = 0;
 
-                    const fadeInterval =
-                        setInterval(() => {
+                /* =================================================
+                   CAMBIO DE PANTALLA
+                ================================================= */
 
-                            if (volume < 0.45) {
+                function showScreen(screen) {
 
-                                volume += 0.025;
-
-                                if (volume > 0.45) {
-                                    volume = 0.45;
-                                }
-
-                                music.volume = volume;
-
-                            } else {
-
-                                clearInterval(fadeInterval);
-
+                    document
+                        .querySelectorAll(".screen")
+                        .forEach(
+                            item => {
+                                item.classList.remove(
+                                    "active"
+                                );
                             }
+                        );
 
-                        }, 100);
 
-                } catch (error) {
+                    screen.classList.add("active");
+
 
                     /*
-                     * Algunos navegadores pueden bloquear
-                     * el audio por configuración propia.
-                     * No detenemos la experiencia si sucede.
+                     * Reiniciamos el scroll de la pantalla
+                     * correspondiente.
                      */
 
-                    musicStarted = false;
-                    musicControl.style.display = "none";
-                }
-            }
+                    if (
+                        screen === garden ||
+                        screen === finalScreen
+                    ) {
 
+                        screen.scrollTop = 0;
 
-            musicControl.addEventListener("click", () => {
-
-                if (!musicStarted) {
-                    return;
-                }
-
-                if (musicMuted) {
-
-                    music.muted = false;
-                    musicControl.textContent = "🔊";
-                    musicMuted = false;
-
-                } else {
-
-                    music.muted = true;
-                    musicControl.textContent = "🔇";
-                    musicMuted = true;
+                    }
 
                 }
 
-            });
+
+                /* =================================================
+                   MÚSICA
+                ================================================= */
+
+                let musicStarted = false;
+
+                let musicMuted = false;
+
+                music.volume = 0;
 
 
-            /* =====================================================
-               ENTRAR AL JARDÍN
-            ===================================================== */
+                async function startMusic() {
 
-            enterGarden.addEventListener("click", async () => {
-
-                await startMusic();
-
-                showScreen(garden);
-
-            });
+                    if (musicStarted) {
+                        return;
+                    }
 
 
-            /* =====================================================
-               IR A REGAR
-            ===================================================== */
+                    try {
 
-            continueToWatering.addEventListener("click", () => {
+                        await music.play();
 
-                showScreen(watering);
+                        musicStarted = true;
 
-                resetWatering();
+                        musicControl.style.display =
+                            "block";
 
-            });
-
-
-            /* =====================================================
-               REGADERA
-            ===================================================== */
-
-            let isDragging = false;
-            let hasWatered = false;
-
-            let pointerOffsetX = 0;
-            let pointerOffsetY = 0;
+                        musicControl.textContent =
+                            "🔊";
 
 
-            function resetWatering() {
-
-                hasWatered = false;
-
-                plant.classList.remove("growing");
-
-                wateringCan.classList.remove("dragging");
-                wateringCan.classList.remove("pouring");
-
-                wateringCan.style.left = "";
-                wateringCan.style.top = "";
-
-                /*
-                 * Le damos un pequeño retraso para que el navegador
-                 * termine de aplicar la pantalla nueva.
-                 */
-
-                requestAnimationFrame(() => {
-                    placeCanInitialPosition();
-                });
-            }
+                        let volume = 0;
 
 
-            function placeCanInitialPosition() {
+                        const fadeInterval =
+                            setInterval(
+                                () => {
 
-                const areaRect =
-                    wateringArea.getBoundingClientRect();
+                                    if (
+                                        volume < .45
+                                    ) {
 
-                const canRect =
-                    wateringCan.getBoundingClientRect();
+                                        volume += .025;
 
-                const initialLeft =
-                    Math.max(
-                        10,
-                        areaRect.width * 0.08
+                                        if (
+                                            volume > .45
+                                        ) {
+                                            volume = .45;
+                                        }
+
+                                        music.volume =
+                                            volume;
+
+                                    } else {
+
+                                        clearInterval(
+                                            fadeInterval
+                                        );
+
+                                    }
+
+                                },
+                                100
+                            );
+
+
+                    } catch (error) {
+
+                        /*
+                         * Si el navegador bloquea el audio,
+                         * la página sigue funcionando.
+                         */
+
+                        musicStarted = false;
+
+                    }
+
+                }
+
+
+                musicControl.addEventListener(
+                    "click",
+                    () => {
+
+                        if (!musicStarted) {
+                            return;
+                        }
+
+
+                        if (musicMuted) {
+
+                            music.muted = false;
+
+                            musicControl.textContent =
+                                "🔊";
+
+                            musicMuted = false;
+
+                        } else {
+
+                            music.muted = true;
+
+                            musicControl.textContent =
+                                "🔇";
+
+                            musicMuted = true;
+
+                        }
+
+                    }
+                );
+
+
+                /* =================================================
+                   ENTRAR AL JARDÍN
+                ================================================= */
+
+                enterGarden.addEventListener(
+                    "click",
+                    async () => {
+
+                        await startMusic();
+
+                        showScreen(garden);
+
+                    }
+                );
+
+
+                /* =================================================
+                   IR A REGAR
+                ================================================= */
+
+                continueToWatering.addEventListener(
+                    "click",
+                    () => {
+
+                        showScreen(watering);
+
+                        resetWatering();
+
+                    }
+                );
+
+
+                /* =================================================
+                   REGADERA
+                ================================================= */
+
+                let isDragging = false;
+
+                let hasWatered = false;
+
+                let pointerOffsetX = 0;
+
+                let pointerOffsetY = 0;
+
+
+                function resetWatering() {
+
+                    hasWatered = false;
+
+                    isDragging = false;
+
+
+                    plant.classList.remove(
+                        "growing"
                     );
 
-                const initialTop =
-                    Math.max(
-                        30,
-                        areaRect.height * 0.38
+
+                    wateringCan.classList.remove(
+                        "dragging"
                     );
 
-                wateringCan.style.left =
-                    `${initialLeft}px`;
 
-                wateringCan.style.top =
-                    `${initialTop}px`;
-            }
+                    wateringCan.classList.remove(
+                        "pouring"
+                    );
 
 
-            /*
-             * Calculamos la posición inicial cuando
-             * la ventana está lista.
-             */
-
-            setTimeout(() => {
-                placeCanInitialPosition();
-            }, 100);
+                    wateringCan.style.transform =
+                        "";
 
 
-            /* =====================================================
-               POINTER DOWN
-            ===================================================== */
+                    wateringCan.style.left =
+                        "";
 
-            wateringCan.addEventListener(
-                "pointerdown",
-                (event) => {
+                    wateringCan.style.top =
+                        "";
+
+
+                    requestAnimationFrame(
+                        () => {
+                            placeCanInitialPosition();
+                        }
+                    );
+
+                }
+
+
+                function placeCanInitialPosition() {
+
+                    const areaRect =
+                        wateringArea.getBoundingClientRect();
+
+
+                    const initialLeft =
+                        Math.max(
+                            10,
+                            areaRect.width * .08
+                        );
+
+
+                    const initialTop =
+                        Math.max(
+                            30,
+                            areaRect.height * .38
+                        );
+
+
+                    wateringCan.style.left =
+                        `${initialLeft}px`;
+
+
+                    wateringCan.style.top =
+                        `${initialTop}px`;
+
+                }
+
+
+                setTimeout(
+                    () => {
+                        placeCanInitialPosition();
+                    },
+                    150
+                );
+
+
+                /* =================================================
+                   POINTER DOWN
+                ================================================= */
+
+                wateringCan.addEventListener(
+                    "pointerdown",
+                    event => {
+
+                        if (hasWatered) {
+                            return;
+                        }
+
+
+                        event.preventDefault();
+
+
+                        isDragging = true;
+
+
+                        wateringCan.classList.add(
+                            "dragging"
+                        );
+
+
+                        try {
+
+                            wateringCan.setPointerCapture(
+                                event.pointerId
+                            );
+
+                        } catch (error) {}
+
+
+                        const canRect =
+                            wateringCan.getBoundingClientRect();
+
+
+                        pointerOffsetX =
+                            event.clientX -
+                            canRect.left;
+
+
+                        pointerOffsetY =
+                            event.clientY -
+                            canRect.top;
+
+
+                        wateringCan.style.transform =
+                            "scale(1.02) rotate(-3deg)";
+
+                    }
+                );
+
+
+                /* =================================================
+                   POINTER MOVE
+                ================================================= */
+
+                wateringCan.addEventListener(
+                    "pointermove",
+                    event => {
+
+                        if (
+                            !isDragging ||
+                            hasWatered
+                        ) {
+                            return;
+                        }
+
+
+                        event.preventDefault();
+
+
+                        const areaRect =
+                            wateringArea.getBoundingClientRect();
+
+
+                        let newLeft =
+                            event.clientX -
+                            areaRect.left -
+                            pointerOffsetX;
+
+
+                        let newTop =
+                            event.clientY -
+                            areaRect.top -
+                            pointerOffsetY;
+
+
+                        const canWidth =
+                            wateringCan.offsetWidth;
+
+
+                        const canHeight =
+                            wateringCan.offsetHeight;
+
+
+                        const maxLeft =
+                            areaRect.width -
+                            canWidth;
+
+
+                        const maxTop =
+                            areaRect.height -
+                            canHeight;
+
+
+                        newLeft =
+                            Math.max(
+                                -10,
+                                Math.min(
+                                    newLeft,
+                                    maxLeft + 10
+                                )
+                            );
+
+
+                        newTop =
+                            Math.max(
+                                -10,
+                                Math.min(
+                                    newTop,
+                                    maxTop + 10
+                                )
+                            );
+
+
+                        wateringCan.style.left =
+                            `${newLeft}px`;
+
+
+                        wateringCan.style.top =
+                            `${newTop}px`;
+
+
+                        checkWateringPosition();
+
+                    }
+                );
+
+
+                /* =================================================
+                   SOLTAR REGADERA
+                ================================================= */
+
+                function releasePointer(event) {
+
+                    if (!isDragging) {
+                        return;
+                    }
+
+
+                    isDragging = false;
+
+
+                    wateringCan.classList.remove(
+                        "dragging"
+                    );
+
+
+                    wateringCan.style.transform =
+                        "";
+
+
+                    try {
+
+                        wateringCan.releasePointerCapture(
+                            event.pointerId
+                        );
+
+                    } catch (error) {}
+
+
+                    checkWateringPosition();
+
+                }
+
+
+                wateringCan.addEventListener(
+                    "pointerup",
+                    releasePointer
+                );
+
+
+                wateringCan.addEventListener(
+                    "pointercancel",
+                    releasePointer
+                );
+
+
+                /* =================================================
+                   COMPROBAR MACETA
+                ================================================= */
+
+                function checkWateringPosition() {
 
                     if (hasWatered) {
                         return;
                     }
 
-                    event.preventDefault();
-
-                    isDragging = true;
-
-                    wateringCan.classList.add("dragging");
-
-                    /*
-                     * Capturamos el puntero para que el elemento
-                     * siga recibiendo movimiento aunque salga
-                     * momentáneamente de su área.
-                     */
-
-                    try {
-                        wateringCan.setPointerCapture(event.pointerId);
-                    } catch (error) {
-                        // No pasa nada si el navegador no lo soporta.
-                    }
 
                     const canRect =
                         wateringCan.getBoundingClientRect();
 
-                    pointerOffsetX =
-                        event.clientX - canRect.left;
 
-                    pointerOffsetY =
-                        event.clientY - canRect.top;
+                    const pot =
+                        document.querySelector(
+                            ".pot"
+                        );
 
-                    wateringCan.style.transform =
-                        "scale(1.02) rotate(-3deg)";
+
+                    const potRect =
+                        pot.getBoundingClientRect();
+
+
+                    const canCenterX =
+                        canRect.left +
+                        canRect.width / 2;
+
+
+                    const canCenterY =
+                        canRect.top +
+                        canRect.height / 2;
+
+
+                    const padding = 65;
+
+
+                    const isInside =
+
+                        canCenterX >
+                            potRect.left -
+                            padding &&
+
+                        canCenterX <
+                            potRect.right +
+                            padding &&
+
+                        canCenterY >
+                            potRect.top -
+                            padding &&
+
+                        canCenterY <
+                            potRect.bottom +
+                            padding;
+
+
+                    if (isInside) {
+
+                        waterPlant();
+
+                    }
+
                 }
-            );
 
 
-            /* =====================================================
-               POINTER MOVE
-            ===================================================== */
+                /* =================================================
+                   REGAR
+                ================================================= */
 
-            wateringCan.addEventListener(
-                "pointermove",
-                (event) => {
+                function waterPlant() {
 
-                    if (!isDragging || hasWatered) {
+                    if (hasWatered) {
                         return;
                     }
 
-                    event.preventDefault();
+
+                    hasWatered = true;
+
+                    isDragging = false;
+
+
+                    wateringCan.classList.add(
+                        "pouring"
+                    );
+
+
+                    wateringCan.classList.remove(
+                        "dragging"
+                    );
+
+
+                    const pot =
+                        document.querySelector(
+                            ".pot"
+                        );
+
+
+                    const potRect =
+                        pot.getBoundingClientRect();
+
 
                     const areaRect =
                         wateringArea.getBoundingClientRect();
 
-                    let newLeft =
-                        event.clientX -
-                        areaRect.left -
-                        pointerOffsetX;
 
-                    let newTop =
-                        event.clientY -
+                    const newLeft =
+                        potRect.left -
+                        areaRect.left +
+                        (potRect.width / 2) -
+                        (wateringCan.offsetWidth / 2);
+
+
+                    const newTop =
+                        potRect.top -
                         areaRect.top -
-                        pointerOffsetY;
-
-
-                    /*
-                     * Evitamos que la regadera salga
-                     * completamente del área.
-                     */
-
-                    const canWidth =
-                        wateringCan.offsetWidth;
-
-                    const canHeight =
-                        wateringCan.offsetHeight;
-
-                    const maxLeft =
-                        areaRect.width - canWidth;
-
-                    const maxTop =
-                        areaRect.height - canHeight;
-
-
-                    newLeft =
-                        Math.max(
-                            -10,
-                            Math.min(newLeft, maxLeft + 10)
-                        );
-
-                    newTop =
-                        Math.max(
-                            -10,
-                            Math.min(newTop, maxTop + 10)
-                        );
+                        72;
 
 
                     wateringCan.style.left =
                         `${newLeft}px`;
 
+
                     wateringCan.style.top =
                         `${newTop}px`;
 
 
-                    checkWateringPosition();
-                }
-            );
+                    wateringCan.style.transform =
+                        "rotate(-18deg)";
 
 
-            /* =====================================================
-               POINTER UP
-            ===================================================== */
+                    /*
+                     * Dejamos que el agua caiga un momento
+                     * antes de hacer crecer la planta.
+                     */
 
-            function releasePointer(event) {
+                    setTimeout(
+                        () => {
 
-                if (!isDragging) {
-                    return;
-                }
+                            plant.classList.add(
+                                "growing"
+                            );
 
-                isDragging = false;
+                            createPetals();
 
-                wateringCan.classList.remove("dragging");
-
-                wateringCan.style.transform = "";
-
-                try {
-                    wateringCan.releasePointerCapture(event.pointerId);
-                } catch (error) {
-                    // No pasa nada.
-                }
-
-                checkWateringPosition();
-            }
-
-
-            wateringCan.addEventListener(
-                "pointerup",
-                releasePointer
-            );
-
-            wateringCan.addEventListener(
-                "pointercancel",
-                releasePointer
-            );
-
-
-            /* =====================================================
-               COMPROBAR SI LLEGÓ A LA MACETA
-            ===================================================== */
-
-            function checkWateringPosition() {
-
-                if (hasWatered) {
-                    return;
-                }
-
-                const canRect =
-                    wateringCan.getBoundingClientRect();
-
-                const pot =
-                    document.querySelector(".pot");
-
-                const potRect =
-                    pot.getBoundingClientRect();
-
-
-                /*
-                 * Usamos el centro de la regadera.
-                 * Es más fácil para el usuario en celular.
-                 */
-
-                const canCenterX =
-                    canRect.left +
-                    canRect.width / 2;
-
-                const canCenterY =
-                    canRect.top +
-                    canRect.height / 2;
-
-
-                /*
-                 * Área ampliada alrededor de la maceta.
-                 */
-
-                const padding = 55;
-
-                const isInside =
-                    canCenterX >
-                        potRect.left - padding &&
-
-                    canCenterX <
-                        potRect.right + padding &&
-
-                    canCenterY >
-                        potRect.top - padding &&
-
-                    canCenterY <
-                        potRect.bottom + padding;
-
-
-                if (isInside) {
-                    waterPlant();
-                }
-            }
-
-
-            /* =====================================================
-               REGAR
-            ===================================================== */
-
-            function waterPlant() {
-
-                if (hasWatered) {
-                    return;
-                }
-
-                hasWatered = true;
-
-                isDragging = false;
-
-                wateringCan.classList.add("pouring");
-                wateringCan.classList.remove("dragging");
-
-                /*
-                 * La regadera queda sobre la maceta
-                 * durante un momento.
-                 */
-
-                const pot =
-                    document.querySelector(".pot");
-
-                const potRect =
-                    pot.getBoundingClientRect();
-
-                const areaRect =
-                    wateringArea.getBoundingClientRect();
-
-
-                const newLeft =
-                    potRect.left -
-                    areaRect.left +
-                    (potRect.width / 2) -
-                    (wateringCan.offsetWidth / 2);
-
-
-                const newTop =
-                    potRect.top -
-                    areaRect.top -
-                    75;
-
-
-                wateringCan.style.left =
-                    `${newLeft}px`;
-
-                wateringCan.style.top =
-                    `${newTop}px`;
-
-                wateringCan.style.transform =
-                    "rotate(-18deg)";
-
-
-                /*
-                 * Después empieza a crecer la planta.
-                 */
-
-                setTimeout(() => {
-
-                    plant.classList.add("growing");
-
-                    createPetals();
-
-                }, 900);
-
-
-                /*
-                 * Mostramos la pantalla final
-                 * cuando terminó de crecer.
-                 */
-
-                setTimeout(() => {
-
-                    showScreen(finalScreen);
-
-                    createPetals();
-
-                }, 5700);
-
-            }
-
-
-            /* =====================================================
-               PÉTALOS
-            ===================================================== */
-
-            function createPetals() {
-
-                const amount = 24;
-
-                for (let i = 0; i < amount; i++) {
-
-                    const petal =
-                        document.createElement("div");
-
-                    petal.className = "petal";
-
-                    const flowers = [
-                        "🌼",
-                        "🌸",
-                        "🌷"
-                    ];
-
-                    petal.textContent =
-                        flowers[
-                            Math.floor(
-                                Math.random() *
-                                flowers.length
-                            )
-                        ];
-
-                    petal.style.left =
-                        `${Math.random() * 100}vw`;
-
-                    petal.style.setProperty(
-                        "--drift",
-                        `${(Math.random() * 240) - 120}px`
+                        },
+                        900
                     );
 
-                    petal.style.animationDuration =
-                        `${4 + Math.random() * 4}s`;
 
-                    petal.style.animationDelay =
-                        `${Math.random() * 1.5}s`;
+                    /*
+                     * Después de la animación aparece
+                     * la pantalla final.
+                     */
 
-                    petal.style.fontSize =
-                        `${14 + Math.random() * 14}px`;
+                    setTimeout(
+                        () => {
+
+                            wateringCan.classList.remove(
+                                "pouring"
+                            );
 
 
-                    document.body.appendChild(petal);
+                            showScreen(
+                                finalScreen
+                            );
 
 
-                    setTimeout(() => {
+                            createPetals();
 
-                        petal.remove();
-
-                    }, 10000);
+                        },
+                        5700
+                    );
 
                 }
-            }
 
 
-            /* =====================================================
-               EVITAR ARRASTRE DE IMÁGENES
-            ===================================================== */
+                /* =================================================
+                   PÉTALOS
+                ================================================= */
 
-            document
-                .querySelectorAll("img")
-                .forEach(img => {
+                function createPetals() {
 
-                    img.addEventListener(
-                        "dragstart",
-                        event => {
-                            event.preventDefault();
+                    const amount = 24;
+
+
+                    for (
+                        let i = 0;
+                        i < amount;
+                        i++
+                    ) {
+
+                        const petal =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        petal.className =
+                            "petal";
+
+
+                        const flowers = [
+                            "🌼",
+                            "🌸",
+                            "🌷"
+                        ];
+
+
+                        petal.textContent =
+                            flowers[
+                                Math.floor(
+                                    Math.random() *
+                                    flowers.length
+                                )
+                            ];
+
+
+                        petal.style.left =
+                            `${Math.random() * 100}vw`;
+
+
+                        petal.style.setProperty(
+                            "--drift",
+                            `${(
+                                Math.random() * 240
+                            ) - 120}px`
+                        );
+
+
+                        petal.style.animationDuration =
+                            `${4 + Math.random() * 4}s`;
+
+
+                        petal.style.animationDelay =
+                            `${Math.random() * 1.5}s`;
+
+
+                        petal.style.fontSize =
+                            `${14 + Math.random() * 14}px`;
+
+
+                        document.body.appendChild(
+                            petal
+                        );
+
+
+                        setTimeout(
+                            () => {
+                                petal.remove();
+                            },
+                            10000
+                        );
+
+                    }
+
+                }
+
+
+                /* =================================================
+                   EVITAR ARRASTRE DE IMÁGENES
+                ================================================= */
+
+                document
+                    .querySelectorAll("img")
+                    .forEach(
+                        img => {
+
+                            img.addEventListener(
+                                "dragstart",
+                                event => {
+                                    event.preventDefault();
+                                }
+                            );
+
                         }
                     );
 
-                });
+
+                /* =================================================
+                   EVITAR MENÚ CONTEXTUAL
+                ================================================= */
+
+                wateringCan.addEventListener(
+                    "contextmenu",
+                    event => {
+                        event.preventDefault();
+                    }
+                );
 
 
-            /* =====================================================
-               EVITAR MENU CONTEXTUAL EN LA REGADERA
-            ===================================================== */
+                /* =================================================
+                   RESIZE
+                ================================================= */
 
-            wateringCan.addEventListener(
-                "contextmenu",
-                event => {
-                    event.preventDefault();
-                }
-            );
+                window.addEventListener(
+                    "resize",
+                    () => {
 
+                        if (
+                            !hasWatered &&
+                            !isDragging
+                        ) {
 
-            /* =====================================================
-               RESIZE
-            ===================================================== */
+                            placeCanInitialPosition();
 
-            window.addEventListener("resize", () => {
+                        }
 
-                /*
-                 * Si todavía no empezó a regar,
-                 * reposicionamos la regadera.
-                 */
+                    }
+                );
 
-                if (!hasWatered && !isDragging) {
-                    placeCanInitialPosition();
-                }
+            }
 
-            });
-
-        });
+        );
 
     </script>
 
