@@ -114,7 +114,9 @@ body {
   transform: translateY(-3px) scale(1.03);
 }
 
-/* flores decorativas */
+/* =========================================================
+   FLORES INICIALES
+========================================================= */
 
 .flower {
   position: absolute;
@@ -132,7 +134,7 @@ body {
     radial-gradient(circle at 50% 0%, #ffe96b 0 28%, transparent 29%),
     radial-gradient(circle at 100% 50%, #ffe96b 0 28%, transparent 29%),
     radial-gradient(circle at 50% 100%, #ffe96b 0 28%, transparent 29%),
-    radial-gradient(circle at 0% 50%, #ffe96b 0 28%, transparent 29%),
+    radial-gradient(circle at 0 50%, #ffe96b 0 28%, transparent 29%),
     radial-gradient(circle at 20% 20%, #ffe96b 0 25%, transparent 26%),
     radial-gradient(circle at 80% 20%, #ffe96b 0 25%, transparent 26%),
     radial-gradient(circle at 20% 80%, #ffe96b 0 25%, transparent 26%),
@@ -179,12 +181,16 @@ body {
   min-height: 100%;
   padding-top: 115px;
   padding-bottom: 80px;
+  position: relative;
+  z-index: 2;
 }
 
 .garden-title {
   text-align: center;
   padding: 0 20px;
   margin-bottom: 35px;
+  position: relative;
+  z-index: 5;
 }
 
 .garden-title h1 {
@@ -199,6 +205,107 @@ body {
 }
 
 /* =========================================================
+   FLORES DEL JARDÍN
+========================================================= */
+
+.garden-flowers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.garden-flower {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  filter: drop-shadow(0 5px 5px rgba(80,50,10,.13));
+}
+
+.garden-flower .petals {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse 25% 45% at 50% 2%, #fff8df 0 65%, transparent 67%),
+    radial-gradient(ellipse 25% 45% at 50% 98%, #fff8df 0 65%, transparent 67%),
+    radial-gradient(ellipse 45% 25% at 2% 50%, #fff8df 0 65%, transparent 67%),
+    radial-gradient(ellipse 45% 25% at 98% 50%, #fff8df 0 65%, transparent 67%),
+    radial-gradient(ellipse 26% 43% at 19% 19%, #fff8df 0 65%, transparent 67%),
+    radial-gradient(ellipse 26% 43% at 81% 19%, #fff8df 0 65%, transparent 67%),
+    radial-gradient(ellipse 26% 43% at 19% 81%, #fff8df 0 65%, transparent 67%),
+    radial-gradient(ellipse 26% 43% at 81% 81%, #fff8df 0 65%, transparent 67%);
+  transform: rotate(18deg);
+}
+
+.garden-flower .center {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, #ffd94a 0 12%, transparent 13%),
+    radial-gradient(circle at 70% 65%, #c98a00 0 12%, transparent 13%),
+    #e3a600;
+  box-shadow: 0 2px 4px rgba(80,50,10,.25);
+}
+
+/* diferentes posiciones */
+
+.gf1  { top: 125px; left: 2%; transform: rotate(-12deg) scale(.85); }
+.gf2  { top: 180px; right: 3%; transform: rotate(15deg) scale(1.05); }
+.gf3  { top: 480px; left: 1%; transform: rotate(8deg) scale(.7); }
+.gf4  { top: 520px; right: 2%; transform: rotate(-18deg) scale(.9); }
+.gf5  { top: 850px; left: 3%; transform: rotate(-5deg) scale(1.1); }
+.gf6  { top: 900px; right: 3%; transform: rotate(17deg) scale(.75); }
+.gf7  { top: 1200px; left: 1%; transform: rotate(-20deg) scale(.85); }
+.gf8  { top: 1280px; right: 2%; transform: rotate(12deg) scale(1.05); }
+.gf9  { top: 1580px; left: 4%; transform: rotate(10deg) scale(.7); }
+.gf10 { top: 1650px; right: 4%; transform: rotate(-15deg) scale(.9); }
+.gf11 { top: 1980px; left: 2%; transform: rotate(14deg) scale(.95); }
+.gf12 { top: 2050px; right: 3%; transform: rotate(-10deg) scale(.75); }
+
+/* flores pequeñas intermedias */
+
+.garden-flower.small {
+  width: 43px;
+  height: 43px;
+}
+
+.garden-flower.small .center {
+  width: 15px;
+  height: 15px;
+}
+
+.gf13 { top: 350px; left: 8%; transform: rotate(-20deg); }
+.gf14 { top: 370px; right: 8%; transform: rotate(20deg); }
+.gf15 { top: 700px; left: 7%; transform: rotate(12deg); }
+.gf16 { top: 730px; right: 7%; transform: rotate(-12deg); }
+.gf17 { top: 1050px; left: 8%; transform: rotate(-8deg); }
+.gf18 { top: 1090px; right: 7%; transform: rotate(15deg); }
+.gf19 { top: 1450px; left: 8%; transform: rotate(18deg); }
+.gf20 { top: 1480px; right: 8%; transform: rotate(-15deg); }
+
+/* tallitos */
+
+.garden-flower::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 55px;
+  background: linear-gradient(#5b963d, #78a94b);
+  left: 50%;
+  top: 65%;
+  transform-origin: top center;
+  z-index: -1;
+  border-radius: 5px;
+}
+
+/* =========================================================
    FOTOS
 ========================================================= */
 
@@ -209,6 +316,8 @@ body {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 30px;
   align-items: start;
+  position: relative;
+  z-index: 4;
 }
 
 .photo-card {
@@ -248,12 +357,14 @@ body {
 .photo-card:nth-child(6) { --rotation: 1deg; }
 
 /* =========================================================
-   BOTÓN HACIA EL RIEGO
+   BOTÓN
 ========================================================= */
 
 .next-area {
   text-align: center;
   margin-top: 55px;
+  position: relative;
+  z-index: 5;
 }
 
 .next-btn {
@@ -269,7 +380,7 @@ body {
 }
 
 /* =========================================================
-   PANTALLA DE RIEGO
+   RIEGO
 ========================================================= */
 
 #watering {
@@ -360,7 +471,7 @@ body {
 }
 
 /* =========================================================
-   PLANTA / GIRASOL
+   PLANTA
 ========================================================= */
 
 .plant {
@@ -413,8 +524,6 @@ body {
   transform: rotate(28deg) scaleX(-1);
 }
 
-/* GIRASOL */
-
 .sunflower {
   position: absolute;
   width: 150px;
@@ -425,7 +534,7 @@ body {
   filter: drop-shadow(0 8px 8px rgba(80,50,10,.18));
 }
 
-.petals {
+.sunflower .petals {
   position: absolute;
   inset: 0;
   border-radius: 50%;
@@ -479,8 +588,6 @@ body {
   cursor: grabbing;
 }
 
-/* cuerpo */
-
 .can-body {
   position: absolute;
   left: 25px;
@@ -508,8 +615,6 @@ body {
   transform: rotate(-10deg);
 }
 
-/* manija */
-
 .can-handle {
   position: absolute;
   left: 42px;
@@ -522,8 +627,6 @@ body {
   z-index: -1;
 }
 
-/* tapa */
-
 .can-top {
   position: absolute;
   left: 47px;
@@ -533,8 +636,6 @@ body {
   border-radius: 50%;
   background: #8f1422;
 }
-
-/* pico */
 
 .can-spout {
   position: absolute;
@@ -585,12 +686,8 @@ body {
 }
 
 @keyframes waterFlow {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 0 20px;
-  }
+  0% { background-position: 0 0; }
+  100% { background-position: 0 20px; }
 }
 
 .water-drop {
@@ -709,7 +806,7 @@ body {
 }
 
 /* =========================================================
-   PÉTALOS
+   LLUVIA DE PÉTALOS
 ========================================================= */
 
 .petal {
@@ -775,8 +872,8 @@ body {
     transform: scale(.7);
   }
 
-  /* IMPORTANTE:
-     en celular las fotos pasan a una columna */
+  /* FOTOS: UNA POR FILA */
+
   .photo-grid {
     width: 92vw;
     grid-template-columns: 1fr;
@@ -800,6 +897,50 @@ body {
     padding-top: 110px;
   }
 
+  /* Flores más pequeñas en móvil */
+
+  .garden-flower {
+    width: 45px;
+    height: 45px;
+  }
+
+  .garden-flower.small {
+    width: 34px;
+    height: 34px;
+  }
+
+  .garden-flower .center {
+    width: 16px;
+    height: 16px;
+  }
+
+  .garden-flower.small .center {
+    width: 11px;
+    height: 11px;
+  }
+
+  .gf1 { top: 120px; left: 0; }
+  .gf2 { top: 160px; right: 0; }
+  .gf3 { top: 520px; left: 0; }
+  .gf4 { top: 550px; right: 0; }
+  .gf5 { top: 900px; left: 0; }
+  .gf6 { top: 930px; right: 0; }
+  .gf7 { top: 1280px; left: 0; }
+  .gf8 { top: 1320px; right: 0; }
+  .gf9 { top: 1660px; left: 0; }
+  .gf10 { top: 1700px; right: 0; }
+  .gf11 { top: 2050px; left: 0; }
+  .gf12 { top: 2100px; right: 0; }
+
+  .gf13 { top: 340px; left: 5%; }
+  .gf14 { top: 350px; right: 5%; }
+  .gf15 { top: 700px; left: 5%; }
+  .gf16 { top: 730px; right: 5%; }
+  .gf17 { top: 1050px; left: 5%; }
+  .gf18 { top: 1080px; right: 5%; }
+  .gf19 { top: 1450px; left: 5%; }
+  .gf20 { top: 1480px; right: 5%; }
+
   .watering-title {
     top: 7%;
   }
@@ -815,10 +956,6 @@ body {
 
   .pot-area {
     bottom: 13%;
-  }
-
-  .plant {
-    transform-origin: bottom center;
   }
 
   .plant.grown {
@@ -918,10 +1055,123 @@ body {
 
   <div class="garden-inner">
 
-    <div class="garden-title">
-      <h1>Nuestro jardín 🌼</h1>
-      <p>Algunos de mis momentos favoritos con vos.</p>
+    <!-- MUCHAS FLORES DEL JARDÍN -->
+
+    <div class="garden-flowers">
+
+      <div class="garden-flower gf1">
+        <div class="petals"></div>
+        <div class="center"></div>
+      </div>
+
+      <div class="garden-flower gf2">
+        <div class="petals"></div>
+        <div class="center"></div>
+      </div>
+
+      <div class="garden-flower gf3">
+        <div class="petals"></div>
+        <div class="center"></div>
+      </div>
+
+      <div class="garden-flower gf4">
+        <div class="petals"></div>
+        <div class="center"></div>
+      </div>
+
+      <div class="garden-flower gf5">
+        <div class="petals"></div>
+        <div class="center"></div>
+      </div>
+
+      <div class="garden-flower gf6">
+        <div class="petals"></div>
+        <div class="center"></div>
+      </div>
+
+      <div class="garden-flower gf7">
+        <div class="petals"></div>
+        <div class="center"></div>
+      </div>
+
+      <div class="garden-flower gf8">
+        <div class="petals"></div>
+        <div class="center"></div>
+      </div>
+
+      <div class="garden-flower gf9">
+        <div class="petals"></div>
+        <div class="center"></div>
+      </div>
+
+      <div class="garden-flower gf10">
+        <div class="petals"></div>
+        <div class="center"></div>
+      </div>
+
+      <div class="garden-flower gf11">
+        <div class="petals"></div>
+        <div class="center"></div>
+      </div>
+
+      <div class="garden-flower gf12">
+        <div class="petals"></div>
+        <div class="center"></div>
+      </div>
+
+      <div class="garden-flower small gf13">
+        <div class="petals"></div>
+        <div class="center"></div>
+      </div>
+
+      <div class="garden-flower small gf14">
+        <div class="petals"></div>
+        <div class="center"></div>
+      </div>
+
+      <div class="garden-flower small gf15">
+        <div class="petals"></div>
+        <div class="center"></div>
+      </div>
+
+      <div class="garden-flower small gf16">
+        <div class="petals"></div>
+        <div class="center"></div>
+      </div>
+
+      <div class="garden-flower small gf17">
+        <div class="petals"></div>
+        <div class="center"></div>
+      </div>
+
+      <div class="garden-flower small gf18">
+        <div class="petals"></div>
+        <div class="center"></div>
+      </div>
+
+      <div class="garden-flower small gf19">
+        <div class="petals"></div>
+        <div class="center"></div>
+      </div>
+
+      <div class="garden-flower small gf20">
+        <div class="petals"></div>
+        <div class="center"></div>
+      </div>
+
     </div>
+
+
+    <div class="garden-title">
+
+      <h1>Nuestro jardín 🌼</h1>
+
+      <p>
+        Algunos de mis momentos favoritos con vos.
+      </p>
+
+    </div>
+
 
     <div class="photo-grid">
 
@@ -951,10 +1201,13 @@ body {
 
     </div>
 
+
     <div class="next-area">
+
       <button class="next-btn" onclick="goWatering()">
         SEGUIR 🌱
       </button>
+
     </div>
 
   </div>
@@ -971,12 +1224,17 @@ body {
   <div class="watering-inner">
 
     <div class="watering-title">
-      <h1>Hay algo esperando crecer 🌱</h1>
-      <p>Arrastrá la regadera y regá la maceta.</p>
+
+      <h1>
+        Hay algo esperando crecer 🌱
+      </h1>
+
+      <p>
+        Arrastrá la regadera y regá la maceta.
+      </p>
+
     </div>
 
-
-    <!-- MACETA -->
 
     <div class="pot-area">
 
@@ -1004,8 +1262,6 @@ body {
     </div>
 
 
-    <!-- REGADERA -->
-
     <div
       class="watering-can"
       id="wateringCan"
@@ -1030,7 +1286,11 @@ body {
 
 
     <div class="water-hint">
-      <strong>💧 Mové la regadera hasta que el agua llegue a la maceta.</strong>
+
+      <strong>
+        💧 Mové la regadera hasta que el agua llegue a la maceta.
+      </strong>
+
     </div>
 
   </div>
@@ -1051,7 +1311,12 @@ body {
     </h1>
 
     <div class="final-photo">
-      <img src="foto6.jpg" alt="Nosotros">
+
+      <img
+        src="foto6.jpg"
+        alt="Nosotros"
+      >
+
     </div>
 
     <div class="final-text">
@@ -1079,7 +1344,7 @@ body {
 
       <p>
         <strong>
-          Feliz primavera miamor. ❤️🌼
+          Feliz primavera miamor ❤️🌼
         </strong>
       </p>
 
@@ -1095,8 +1360,14 @@ body {
 ===================================================== -->
 
 <audio id="music" loop preload="auto">
-  <source src="primavera.mp3" type="audio/mpeg">
+
+  <source
+    src="primavera.mp3"
+    type="audio/mpeg"
+  >
+
 </audio>
+
 
 <button
   id="musicControl"
@@ -1111,23 +1382,41 @@ body {
 <script>
 
 /* =========================================================
-   CAMBIO DE PANTALLAS
+   ELEMENTOS
 ========================================================= */
 
-const welcome = document.getElementById("welcome");
-const garden = document.getElementById("garden");
-const watering = document.getElementById("watering");
-const finalScreen = document.getElementById("final");
+const welcome =
+  document.getElementById("welcome");
 
-const music = document.getElementById("music");
-const musicControl = document.getElementById("musicControl");
+const garden =
+  document.getElementById("garden");
 
+const watering =
+  document.getElementById("watering");
+
+const finalScreen =
+  document.getElementById("final");
+
+const music =
+  document.getElementById("music");
+
+const musicControl =
+  document.getElementById("musicControl");
+
+
+/* =========================================================
+   CAMBIO DE PANTALLA
+========================================================= */
 
 function showScreen(screen) {
 
-  document.querySelectorAll(".screen").forEach(s => {
-    s.classList.remove("active");
-  });
+  document
+    .querySelectorAll(".screen")
+    .forEach(s => {
+
+      s.classList.remove("active");
+
+    });
 
   screen.classList.add("active");
 
@@ -1135,7 +1424,7 @@ function showScreen(screen) {
 
 
 /* =========================================================
-   ENTRAR AL JARDÍN + MÚSICA
+   ENTRAR AL JARDÍN
 ========================================================= */
 
 function enterGarden() {
@@ -1151,23 +1440,28 @@ function enterGarden() {
 
       let volume = 0;
 
-      const fade = setInterval(() => {
+      const fade =
+        setInterval(() => {
 
-        volume += 0.03;
+          volume += 0.03;
 
-        if (volume >= 0.65) {
-          volume = 0.65;
-          clearInterval(fade);
-        }
+          if (volume >= 0.65) {
 
-        music.volume = volume;
+            volume = 0.65;
 
-      }, 100);
+            clearInterval(fade);
+
+          }
+
+          music.volume = volume;
+
+        }, 100);
 
     })
     .catch(() => {});
 
   createPetals(18);
+
 }
 
 
@@ -1193,11 +1487,13 @@ function toggleMusic() {
   if (music.paused) {
 
     music.play();
+
     musicControl.textContent = "🔊";
 
   } else {
 
     music.pause();
+
     musicControl.textContent = "🔇";
 
   }
@@ -1213,11 +1509,13 @@ function createPetals(amount) {
 
   for (let i = 0; i < amount; i++) {
 
-    const petal = document.createElement("div");
+    const petal =
+      document.createElement("div");
 
     petal.className = "petal";
 
-    petal.style.left = Math.random() * 100 + "vw";
+    petal.style.left =
+      Math.random() * 100 + "vw";
 
     petal.style.animationDuration =
       (5 + Math.random() * 5) + "s";
@@ -1228,7 +1526,9 @@ function createPetals(amount) {
     document.body.appendChild(petal);
 
     setTimeout(() => {
+
       petal.remove();
+
     }, 12000);
 
   }
@@ -1240,8 +1540,11 @@ function createPetals(amount) {
    REGADERA
 ========================================================= */
 
-const can = document.getElementById("wateringCan");
-const plant = document.getElementById("plant");
+const can =
+  document.getElementById("wateringCan");
+
+const plant =
+  document.getElementById("plant");
 
 let dragging = false;
 
@@ -1251,46 +1554,50 @@ let offsetY = 0;
 let wateringStarted = false;
 
 
-/* ---------------------------------------------------------
-   POSICIÓN INICIAL
---------------------------------------------------------- */
-
-function getCanPosition() {
-
-  const rect = can.getBoundingClientRect();
-
-  return {
-    x: rect.left,
-    y: rect.top
-  };
-
-}
-
-
 /* =========================================================
    MOUSE
 ========================================================= */
 
-can.addEventListener("mousedown", startDrag);
+can.addEventListener(
+  "mousedown",
+  startDrag
+);
 
-document.addEventListener("mousemove", moveDrag);
+document.addEventListener(
+  "mousemove",
+  moveDrag
+);
 
-document.addEventListener("mouseup", endDrag);
+document.addEventListener(
+  "mouseup",
+  endDrag
+);
 
 
 /* =========================================================
    TOUCH
 ========================================================= */
 
-can.addEventListener("touchstart", startDrag, {
-  passive: false
-});
+can.addEventListener(
+  "touchstart",
+  startDrag,
+  {
+    passive: false
+  }
+);
 
-document.addEventListener("touchmove", moveDrag, {
-  passive: false
-});
+document.addEventListener(
+  "touchmove",
+  moveDrag,
+  {
+    passive: false
+  }
+);
 
-document.addEventListener("touchend", endDrag);
+document.addEventListener(
+  "touchend",
+  endDrag
+);
 
 
 /* =========================================================
@@ -1305,12 +1612,17 @@ function startDrag(e) {
 
   can.classList.add("dragging");
 
-  const point = getPoint(e);
+  const point =
+    getPoint(e);
 
-  const rect = can.getBoundingClientRect();
+  const rect =
+    can.getBoundingClientRect();
 
-  offsetX = point.x - rect.left;
-  offsetY = point.y - rect.top;
+  offsetX =
+    point.x - rect.left;
+
+  offsetY =
+    point.y - rect.top;
 
 }
 
@@ -1325,28 +1637,40 @@ function moveDrag(e) {
 
   e.preventDefault();
 
-  const point = getPoint(e);
+  const point =
+    getPoint(e);
 
-  let x = point.x - offsetX;
-  let y = point.y - offsetY;
+  let x =
+    point.x - offsetX;
 
-  /*
-   * límites de pantalla
-   */
+  let y =
+    point.y - offsetY;
 
-  const maxX = window.innerWidth - can.offsetWidth;
-  const maxY = window.innerHeight - can.offsetHeight;
+  const maxX =
+    window.innerWidth -
+    can.offsetWidth;
 
-  x = Math.max(0, Math.min(x, maxX));
-  y = Math.max(0, Math.min(y, maxY));
+  const maxY =
+    window.innerHeight -
+    can.offsetHeight;
 
-  can.style.left = x + "px";
-  can.style.top = y + "px";
+  x =
+    Math.max(
+      0,
+      Math.min(x, maxX)
+    );
 
-  /*
-   * AHORA EL RIEGO SE DETECTA POR LA BOQUILLA,
-   * NO POR EL CENTRO DE LA REGADERA.
-   */
+  y =
+    Math.max(
+      0,
+      Math.min(y, maxY)
+    );
+
+  can.style.left =
+    x + "px";
+
+  can.style.top =
+    y + "px";
 
   checkWaterCollision();
 
@@ -1354,7 +1678,7 @@ function moveDrag(e) {
 
 
 /* =========================================================
-   TERMINAR ARRASTRE
+   TERMINAR
 ========================================================= */
 
 function endDrag() {
@@ -1369,76 +1693,95 @@ function endDrag() {
 
 
 /* =========================================================
-   OBTENER PUNTO MOUSE / TOUCH
+   MOUSE / TOUCH
 ========================================================= */
 
 function getPoint(e) {
 
-  if (e.touches && e.touches.length > 0) {
+  if (
+    e.touches &&
+    e.touches.length > 0
+  ) {
 
     return {
+
       x: e.touches[0].clientX,
+
       y: e.touches[0].clientY
+
     };
 
   }
 
-  if (e.changedTouches && e.changedTouches.length > 0) {
+  if (
+    e.changedTouches &&
+    e.changedTouches.length > 0
+  ) {
 
     return {
-      x: e.changedTouches[0].clientX,
-      y: e.changedTouches[0].clientY
+
+      x:
+        e.changedTouches[0].clientX,
+
+      y:
+        e.changedTouches[0].clientY
+
     };
 
   }
 
   return {
+
     x: e.clientX,
+
     y: e.clientY
+
   };
 
 }
 
 
 /* =========================================================
-   DETECTAR AGUA SOBRE LA MACETA
+   DETECTAR AGUA
 ========================================================= */
 
 function checkWaterCollision() {
 
-  const canRect = can.getBoundingClientRect();
-  const potRect = document.querySelector(".pot").getBoundingClientRect();
+  const canRect =
+    can.getBoundingClientRect();
 
-  /*
-   * La salida real del agua está aproximadamente
-   * en la punta del pico.
-   */
+  const potRect =
+    document
+      .querySelector(".pot")
+      .getBoundingClientRect();
 
   const streamX =
-    canRect.left + canRect.width * 0.95;
+    canRect.left +
+    canRect.width * .95;
 
   const streamTop =
-    canRect.top + canRect.height * 0.52;
+    canRect.top +
+    canRect.height * .52;
 
   const streamBottom =
     streamTop + 125;
 
-
-  /*
-   * El chorro debe cruzar horizontalmente
-   * la zona de la maceta.
-   */
-
   const horizontalHit =
-    streamX >= potRect.left - 35 &&
-    streamX <= potRect.right + 35;
+    streamX >=
+      potRect.left - 35 &&
+    streamX <=
+      potRect.right + 35;
 
   const verticalHit =
-    streamBottom >= potRect.top &&
-    streamTop <= potRect.bottom;
+    streamBottom >=
+      potRect.top &&
+    streamTop <=
+      potRect.bottom;
 
-
-  if (horizontalHit && verticalHit) {
+  if (
+    horizontalHit &&
+    verticalHit
+  ) {
 
     startWatering();
 
@@ -1448,33 +1791,23 @@ function checkWaterCollision() {
 
 
 /* =========================================================
-   EFECTO DE REGAR
+   REGAR
 ========================================================= */
 
 function startWatering() {
 
-  if (wateringStarted) return;
+  if (wateringStarted)
+    return;
 
   wateringStarted = true;
 
   can.classList.add("pouring");
-
-  /*
-   * Dejamos que se vea el agua
-   * antes de hacer crecer la planta.
-   */
 
   setTimeout(() => {
 
     plant.classList.add("grown");
 
   }, 900);
-
-
-  /*
-   * Después de crecer, mostramos
-   * la pantalla final.
-   */
 
   setTimeout(() => {
 
@@ -1488,29 +1821,24 @@ function startWatering() {
 
 
 /* =========================================================
-   EVITAR SCROLL ACCIDENTAL EN PANTALLA DE RIEGO
+   TOUCH
 ========================================================= */
 
-watering.addEventListener("touchmove", function(e) {
+watering.addEventListener(
+  "touchmove",
+  function(e) {
 
-  if (dragging) {
-    e.preventDefault();
+    if (dragging) {
+
+      e.preventDefault();
+
+    }
+
+  },
+  {
+    passive: false
   }
-
-}, {
-  passive: false
-});
-
-
-/* =========================================================
-   REINICIO SI SE VUELVE A ABRIR
-========================================================= */
-
-window.addEventListener("resize", () => {
-
-  if (!dragging) return;
-
-});
+);
 
 </script>
 
